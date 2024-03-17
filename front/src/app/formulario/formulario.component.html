@@ -1,0 +1,20 @@
+<form #formulario="" (ngSubmit)="submitForm(formulario)">
+    <div>
+      <label>Nombre:</label>
+      <input type="text" name="nombre" ngModel required>
+    </div>
+    <div>
+      <label>Apellidos:</label>
+      <input type="text" name="apellidos" ngModel required>
+    </div>
+    <div>
+      <label>Correo:</label>
+      <input type="email" name="correo" ngModel required>
+    </div>
+    <div>
+      <label>Código Postal:</label>
+      <input type="text" name="codigoPostal" ngModel required>
+    </div>
+    <button type="submit" [disabled]="!formulario.valid">Enviar</button>
+  </form>
+  

@@ -1,0 +1,40 @@
+
+<form #formulario="ngForm" (ngSubmit)="submitForm(formulario.value)">
+  <input type="hidden" name="id" ngModel>
+  <div>
+    <label>Nombre:</label>
+    <input type="text" name="nombre" ngModel>
+  </div>
+  <div>
+    <label>Apellidos:</label>
+    <input type="text" name="apellidos" ngModel>
+  </div>
+  <div>
+    <label>Correo:</label>
+    <input type="text" name="correo" ngModel>
+  </div>
+  <div>
+    <label>Contraseña:</label>
+    <input type="password" name="clave" ngModel>
+  </div>
+  <div>
+    <label>Código Postal:</label>
+    <input type="text" name="codigoPostal" ngModel>
+  </div>
+  <div>
+    <label>Teléfono:</label>
+    <input type="text" name="telefono" ngModel>
+  </div>
+  <div>
+    <label>N.Tarjeta</label>
+    <input type="text" name="tarjeta" ngModel required>
+  </div>
+  <div>
+    <label>CVV:</label>
+    <input type="text" name="cvv" ngModel required>
+  </div>
+  <button type="submit" [disabled]="!formulario.valid" (click)="submitForm(formulario)">Enviar</button>
+</form>
+
+
+

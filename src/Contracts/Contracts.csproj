@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>CrmAPI.Contracts</AssemblyName>
+        <RootNamespace>CrmAPI.Contracts</RootNamespace>
+        <Description>Messaging contracts that will be listened in Crm API</Description>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MassTransit.Abstractions" Version="8.2.1" />
+      <PackageReference Include="MassTransit.Analyzers" Version="8.2.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\bin\Debug\net7.0\CrmAPI.Contracts.deps.json
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\bin\Debug\net7.0\CrmAPI.Contracts.dll
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\bin\Debug\net7.0\CrmAPI.Contracts.xml
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\Contracts.csproj.AssemblyReference.cache
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\Contracts.AssemblyInfoInputs.cache
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\Contracts.AssemblyInfo.cs
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\Contracts.csproj.CoreCompileInputs.cache
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\Contracts.sourcelink.json
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\CrmAPI.Contracts.dll
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\refint\CrmAPI.Contracts.dll
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\CrmAPI.Contracts.xml
+C:\Repositorios\CRM\backend\api-crm\src\Contracts\obj\Debug\net7.0\ref\CrmAPI.Contracts.dll

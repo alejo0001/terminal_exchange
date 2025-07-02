@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <AssemblyName>CrmAPI.Infrastructure</AssemblyName>
+        <RootNamespace>CrmAPI.Infrastructure</RootNamespace>
+        <LangVersion>11</LangVersion>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.3.1" />
+      <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.15.0" />
+      <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+      <PackageReference Include="IL.FluentValidation.Extensions.Options" Version="11.0.2" />
+      <PackageReference Include="MassTransit.Analyzers" Version="8.2.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="MassTransit.EntityFrameworkCore" Version="8.2.1" />
+      <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.11" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.11" />
+      <PackageReference Include="Microsoft.Identity.Web" Version="2.12.4" />
+      <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.6.0" />
+      <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.6.0" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc9.14" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.EventCounters" Version="1.5.1-alpha.1" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc9.14" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.Process" Version="0.5.0-beta.3" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.5.1" />
+      <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+      <PackageReference Include="Serilog.Enrichers.AssemblyName" Version="2.0.0" />
+      <PackageReference Include="Serilog.Enrichers.ClientInfo" Version="2.0.3" />
+      <PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0" />
+      <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+      <PackageReference Include="Serilog.Expressions" Version="4.0.0" />
+      <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.3" />
+      <PackageReference Include="Serilog.Sinks.OpenTelemetry" Version="1.2.0" />
+      <PackageReference Include="Serilog.Sinks.Seq" Condition="'$(IncludeSeq)' == true" Version="8.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Application\Application.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrmAPI.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.AuthApiClient.AuthorizeUserInModuleWithRoles(System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.AuthApiClient.AuthorizeUserByEmail(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CalendarApiClient.CreateEvent(CrmAPI.Application.Common.Dtos.EventDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CalendarApiClient.UpdateEvent(CrmAPI.Application.Common.Dtos.EventDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CalendarApiClient.DeleteEvent(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CourseFPApiClient.DoEnrollment(CrmAPI.Application.Common.Dtos.WebEnrollmentDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CourseUnApiClient.GetMultiplePricesByCode(CrmAPI.Application.Common.Dtos.PricesByCodeCourseParamsDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CourseUnApiClient.DoEnrollment(CrmAPI.Application.Common.Dtos.WebEnrollmentDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CroupierApiClient.UpdateContactFromIntranet(CrmAPI.Application.Common.Dtos.LeadDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.CroupierApiClient.UpdateContactStatusFromIntranet(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.HrApiClient.GetAllManagerSubordinates(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.HrApiClient.GetEmployeeManager(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.HrApiClient.GetEmployeeNextLaborDay(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.HrApiClient.GetWorkScheduleDaysOfWeek(System.Int32,System.DateTime,System.Threading.CancellationToken)">
+            <inheritdoc />
+            <remarks>
+                This endpoint's use case in HrApi has a bug (as of 06/08/2024) that will throw,
+                if data cannot be found from DB. Problem is that it throws at least one unhandled exception.
+                That said, HTTP500 and HTTP204 or response w/o body (or even data carrying headers) should be treated the same --
+                no data to return for the caller.<br />
+                For the sake of reference: first occurence of the bug
+                <a
+                    href="https://bitbucket.org/auladigital/human-resources-back/src/c083983917f662310762992ce3d0d98265e7129e/src/Application/WorkSchedules/Queries/GetWorkScheduleOfEmployeeQuery/GetWorkScheduleOfEmployeeQuery.cs#lines-42">
+                    is here, note the date and branch
+                </a>
+                . <br />
+                In short: referenced method lacks required null dereference check and this is well known bug condition.
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Infrastructure.ApiClients.RequestHandlers.AuthenticationConstants">
+            <summary>
+                Important common constants in authentication subsystem.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.ApiClients.TranslationApiClient.GetForModuleAndLanguage(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:CrmAPI.Infrastructure.Configuration.ConfigurationExtensions">
+            <summary>
+                Application Configuration bootstrapping.
+            </summary>
+            <remarks>
+                Idea is to follow Microsoft recommended patterns and also abstract away configuration origin details, application
+                should only interact with configuration:
+                <c>IConfiguration, IOptions&lt;T&gt;, IOptionsSnapshot&lt;T&gt;, IOptionsMonitor&lt;T&gt;</c>.<br />
+                TODO: Migrate to IntranetExtensions package. <br />
+                TODO: Azure App Configuration Service. <br />
+                TODO: implement interactive auth for developers and for application.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Configuration.ConfigurationExtensions.SetupAppConfiguration(Microsoft.Extensions.Configuration.ConfigurationManager,Microsoft.Extensions.Hosting.IHostEnvironment)">
+            <summary>
+                It must be among the first bootstrapping steps of the whole app, because it impacts configuration composition.
+            </summary>
+            <remarks>
+                Current implementation includes setting up Azure Key Vault service.<br />
+            </remarks>
+            <param name="configManager">
+                This is more suitable type instead of interfaces, because it allows to access config and
+                also perform setup actions on it.
+            </param>
+            <param name="hostEnvironment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Configuration.ConfigurationExtensions.IsDevelopmentOverride(Microsoft.Extensions.Hosting.IHostEnvironment)">
+            <summary>
+                Only <see cref="F:Microsoft.Extensions.Hosting.Environments.Production" /> and <see cref="F:Microsoft.Extensions.Hosting.Environments.Staging" /> will not be overriden.
+            </summary>
+            <param name="hostEnvironment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Configuration.ConfigurationExtensions.AddAzureKeyVault(Microsoft.Extensions.Configuration.ConfigurationManager)">
+            <summary>
+                Encapsulates all Azure Key Vault setup peculiarities.
+            </summary>
+            <param name="configManager"></param>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.DependencyInjection.AddMonitoring(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.ConfigurationManager,Microsoft.Extensions.Logging.ILoggingBuilder,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+                Monitoring and logging related configuration bootstrapping.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.DependencyInjection.AddMemoryCacheWithCompacter``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Enforces to register compacter service too, as .NET MemoryCache do not have any automatic means for this.
+            </summary>
+            <param name="services"></param>
+            <typeparam name="TCompacterService"></typeparam>
+        </member>
+        <member name="T:CrmAPI.Infrastructure.LazyDependencyWrapper`1">
+            <summary>
+                Allows to postpone creation of potentially costly dependency. It can be registered as
+                <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Transient" />,cause the dependency type must be registered always separately with
+                desired lifetime.
+            </summary>
+            <remarks>Generic purpose type, register it as open generic service.</remarks>
+            <typeparam name="TService">Service type, dependency to be retrieved.</typeparam>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Monitoring.SerilogConfiguration.SetupBootstrapLogging">
+            <summary>
+                Sets up Serilog even before application composition phase so this phase will be logged from early on.
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Infrastructure.Persistence.ApplicationDbContext">
+            <inheritdoc cref="T:Microsoft.EntityFrameworkCore.DbContext" />
+            <inheritdoc cref="T:CrmAPI.Application.Common.Interfaces.IApplicationDbContext" />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Persistence.ApplicationDbContext.SaveChangesAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Persistence.CoursesFpDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{CrmAPI.Infrastructure.Persistence.CoursesFpDbContext})">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Persistence.CoursesUnDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{CrmAPI.Infrastructure.Persistence.CoursesUnDbContext})">
+            <inheritdoc />
+        </member>
+        <member name="T:CrmAPI.Infrastructure.Services.EFCoreFunctions">
+            <inheritdoc />
+            <remarks>
+                This implementation uses directly <see cref="P:Microsoft.EntityFrameworkCore.EF.Functions" /> for SQL generation from expression. <br />
+                It won't work in unit testing, because it is EF to datastore provider code.
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Infrastructure.Services.EmailSendTestingFeatureFlagService">
+            <inheritdoc />
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Services.EmailSendTestingFeatureFlagService.IsAutomaticEmailSendingForcedToTestOnly">
+            <inheritdoc />
+        </member>
+        <member name="T:CrmAPI.Infrastructure.Services.EntityClonerService`1">
+            <inheritdoc />
+        </member>
+        <member name="T:CrmAPI.Infrastructure.Services.MemoryCacheCompacter">
+            <summary>Simple MemoryCache compacter background service.</summary>
+            <remarks>
+                It relies on <see cref="T:Microsoft.Extensions.Options.IOptions`1" /> of <see cref="T:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions" />, configure it as needed.<br />
+                Also, (singelton )<see cref="T:Microsoft.Extensions.Caching.Memory.MemoryCache" /> concrete implementation is required, because it has Compact method.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.MemoryCacheCompacter.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,Microsoft.Extensions.Options.IOptions{Microsoft.Extensions.Caching.Memory.MemoryCacheOptions},Microsoft.Extensions.Logging.ILogger{CrmAPI.Infrastructure.Services.MemoryCacheCompacter})">
+            <exception cref="T:System.InvalidOperationException">If <see cref="T:Microsoft.Extensions.Caching.Memory.MemoryCache" /> is not registered in DI.</exception>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.MemoryCacheCompacter.StartAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.MemoryCacheCompacter.StopAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.MemoryCacheCompacter.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.MemoryCacheCompacter.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.MemoryCacheCompacter.Finalize">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.ProcessesService.GetContactOriginContactIdUserIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Obtener los IDs de contactos asociados a los procesos de un usuario
+            </summary>
+            <param name="userId"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Services.ProcessesService.GetUserIdCorporateEmail(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Obtener el ID del usuario a partir del correo electrónico corporativo
+            </summary>
+            <param name="corporateEmail"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Infrastructure.Settings.ConnectionStringsSettings">
+            <summary>
+                Type to carry only database Connection Strings. Do not mingle other config into it, because its data is considered
+                sensitive and therefore provided by AZ Key Vault service. <br />
+                In Local environment User Secret logic can be plugged-in so that consuming code would not need to be changed.
+            </summary>
+            <remarks>
+                It is .NET application well-known settings section. Please change it only according to those conventions.
+            </remarks>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.ConnectionStringsSettings.Leads">
+            <summary>
+                Synonym: Potenciales.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.ConnectionStringsSettings.TLMK">
+            <summary>
+                Synonym: Telemarketing.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.ConnectionStringsSettings.WebDatabase">
+            <summary>
+                Synonym: Course Database. This is original DB, e.g. for <em>University</em>.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.ConnectionStringsSettings.WebFpDatabase">
+            <summary>
+                Synonym: Course Database. This is for the <em>FP (Formación Profesional)</em>.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.ConnectionStringsSettings.SendEmail">
+            <summary>
+                TEMPORAL! HACK, DO NOT USE, ASK TO DELETE FROM KVS ASAP!
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.KeyVaultSettings.Name">
+            <summary>
+                Key Vault service instance name in Azure.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.KeyVaultSettings.TenantId">
+            <summary>
+                The Microsoft Entra tenant (directory) ID of the service principal.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.KeyVaultSettings.ClientId">
+            <summary>
+                The client (application) ID of the service principal.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.KeyVaultSettings.ClientSecret">
+            <summary>
+                A client secret that was generated for the App Registration used to authenticate the client.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Infrastructure.Settings.KeyVaultSettings.ReloadIntervalMinutes">
+            <summary>
+                <inheritdoc
+                    cref="P:Azure.Extensions.AspNetCore.Configuration.Secrets.AzureKeyVaultConfigurationOptions.ReloadInterval" />
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Utilities.EnvironmentHelper.IsNSwagRunning(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                It detects whether <c>NSWAG_RUNNING=TRUE</c> has been set, by any means of ASP.NET configuration source.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Infrastructure.Utilities.EnvironmentHelper.IsLikeProduction(Microsoft.Extensions.Hosting.IHostEnvironment)">
+            <summary>
+                Check whether Environment is either <see cref="F:Microsoft.Extensions.Hosting.Environments.Production" /> or <see cref="F:Microsoft.Extensions.Hosting.Environments.Staging" />
+            </summary>
+            <param name="hostEnvironment"></param>
+        </member>
+    </members>
+</doc>

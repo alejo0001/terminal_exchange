@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "OuWaoAia5ww=",
+  "success": true,
+  "projectFilePath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Leads\\Domain.Leads.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\OF06S\\.nuget\\packages\\jetbrains.annotations\\2024.3.0\\jetbrains.annotations.2024.3.0.nupkg.sha512",
+    "C:\\Users\\OF06S\\.nuget\\packages\\microsoft.build.tasks.git\\8.0.0\\microsoft.build.tasks.git.8.0.0.nupkg.sha512",
+    "C:\\Users\\OF06S\\.nuget\\packages\\microsoft.sourcelink.bitbucket.git\\8.0.0\\microsoft.sourcelink.bitbucket.git.8.0.0.nupkg.sha512",
+    "C:\\Users\\OF06S\\.nuget\\packages\\microsoft.sourcelink.common\\8.0.0\\microsoft.sourcelink.common.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

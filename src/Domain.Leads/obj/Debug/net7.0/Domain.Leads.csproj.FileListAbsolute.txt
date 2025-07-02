@@ -1,0 +1,13 @@
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\bin\Debug\net7.0\CrmAPI.Domain.Leads.deps.json
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\bin\Debug\net7.0\CrmAPI.Domain.Leads.dll
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\bin\Debug\net7.0\CrmAPI.Domain.Leads.xml
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\Domain.Leads.csproj.AssemblyReference.cache
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\Domain.Leads.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\Domain.Leads.AssemblyInfoInputs.cache
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\Domain.Leads.AssemblyInfo.cs
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\Domain.Leads.csproj.CoreCompileInputs.cache
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\Domain.Leads.sourcelink.json
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\CrmAPI.Domain.Leads.dll
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\refint\CrmAPI.Domain.Leads.dll
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\CrmAPI.Domain.Leads.xml
+C:\Repositorios\CRM\backend\api-crm\src\Domain.Leads\obj\Debug\net7.0\ref\CrmAPI.Domain.Leads.dll

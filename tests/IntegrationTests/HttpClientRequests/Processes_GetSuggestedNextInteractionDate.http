@@ -1,0 +1,33 @@
+# Set corresponding environment for variables to be working.
+
+@baseurl = {{api}}/Processes
+
+### Get Suggested Next Interaction Date
+< {%
+    request.variables.set('auth_token', $auth.token('oauth-config'));
+
+    request.variables.set("processId", 1146155);
+
+    request.variables.set(
+        'dateLocalEmployee',
+        [
+            $isoTimestamp.slice(0,-1),
+            $isoTimestamp.slice(0,-1),
+            $isoTimestamp.slice(0,-1)
+        ]
+    );
+%}
+
+GET {{baseurl}}/GetSuggestedNextInteractionDate/{{processId}}/{{dateLocalEmployee}}
+Authorization: Bearer {{auth_token}}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Request unauthorized", function () {
+        client.assert(response.status !== 401, "Response status is 401");
+    });
+%}
+###

@@ -1,0 +1,83 @@
+# Set corresponding environment for variables to be working.
+
+@baseurl = {{api}}/courses
+
+### Run CourseLeads generation, Area `medicina`, any concacts scenario, limited to 2555
+POST {{baseurl}}/PopulateMissingInterestedCoursesByTopSellers
+Content-Type: application/json
+
+{
+  "area": "medicina",
+  "countryCode": "es",
+  "maxJobContacts": 255
+}
+
+### Run CourseLeads generation, Area `*`, any concacts scenario, limited to 2555
+POST {{baseurl}}/PopulateMissingInterestedCoursesByTopSellers
+Content-Type: application/json
+
+{
+  "area": "*",
+  "countryCode": "es",
+  "maxJobContacts": 255
+}
+
+### Run CourseLeads generation, Area `*`, any concacts scenario, UNLIMITED # of contacts!
+POST {{baseurl}}/PopulateMissingInterestedCoursesByTopSellers
+Content-Type: application/json
+
+{
+  "area": "*",
+  "countryCode": "es",
+  "maxJobContacts": -1
+}
+
+### Run CourseLeads generation, Area `medicina`, aspecificy concacts scenario
+POST {{baseurl}}/PopulateMissingInterestedCoursesByTopSellers
+Content-Type: application/json
+
+{
+  "area": "medicina",
+  "countryCode": "es",
+  "contactIds": [
+    837057,
+    837058,
+    837059,
+    837060,
+    837061
+  ]
+}
+
+### Run CourseLeads generation, Area `*`, aspecificy concacts scenario
+POST {{baseurl}}/PopulateMissingInterestedCoursesByTopSellers
+Content-Type: application/json
+
+{
+  "area": "*",
+  "countryCode": "es",
+  "contactIds": [
+    837062,
+    837063,
+    837064,
+    837065,
+    837066,
+    837067,
+    837068,
+    837069,
+    837070,
+    837071,
+    837072,
+    837073,
+    837074
+  ]
+}
+
+### Run CourseLeads generation, Area `*`, CountryCode: `*`, any concacts scenario
+POST {{baseurl}}/PopulateMissingInterestedCoursesByTopSellers
+Content-Type: application/json
+
+{
+  "area": "*",
+  "countryCode": "*",
+  "maxJobContacts": 2555
+}

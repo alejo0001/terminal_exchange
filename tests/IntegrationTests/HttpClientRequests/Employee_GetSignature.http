@@ -1,0 +1,11 @@
+@baseurl = {{api}}/employee
+
+
+### Consolidate contacts by ID, makr "fusinoaro_*" in Leads DB.
+@userEmail=<email>@techtitute.com
+
+GET {{baseurl}}/Signatures/{{userEmail}}
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("oauth-config")}}
+
+###

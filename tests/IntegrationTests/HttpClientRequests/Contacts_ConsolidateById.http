@@ -1,0 +1,13 @@
+@baseurl = {{api}}/contacts
+
+
+### Consolidate contacts by ID, makr "fusinoaro_*" in Leads DB.
+POST {{baseurl}}/ConsolidateToOtherContactById
+Content-Type: application/json
+
+{
+  "apiKey": "{{apiKey}}",
+  "DestinationId": 1139158,
+  "OriginId": 1139159
+}
+###

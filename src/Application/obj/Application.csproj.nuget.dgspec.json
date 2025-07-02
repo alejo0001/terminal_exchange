@@ -1,0 +1,491 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Application\\Application.csproj": {}
+  },
+  "projects": {
+    "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Application\\Application.csproj": {
+      "version": "1.4.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Application\\Application.csproj",
+        "projectName": "CrmAPI.Application",
+        "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\OF06S\\.nuget\\packages\\",
+        "outputPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Repositorios\\CRM\\backend\\api-crm\\NuGet.Config",
+          "C:\\Users\\OF06S\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.aula-digital.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Contracts\\Contracts.csproj"
+              },
+              "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Leads\\Domain.Leads.csproj": {
+                "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Leads\\Domain.Leads.csproj"
+              },
+              "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Tlmk\\Domain.Tlmk.csproj": {
+                "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Tlmk\\Domain.Tlmk.csproj"
+              },
+              "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.16.0, )"
+            },
+            "CourseApi.Data": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "CroupierAPI.Contracts": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "ErrorOr": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.6.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.6.0, )"
+            },
+            "IntranetContext": {
+              "target": "Package",
+              "version": "[2.29.2.100, )"
+            },
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2024.3.0, )"
+            },
+            "LinqKit.Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.1.5, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.2.1, )"
+            },
+            "MassTransit.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.2.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.SourceLink.Bitbucket.Git": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
+            "NotificationAPI.Contracts": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Techtitute.DynamicFilter": {
+              "target": "Package",
+              "version": "[1.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Contracts\\Contracts.csproj": {
+      "version": "1.4.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Contracts\\Contracts.csproj",
+        "projectName": "CrmAPI.Contracts",
+        "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Contracts\\Contracts.csproj",
+        "packagesPath": "C:\\Users\\OF06S\\.nuget\\packages\\",
+        "outputPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Repositorios\\CRM\\backend\\api-crm\\NuGet.Config",
+          "C:\\Users\\OF06S\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.aula-digital.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2024.3.0, )"
+            },
+            "MassTransit.Abstractions": {
+              "target": "Package",
+              "version": "[8.2.1, )"
+            },
+            "MassTransit.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.2.1, )"
+            },
+            "Microsoft.SourceLink.Bitbucket.Git": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Leads\\Domain.Leads.csproj": {
+      "version": "1.4.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Leads\\Domain.Leads.csproj",
+        "projectName": "CrmAPI.Domain.Leads",
+        "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Leads\\Domain.Leads.csproj",
+        "packagesPath": "C:\\Users\\OF06S\\.nuget\\packages\\",
+        "outputPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Leads\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Repositorios\\CRM\\backend\\api-crm\\NuGet.Config",
+          "C:\\Users\\OF06S\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.aula-digital.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2024.3.0, )"
+            },
+            "Microsoft.SourceLink.Bitbucket.Git": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Tlmk\\Domain.Tlmk.csproj": {
+      "version": "1.4.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Tlmk\\Domain.Tlmk.csproj",
+        "projectName": "CrmAPI.Domain.Tlmk",
+        "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Tlmk\\Domain.Tlmk.csproj",
+        "packagesPath": "C:\\Users\\OF06S\\.nuget\\packages\\",
+        "outputPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain.Tlmk\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Repositorios\\CRM\\backend\\api-crm\\NuGet.Config",
+          "C:\\Users\\OF06S\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.aula-digital.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2024.3.0, )"
+            },
+            "Microsoft.SourceLink.Bitbucket.Git": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain\\Domain.csproj": {
+      "version": "1.4.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain\\Domain.csproj",
+        "projectName": "CrmAPI.Domain",
+        "projectPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\OF06S\\.nuget\\packages\\",
+        "outputPath": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Repositorios\\CRM\\backend\\api-crm\\NuGet.Config",
+          "C:\\Users\\OF06S\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.aula-digital.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2024.3.0, )"
+            },
+            "Microsoft.SourceLink.Bitbucket.Git": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

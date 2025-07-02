@@ -1,0 +1,4002 @@
+[
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "Create",
+    "RelativePath": "api/Actions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Actions.Commands.CreateAction.CreateActionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "Update",
+    "RelativePath": "api/Actions/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Actions.Commands.UpdateAction.UpdateActionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "Delete",
+    "RelativePath": "api/Actions/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "GetActionInfo",
+    "RelativePath": "api/Actions/ActionInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ActionInfoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "GetActiveCall",
+    "RelativePath": "api/Actions/ActiveCall",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ActiveCallDetailsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "GetActionsByProcess",
+    "RelativePath": "api/Actions/ByProcess",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Actions.Queries.GetActions.ActionChildViewModel, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "GetHasActiveCall",
+    "RelativePath": "api/Actions/HasActiveCall",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ActionsController",
+    "Method": "CheckHasSentEmails",
+    "RelativePath": "api/Actions/HasSentEmails/{processId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "processId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AnnotationsController",
+    "Method": "Create",
+    "RelativePath": "api/Annotations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Annotations.Commands.CreateAnnotation.CreateAnnotationCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AnnotationsController",
+    "Method": "Update",
+    "RelativePath": "api/Annotations/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Annotations.Commands.UpdateAnnotation.UpdateAnnotationCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AnnotationsController",
+    "Method": "Delete",
+    "RelativePath": "api/Annotations/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AnnotationsController",
+    "Method": "GetAnnotationsByContact",
+    "RelativePath": "api/Annotations/Contact/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.AnnotationDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AppointmentsController",
+    "Method": "Create",
+    "RelativePath": "api/Appointments",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Appointments.Commands.CreateAppointment.CreateAppointmentCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AppointmentsController",
+    "Method": "Update",
+    "RelativePath": "api/Appointments/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Appointments.Commands.UpdateAppointment.UpdateAppointmentCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AppointmentsController",
+    "Method": "Delete",
+    "RelativePath": "api/Appointments/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.AppointmentsController",
+    "Method": "GetAppointmentsByProcess",
+    "RelativePath": "api/Appointments/GetAppointmentsByProcess/{processId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "processId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.AppointmentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "Create",
+    "RelativePath": "api/Contacts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.CreateContact.CreateContactCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CroupierAPI.Contracts.Events.ContactCreated",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetDetails",
+    "RelativePath": "api/Contacts/{contactId}/{processId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contactId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "processId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ContactFullDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "Update",
+    "RelativePath": "api/Contacts/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.UpdateContact.UpdateContactCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "Delete",
+    "RelativePath": "api/Contacts/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "AddCourseToFavourite",
+    "RelativePath": "api/Contacts/AddCourseToFavourite",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.AddCourseToFavourite.AddCourseToFavouriteCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "AddEmailContact",
+    "RelativePath": "api/Contacts/AddEmailContact",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.AddEmailContact.AddNewContactEmailCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetAddressTypes",
+    "RelativePath": "api/Contacts/Address/Types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.AddressTypeDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "AddToBlacklist",
+    "RelativePath": "api/Contacts/AddToBlacklist",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.AddContactToBlacklist.AddContactToBlacklistCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "CheckContactEmail",
+    "RelativePath": "api/Contacts/Check/Email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ContactInfoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "CheckContactIdCard",
+    "RelativePath": "api/Contacts/Check/IdCard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdCard",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ContactInfoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "CheckContactPhone",
+    "RelativePath": "api/Contacts/Check/Phone",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PhonePrefix",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Phone",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ContactInfoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "ConsolidateToOtherContact",
+    "RelativePath": "api/Contacts/ConsolidateToOtherContact",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.ConsolidateContactsCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "ConsolidateToOtherContactById",
+    "RelativePath": "api/Contacts/ConsolidateToOtherContactById",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.ConsolidateContactsByIdCommand.ConsolidateContactsByIdCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactEmails",
+    "RelativePath": "api/Contacts/ContactEmails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ContactEmailDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactFaculties",
+    "RelativePath": "api/Contacts/ContactFaculties",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.FacultyDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "UpdateContactLead",
+    "RelativePath": "api/Contacts/ContactLead",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contactLeadId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.UpdateContactLead.UpdateContactLeadCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "UpdateContactLeadPrice",
+    "RelativePath": "api/Contacts/ContactLeadPrice",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contactLeadId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.UpdateContactLeadPrice.UpdateContactLeadPriceCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "UpdateContactLeads",
+    "RelativePath": "api/Contacts/ContactLeads",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.UpdateContactLeads.UpdateContactLeadsCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactPhones",
+    "RelativePath": "api/Contacts/ContactPhones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ContactPhoneDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactSpecialities",
+    "RelativePath": "api/Contacts/ContactSpecialities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.SpecialityDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetEmailTypes",
+    "RelativePath": "api/Contacts/Email/Types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.EmailTypeDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "AddFaculties",
+    "RelativePath": "api/Contacts/Faculties",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.AddContactFaculties.AddContactFacultiesCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "RemoveFaculty",
+    "RelativePath": "api/Contacts/Faculty",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.RemoveContactFaculty.RemoveContactFacultyCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactGenders",
+    "RelativePath": "api/Contacts/Gender",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ContactGenderDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactByEmailOrPhone",
+    "RelativePath": "api/Contacts/GetContactByEmailOrPhone",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Data.CorrelationId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "Data.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Data.Phone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Data.CountryCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CroupierAPI.Contracts.Events.ContactGetted",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactById",
+    "RelativePath": "api/Contacts/GetContactById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ContactFullDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactIsClient",
+    "RelativePath": "api/Contacts/GetContactIsClient",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OriginContactId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactUser",
+    "RelativePath": "api/Contacts/GetContactUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "phone",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ContactUserDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "Recover",
+    "RelativePath": "api/Contacts/Leads",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.CreateContactLead.CreateContactLeadCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "DeleteContactLead",
+    "RelativePath": "api/Contacts/Leads/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactLeadsByContactAndProcess",
+    "RelativePath": "api/Contacts/Leads/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ContactLeadDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactLeadsByContact",
+    "RelativePath": "api/Contacts/Leads/List/contactId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ContactLeadDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetPhoneTypes",
+    "RelativePath": "api/Contacts/Phone/Types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.PhoneTypeDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "RecoverContactActivations",
+    "RelativePath": "api/Contacts/RecoverContactActivations",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "CrmAPI.Application.Contacts.Commands.RecoverContactActivations.RecoverContactActivationsCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "AddSpecialities",
+    "RelativePath": "api/Contacts/Specialities",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.AddContactSpecialities.AddContactSpecialitiesCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "RemoveSpecialities",
+    "RelativePath": "api/Contacts/Specialities",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.RemoveContactSpecialities.RemoveContactSpecialitiesCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetTitleTypes",
+    "RelativePath": "api/Contacts/Title/Types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.TitleTypeDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "GetContactInfoForTlmk",
+    "RelativePath": "api/Contacts/Tlmk",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ApiKey",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ContactInfoTlmkDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "UpdateCountryCode",
+    "RelativePath": "api/Contacts/UpdateCountryCode",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.UpdateCountryCode.UpdateCountryCodeCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ContactsController",
+    "Method": "UpdateCurrency",
+    "RelativePath": "api/Contacts/UpdateCurrency",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Contacts.Commands.UpdateCurrency.UpdateCurrencyCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CountriesController",
+    "Method": "GetCountries",
+    "RelativePath": "api/Countries/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.CountryDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CouponsController",
+    "Method": "CopyToCouponFp",
+    "RelativePath": "api/Coupons/CopyToCouponFp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Coupons.Commands.CopyToCouponFpCommand.CopyToCouponFpCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CouponsOriginsController",
+    "Method": "GetCouponsOrigins",
+    "RelativePath": "api/CouponsOrigins/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.CouponsOriginsDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CourseCountriesController",
+    "Method": "GetCourseCountriesByCountryCodeAndLanguageCode",
+    "RelativePath": "api/CourseCountries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CountryCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.CourseCountryDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CoursesController",
+    "Method": "PopulateMissingInterestedCoursesByTopSellers",
+    "RelativePath": "api/Courses/populate-missing-interested-courses-by-top-sellers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CoursesController",
+    "Method": "PopulateMissingInterestedCoursesByTopSellersNoWait",
+    "RelativePath": "api/Courses/populate-missing-interested-courses-by-top-sellers-nowait",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CoursesController",
+    "Method": "GetTopSellingByFacultiesAndCountry",
+    "RelativePath": "api/Courses/TopSellingByFacultiesAndCountry",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CountryCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FacultiesId",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Quantity",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.TopSellingCourseDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.CurrenciesController",
+    "Method": "GetCurrencyByCode",
+    "RelativePath": "api/Currencies/CurrencyByCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CurrencyCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.CurrencyDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "GetEmailsByContactWithPagination",
+    "RelativePath": "api/Emails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.EmailPaginationDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "Send",
+    "RelativePath": "api/Emails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Attachments",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactLeadId",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "To",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cc",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Bcc",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Subject",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Body",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Dossiers",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Colour",
+        "Type": "IntranetMigrator.Domain.Enums.Colour",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmailDefault",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "GetDetails",
+    "RelativePath": "api/Emails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.EmailFullDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "GetEmailsByContactAndProcess",
+    "RelativePath": "api/Emails/byContactAndProcessId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.EmailFullDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "GetMailBoxFree",
+    "RelativePath": "api/Emails/MailBoxFree",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "CrmAPI.Application.Emails.Queries.GetMailBoxFree.GetMailBoxFreeQuery",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "SendEmailCloseProcesses",
+    "RelativePath": "api/Emails/SendEmailCloseProcesses",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Emails.Commands.SendEmailCloseProcesses.SendEmailCloseProcessesCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "SendEmailRecords2",
+    "RelativePath": "api/Emails/SendEmailCommercialAssignment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Emails.Commands.SendEmailCommercialAssignment.SendEmailCommercialAssignmentCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmailsController",
+    "Method": "SendEmailScholarshipActivation",
+    "RelativePath": "api/Emails/SendEmailRecords2ScholarshipActivation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Emails.Commands.SendEmailRecords2ScholarshipActivation.SendEmailRecords2ScholarshipActivationCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmployeeController",
+    "Method": "GetLoggedEmployee",
+    "RelativePath": "api/Employee",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.EmployeeDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmployeeController",
+    "Method": "GetAllManagerByEmployee",
+    "RelativePath": "api/Employee/GetAllManagerByEmployee",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "CrmAPI.Application.Employees.Queries.GetManagerByEmployee.GetManagerByEmployeeQuery",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ManagerDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmployeeController",
+    "Method": "GetAllManagerSubordinates",
+    "RelativePath": "api/Employee/GetAllManagerSubordinates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "CrmAPI.Application.Employees.Queries.GetAllManagerSubordinates.GetAllManagerSubordinatesQuery",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Employees.Queries.GetAllManagerSubordinates.EmployeeSubordinateViewModel, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.EmployeeController",
+    "Method": "GetSignature",
+    "RelativePath": "api/Employee/Signatures/{corporateEmail}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "corporateEmail",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.FacultiesController",
+    "Method": "GetFaculties",
+    "RelativePath": "api/Faculties/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.FacultyDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.FlowsController",
+    "Method": "DuplicateFlow",
+    "RelativePath": "api/Flows/DuplicateFlow",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Flows.Commands.DuplicateFlow.DuplicateFlowCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MediatR.Unit",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.FlowsController",
+    "Method": "GetFlows",
+    "RelativePath": "api/Flows/GetFlows",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.FlowDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController",
+    "Method": "GetInvoicePaymentOptionsByContactWithPagination",
+    "RelativePath": "api/InvoicePaymentOptions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.InvoicePaymentOptionDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController",
+    "Method": "Create",
+    "RelativePath": "api/InvoicePaymentOptions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.InvoicePaymentOptions.Commands.CreateInvoicePaymentOption.CreateInvoicePaymentOptionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController",
+    "Method": "Update",
+    "RelativePath": "api/InvoicePaymentOptions/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.InvoicePaymentOptions.Commands.UpdateInvoicePaymentOption.UpdateInvoicePaymentOptionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController",
+    "Method": "Delete",
+    "RelativePath": "api/InvoicePaymentOptions/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.LanguagesController",
+    "Method": "GetLanguages",
+    "RelativePath": "api/Languages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.LanguageDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.MessagesController",
+    "Method": "Send",
+    "RelativePath": "api/Messages",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactLeadList",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Colour",
+        "Type": "IntranetMigrator.Domain.Enums.Colour",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.OrdersImportedController",
+    "Method": "GetOrdersImportedByContact",
+    "RelativePath": "api/OrdersImported",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactEmails",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.OrdersImportedDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.OrdersImportedController",
+    "Method": "GetDetails",
+    "RelativePath": "api/OrdersImported/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.OrdersImportedDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.OrdersImportedController",
+    "Method": "DeleteOrderImportedFromTlmkByEmail",
+    "RelativePath": "api/OrdersImported/DeleteOrderImportedFromTlmkByEmail",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.OrdersImported.Commands.DeleteOrderImportedFromTlmkByEmail.DeleteOrderImportedFromTlmkByEmailCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.OrdersImportedController",
+    "Method": "GetOrdersImportedByContact",
+    "RelativePath": "api/OrdersImported/paginated",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContactId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.OrdersImportedDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.OrdersImportedController",
+    "Method": "SetProcessByOrderNumber",
+    "RelativePath": "api/OrdersImported/SetProcessStatusByOrderNumber",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.OrdersImported.Commands.SetProcessStatusByOrderNumber.SetProcessStatusByOrderNumberCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.OrdersImportedController",
+    "Method": "SaveOrderFromTlmk",
+    "RelativePath": "api/OrdersImported/Tlmk",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.OrdersImported.Commands.CreateOrdersImportedFromTlmk.CreateOrdersImportedFromTlmkCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "Create",
+    "RelativePath": "api/Processes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Processes.Commands.CreateProcess.CreateProcessCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "Update",
+    "RelativePath": "api/Processes/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Processes.Commands.UpdateProcess.UpdateProcessCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "Delete",
+    "RelativePath": "api/Processes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "CanCreateRecoverProcess",
+    "RelativePath": "api/Processes/CanCreateRecoverProcess",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "ChangeProcessColor",
+    "RelativePath": "api/Processes/ChangeProcessColor",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Color",
+        "Type": "IntranetMigrator.Domain.Enums.Colour",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "CloseProcessesCommand",
+    "RelativePath": "api/Processes/CloseProcesses",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsAutomatic",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "CloseProcessSaleByOrderNumberOrEmail",
+    "RelativePath": "api/Processes/CloseProcessSaleByOrderNumberOrEmail",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Processes.Commands.CloseProcessByOrderEmailOrPhone.CloseProcessSaleByOrderNumberOrEmailCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetAllDiscardReasons",
+    "RelativePath": "api/Processes/DiscardReasons/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.DiscardReasonDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "ExternalSuccessfulSaleProcessCommand",
+    "RelativePath": "api/Processes/ExternalSuccessfulSaleProcess",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Processes.Commands.ExternalSuccessfulSaleProcess.ExternalSuccessfulSaleProcessCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetOpenProcessesByContactId",
+    "RelativePath": "api/Processes/GetOpenProcessesByContactId/{contactId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contactId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ProcessDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetSuggestedNextInteractionDate",
+    "RelativePath": "api/Processes/GetSuggestedNextInteractionDate/{processId}/{dateLocalEmployee}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "processId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dateLocalEmployee",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetProcessesInProgressByUser",
+    "RelativePath": "api/Processes/InProgress",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "phone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CountryCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FacultiesList",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SpecialitiesList",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserData",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.ProcessInProgressDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetProcessesInProgressByUser",
+    "RelativePath": "api/Processes/InProgress2",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "phone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CountryCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FacultiesList",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SpecialitiesList",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserData",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.ProcessDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetProcessesNotSalesByUser",
+    "RelativePath": "api/Processes/NotSales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.ProcessDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetProcessesPendingByUser",
+    "RelativePath": "api/Processes/Pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserData",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.ProcessDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "ReassignProcess",
+    "RelativePath": "api/Processes/Reassign",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Processes.Commands.ReassignProcess.ReassignProcessCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "ReassignAllProcesses",
+    "RelativePath": "api/Processes/ReassignAllUserProcesses",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FromUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ToUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "OnlyToDo",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "ReplaceProcessForPriorityCommercial",
+    "RelativePath": "api/Processes/ReplaceProcessForPriorityCommercial",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "ReturnBusinnesContactsDelivery",
+    "RelativePath": "api/Processes/ReturnBusinnesContactsDelivery",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "corporateEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ApiKey",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetProcessSaleAttempts",
+    "RelativePath": "api/Processes/SaleAttemtps/{processId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "processId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ProcessSaleAttemtpsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetProcessesSalesByUser",
+    "RelativePath": "api/Processes/Sales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Order",
+        "Type": "System.String[]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.ProcessDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetProcessSaleStatus",
+    "RelativePath": "api/Processes/SaleStatus/{processId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "processId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.ProcessSaleStatusDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "SaleProcessByEmailOrPhoneOrDniCommand",
+    "RelativePath": "api/Processes/SetWebSaleProcessByEmailOrPhoneOrDniCommand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Processes.Commands.SetWebSaleProcess.SetWebSaleProcessByEmailOrPhoneOrDniCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MediatR.Unit",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessesController",
+    "Method": "GetTypesActiveProcesses",
+    "RelativePath": "api/Processes/Types/ActiveProcesses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ProcessTypeDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProcessSettingsController",
+    "Method": "GetProcessSettingsTypes",
+    "RelativePath": "api/ProcessSettings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IsCouponsOnly",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.ProcessTypeDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "Create",
+    "RelativePath": "api/Proposals",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Proposals.Commands.CreateTemplateProposal.CreateTemplateProposalCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "Update",
+    "RelativePath": "api/Proposals/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Proposals.Commands.UpdateTemplateProposal.UpdateTemplateProposalCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "Delete",
+    "RelativePath": "api/Proposals/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "GetAllTemplates",
+    "RelativePath": "api/Proposals/AllTemplates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.TemplateDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "CreateTemplate",
+    "RelativePath": "api/Proposals/CreateTemplate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Proposals.Commands.CreateTemplate.cs.CreateTemplateCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "DeleteTemplate",
+    "RelativePath": "api/Proposals/DeleteTemplate/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "DeleteTemplateInTemplateProposal",
+    "RelativePath": "api/Proposals/DeleteTemplateInTemplateProposal",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Proposals.Commands.DeleteTemplateInTemplateProposal.DeleteTemplateInTemplateProposalCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "SetTemplateInTemplateProposal",
+    "RelativePath": "api/Proposals/SetTemplateInTemplateProposal",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Proposals.Commands.SetTemplateInTemplateProposal.SetTemplateInTemplateProposalCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "GetTemplatesFromTagId",
+    "RelativePath": "api/Proposals/TemplateDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TemplateId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.TemplateDetailsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "GetTemplateProposal",
+    "RelativePath": "api/Proposals/TemplateProposal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TempateProposalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.TemplateProposalDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "GetTemplateProposals",
+    "RelativePath": "api/Proposals/TemplateProposals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "QueryParams",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Models.PaginatedList\u00601[[CrmAPI.Application.Common.Dtos.TemplateProposalDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "GetTemplatesFromTagId",
+    "RelativePath": "api/Proposals/TemplatesFromTagId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TagId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.TemplateDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "GetTemplateProposal",
+    "RelativePath": "api/Proposals/TemplatesFromTemplateProposal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TempateProposalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.TemplateProposalTemplateDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "GetTemplateProposalsByTemplate",
+    "RelativePath": "api/Proposals/TemplatesProposalByTemplate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TemplateId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.TemplateProposalDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.ProposalsController",
+    "Method": "UpdateTemplate",
+    "RelativePath": "api/Proposals/UpdateTemplate/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Proposals.Commands.UpdateTemplate.UpdateTemplateCommand",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.SpecialitiesController",
+    "Method": "GetSpecialitiesByFaculties",
+    "RelativePath": "api/Specialities/Faculties/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FacultiesId",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseCountryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.SpecialityDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.SpecialitiesController",
+    "Method": "GetSpecialitiesByFaculty",
+    "RelativePath": "api/Specialities/Faculty/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FacultyId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseCountryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.SpecialityDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplates",
+    "RelativePath": "api/Templates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TemplateType",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CrmAPI.Application.Common.Dtos.TemplateDto, CrmAPI.Application, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplateDetails",
+    "RelativePath": "api/Templates/{templateId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "templateId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.TemplateDetailsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetArgumentByProcessId",
+    "RelativePath": "api/Templates/GetArgumentByProcessId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ArgumentId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.TemplateDetailsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplateId",
+    "RelativePath": "api/Templates/getId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TemplateType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Day",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attempt",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Colour",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseKnown",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplate",
+    "RelativePath": "api/Templates/getTemplate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TemplateType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Day",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attempt",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Colour",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseKnown",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.TemplateDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplateAuditory",
+    "RelativePath": "api/Templates/GetTemplateAuditory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplateByLabel",
+    "RelativePath": "api/Templates/getTemplateByLabel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TemplateType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Label",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.TemplateDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplateByNameCode",
+    "RelativePath": "api/Templates/GetTemplateByNameCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "NameCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Type",
+        "Type": "IntranetMigrator.Domain.Enums.TemplateType",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.TemplateDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "GetTemplateBundleProposal",
+    "RelativePath": "api/Templates/Proposal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProcessId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Response",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Templates.Queries.GetTemplateBundleProposal.TemplateBundleProposalViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "UpdateContentInAllTemplates",
+    "RelativePath": "api/Templates/UpdateContentInAllTemplates",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ActualContent",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NewContent",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Templates.Commands.UpdateContentInAllTemplates.AffectedTemplatesViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.TemplatesController",
+    "Method": "UploadTemplateAuditory",
+    "RelativePath": "api/Templates/UploadTemplateAuditory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Templates.Commands.UploadTemplateAuditory.UploadTemplateAuditoryCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.UsersController",
+    "Method": "GetCurrentUserSellerId",
+    "RelativePath": "api/Users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.UtcTimeZoneController",
+    "Method": "UtcTimeZone",
+    "RelativePath": "api/UtcTimeZone/utc",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DestinationCountryIso",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DatetimeFrom",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.WebEnrollmentController",
+    "Method": "Create",
+    "RelativePath": "api/WebEnrollment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.WebEnrollments.Commands.CreateWebEnrollment.CreateWebEnrollmentCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CrmAPI.Application.Common.Dtos.WebEnrollmentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CrmAPI.Presentation.Controllers.WhatsappController",
+    "Method": "Create",
+    "RelativePath": "api/Whatsapp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "CrmAPI.Application.Whatsapps.Commands.SendWhatsappCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

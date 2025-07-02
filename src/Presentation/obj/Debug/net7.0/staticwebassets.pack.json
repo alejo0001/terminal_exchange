@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Presentation\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Presentation\\wwwroot\\swagger\\specification.json",
+      "PackagePath": "staticwebassets\\swagger\\specification.json"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CrmAPI.Presentation.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.CrmAPI.Presentation.props",
+      "PackagePath": "build\\CrmAPI.Presentation.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.CrmAPI.Presentation.props",
+      "PackagePath": "buildMultiTargeting\\CrmAPI.Presentation.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.CrmAPI.Presentation.props",
+      "PackagePath": "buildTransitive\\CrmAPI.Presentation.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

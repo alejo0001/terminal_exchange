@@ -1,0 +1,2550 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrmAPI.Presentation</name>
+    </assembly>
+    <members>
+        <member name="M:CrmAPI.Presentation.Consumers.CreateMostProfitableInterestedCoursesConsumer.Consume(MassTransit.ConsumeContext{CrmAPI.Contracts.Commands.ICreateMostProfitableInterestedCourses})">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Presentation.Consumers.PopulateMissingInterestedCoursesConsumer.Consume(MassTransit.ConsumeContext{CrmAPI.Contracts.Commands.PopulateMissingInterestedCourses})">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.GetActionInfo(CrmAPI.Application.Actions.Queries.GetActionCallInfo.GetActionCallInfoQuery)">
+            <summary>
+            Retrieves information about a specific process, including the day, call attempts, and the maximum number of attempts.
+            </summary>
+            <param name="query">
+            Parameters required to obtain action information:
+            - <see cref="P:CrmAPI.Application.Actions.Queries.GetActionCallInfo.GetActionCallInfoQuery.ProcessId"/>: Unique identifier of the process.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:CrmAPI.Application.Common.Dtos.ActionInfoDto"/>: Object containing process details such as the day, attempts, and maximum attempts.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.GetActionsByProcess(CrmAPI.Application.Actions.Queries.GetActions.GetActionsQuery)">
+            <summary>
+            Retrieves a list of actions associated with a specific process.
+            </summary>
+            <param name="query">
+            Parameters required to get actions by process:
+            - <see cref="P:CrmAPI.Application.Actions.Queries.GetActions.GetActionsQuery.ProcessId"/>: Unique identifier of the process.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:System.Collections.Generic.List`1"/>: List of actions for the specified process.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.Create(CrmAPI.Application.Actions.Commands.CreateAction.CreateActionCommand)">
+            <summary>
+            Creates a new action.
+            </summary>
+            <param name="command">
+            Object containing the necessary data to create an action:
+            - <see cref="T:CrmAPI.Application.Actions.Commands.CreateAction.CreateActionCommand"/>: DTO with the details of the action to be created.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:System.Int32"/>: Identifier of the created action.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.Update(System.Int32,CrmAPI.Application.Actions.Commands.UpdateAction.UpdateActionCommand)">
+            <summary>
+            Updates an existing action.
+            </summary>
+            <param name="id">
+            Unique identifier of the action to update.
+            </param>
+            <param name="command">
+            Object containing the updated data of the action:
+            - <see cref="!:UpdateActionCommand.Id"/>: Must match the `id` parameter.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="!:NoContent"/> if the operation is successfully completed.
+            - <see cref="!:BadRequest"/> if the `id` does not match the `Id` field in the command.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.Delete(System.Int32)">
+            <summary>
+            Deletes an action.
+            </summary>
+            <param name="id">
+            Unique identifier of the action to delete.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="!:NoContent"/> if the operation is successfully completed.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.GetHasActiveCall(CrmAPI.Application.Actions.Queries.GetActionCallActive.GetActionCallActiveQuery)">
+            <summary>
+            Checks if there is an active call for a specific process.
+            </summary>
+            <param name="getActionCallActiveQuery">
+            Parameters required to check active calls:
+            - <see cref="P:CrmAPI.Application.Actions.Queries.GetActionCallActive.GetActionCallActiveQuery.ProcessId"/>: Unique identifier of the process.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:System.Boolean"/>: `true` if there is an active call, otherwise `false`.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.GetActiveCall">
+            <summary>
+            Retrieves the details of an active call for the current user.
+            </summary>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:CrmAPI.Application.Common.Dtos.ActiveCallDetailsDto"/>: Object containing the details of the active call.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ActionsController.CheckHasSentEmails(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Check, whether <see cref="T:IntranetMigrator.Domain.Entities.Action" /> has it's <see cref="P:IntranetMigrator.Domain.Entities.Action.Type" />
+                one of <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailPending" />, <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailSucceeded" /> or
+                <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailFailed" />.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AnnotationsController.GetAnnotationsByContact(CrmAPI.Application.Annotations.Queries.GetAnnotationsByContact.GetAnnotationsByContactQuery)">
+            <summary>
+            Retrieves a list of annotations associated with a specific contact.
+            </summary>
+            <param name="query">
+            Parameters needed to retrieve the contact's annotations:
+            - <see cref="P:CrmAPI.Application.Annotations.Queries.GetAnnotationsByContact.GetAnnotationsByContactQuery.ContactId"/>: Unique identifier of the contact.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:System.Collections.Generic.List`1"/>: List of annotations associated with the specified contact.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AnnotationsController.Create(CrmAPI.Application.Annotations.Commands.CreateAnnotation.CreateAnnotationCommand)">
+            <summary>
+            Creates a new annotation.
+            </summary>
+            <param name="command">
+            Object containing the necessary data to create an annotation:
+            - <see cref="T:CrmAPI.Application.Annotations.Commands.CreateAnnotation.CreateAnnotationCommand"/>: DTO with the details of the annotation to be created.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:System.Int32"/>: Identifier of the created annotation.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AnnotationsController.Update(System.Int32,CrmAPI.Application.Annotations.Commands.UpdateAnnotation.UpdateAnnotationCommand)">
+            <summary>
+            Updates an existing annotation.
+            </summary>
+            <param name="id">
+            Unique identifier of the annotation to be updated.
+            </param>
+            <param name="command">
+            Object containing the updated data of the annotation:
+            - <see cref="!:UpdateAnnotationCommand.Id"/>: Must match the `id` parameter.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="!:NoContent"/> if the operation completes successfully.
+            - <see cref="!:BadRequest"/> if the `id` does not match the `Id` field in the command.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AnnotationsController.Delete(System.Int32)">
+            <summary>
+            Deletes an annotation.
+            </summary>
+            <param name="id">
+            Unique identifier of the annotation to be deleted.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="!:NoContent"/> if the operation completes successfully.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AppointmentsController.GetAppointmentsByProcess(System.Int32)">
+            <summary>
+            Retrieves appointments associated with a specific process.
+            </summary>
+            <param name="processId">
+            Unique identifier of the process for which appointments are to be retrieved.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:CrmAPI.Application.Common.Dtos.AppointmentDto"/>: Object containing the appointment details (title, date, type).
+            </returns>  
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AppointmentsController.Create(CrmAPI.Application.Appointments.Commands.CreateAppointment.CreateAppointmentCommand)">
+            <summary>
+            Creates a new appointment associated with a specific contact and process.
+            </summary>
+            <param name="command">
+            Command containing the necessary data to create the appointment:
+            - <see cref="T:CrmAPI.Application.Appointments.Commands.CreateAppointment.CreateAppointmentCommand"/>: DTO with the appointment details.
+            </param>
+            <returns>
+            An HTTP response with:
+            - Unique identifier of the created appointment.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AppointmentsController.Update(System.Int32,CrmAPI.Application.Appointments.Commands.UpdateAppointment.UpdateAppointmentCommand)">
+            <summary>
+            Updates the details of an existing appointment.
+            </summary>
+            <param name="id">
+            Unique identifier of the appointment to be updated.
+            </param>
+            <param name="command">
+            Command with the new appointment data:
+            - <see cref="T:CrmAPI.Application.Appointments.Commands.UpdateAppointment.UpdateAppointmentCommand"/>: DTO with the updated information.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="!:NoContent"/> if the operation is successful.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.AppointmentsController.Delete(System.Int32)">
+            <summary>
+            Deletes an existing appointment.
+            </summary>
+            <param name="id">
+            Unique identifier of the appointment to be deleted.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="!:NoContent"/> if the operation is successful.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetDetails(System.Int32,System.Int32)">
+            <summary>
+            Obtains the details of a specific contact.
+            </summary>
+            <param name="id">Identifier of the contact to query.</param>
+            <returns>The details of the requested contact.</returns>
+            <remarks>
+            This method returns detailed information about a contact.
+            
+            Example request:
+            
+                GET /api/Contacts/GetDetails/123
+            </remarks>
+            <response code="200">If the contact details were successfully retrieved.</response>
+            <response code="404">If the contact does not exist.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.Create(CrmAPI.Application.Contacts.Commands.CreateContact.CreateContactCommand)">
+            <summary>
+            Creates a new contact in the system.
+            </summary>
+            <param name="command">Command with the information of the new contact.</param>
+            <returns>The identifier of the created contact.</returns>
+            <remarks>
+            This method allows registering a new contact.
+            
+            Example request:
+            
+                POST /api/Contacts/Create
+                {
+                    "Name": "New Contact",
+                    "Email": "email@example.com"
+                }
+            </remarks>
+            <response code="201">If the contact was successfully created.</response>
+            <response code="400">If the provided data is invalid.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.Update(System.Int32,CrmAPI.Application.Contacts.Commands.UpdateContact.UpdateContactCommand)">
+            <summary>
+            Updates the information of an existing contact.
+            </summary>
+            <param name="command">Command with the updated data of the contact.</param>
+            <returns>The number of records affected by the operation.</returns>
+            <remarks>
+            This method allows updating the data of a contact in the system.
+            
+            Example request:
+            
+                PUT /api/Contacts/Update
+                {
+                    "ContactId": 123,
+                    "Name": "New Name",
+                    "Email": "newemail@example.com"
+                }
+            </remarks>
+            <response code="200">If the contact information was successfully updated.</response>
+            <response code="404">If the contact does not exist.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.AddToBlacklist(CrmAPI.Application.Contacts.Commands.AddContactToBlacklist.AddContactToBlacklistCommand)">
+            <summary>
+            Adds a contact to the blacklist.
+            </summary>
+            <param name="command">Command that contains the information necessary to perform the operation.</param>
+            <returns>
+            An integer representing the number of records affected by the operation.
+            </returns>
+            <remarks>
+            This method updates the status of a contact, closes the related process, removes associated events,
+            and logs an action of type "Blacklist". It also synchronizes the contact's status in the database.
+            
+            Example request:
+            
+                PUT /api/Contacts/AddToBlacklist
+                {
+                    "ContactId": 123,
+                    "NewContactStatusId": 2,
+                    "NewStatusReason": "Reason for change",
+                    "NewStatusObservations": "Additional observations",
+                    "ProcessId": 456
+                }
+            
+            </remarks>
+            <response code="200">If the contact was successfully added to the blacklist.</response>
+            <response code="403">If the current user does not have permission to perform this operation.</response>
+            <response code="404">If the specified contact or process cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.AddCourseToFavourite(CrmAPI.Application.Contacts.Commands.AddCourseToFavourite.AddCourseToFavouriteCommand)">
+            <summary>
+            Adds a course to the favorites list or removes it from it.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to add or remove a course from favorites:
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.AddCourseToFavourite.AddCourseToFavouriteCommand.ContactLeadId"/>: Identifier of the associated contact.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.AddCourseToFavourite.AddCourseToFavouriteCommand.ProcessId"/>: Identifier of the associated process.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.AddCourseToFavourite.AddCourseToFavouriteCommand.CourseFavourite"/>: Indicates whether the course should be added to favorites (true) or removed (false).
+            </param>
+            <returns>
+            An integer representing the number of changes made in the database.
+            </returns>
+            <remarks>
+            This method adds a course to the favorites list if <paramref name="command.CourseFavourite.CourseFavourite"/> is true,
+            or removes it if false. The course's status is updated in the database.
+            
+            Example request:
+            
+                PUT /api/Courses/AddCourseToFavourite
+                {
+                    "ContactLeadId": 123,
+                    "ProcessId": 456,
+                    "CourseFavourite": true
+                }
+            
+            </remarks>
+            <response code="200">If the course was successfully added or removed from the favorites list.</response>
+            <response code="400">If the provided data is invalid.</response>
+            <response code="404">If the specified contact or process cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.Delete(System.Int32)">
+            <summary>
+            Deletes a contact from the database.
+            </summary>
+            <param name="id">
+            Identifier of the contact to be deleted.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method marks the contact as deleted and closes all associated processes.
+            It also deletes all related calendar events and marks the contact's notes,
+            phone numbers, emails, and titles as deleted.
+            
+            Example request:
+            
+                DELETE /api/Contacts/123
+            
+            </remarks>
+            <response code="204">If the contact was successfully deleted.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactGenders">
+            <summary>
+            Deletes a contact from the database.
+            </summary>
+            <param name="id">
+            Identifier of the contact to be deleted.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method marks the contact as deleted and closes all associated processes.
+            It also deletes all related calendar events and marks the contact's notes,
+            phone numbers, emails, and titles as deleted.
+            
+            Example request:
+            
+                DELETE /api/Contacts/123
+            
+            </remarks>
+            <response code="204">If the contact was successfully deleted.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetAddressTypes">
+            <summary>
+            Obtains a list of available address types.
+            </summary>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.AddressTypeDto"/> representing the address types.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all available address types.
+            
+            Example request:
+            
+                GET /api/Address/Types
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the address types are returned.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetEmailTypes">
+            <summary>
+            Obtains a list of available email types.
+            </summary>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.EmailTypeDto"/> representing the email types.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all available email types.
+            
+            Example request:
+            
+                GET /api/Email/Types
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the email types are returned.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetPhoneTypes">
+            <summary>
+            Obtains a list of available phone types.
+            </summary>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.PhoneTypeDto"/> representing the phone types.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all available phone types.
+            
+            Example request:
+            
+                GET /api/Phone/Types
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the phone types are returned.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.CheckContactIdCard(CrmAPI.Application.Contacts.Queries.CheckContactIdCard.CheckContactIdCardQuery)">
+            <summary>
+            Verifies the contact information associated with an identification number.
+            </summary>
+            <param name="query">
+            Object that contains the identification number of the contact to verify:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.CheckContactIdCard.CheckContactIdCardQuery.IdCard"/>: Identification number of the contact.
+            </param>
+            <returns>
+            An object of type <see cref="T:CrmAPI.Application.Common.Dtos.ContactInfoDto"/> containing the contact information.
+            </returns>
+            <remarks>
+            This method searches the database for a contact associated with the provided identification number.
+            If the contact does not exist, it returns a <see cref="T:CrmAPI.Application.Common.Dtos.ContactInfoDto"/> object with default values.
+            If the contact exists, it checks if there are open processes and if a new process can be created.
+            
+            Example request:
+            
+                GET /api/Check/IdCard?IdCard=12345678
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the contact information is returned.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.CheckContactEmail(CrmAPI.Application.Contacts.Queries.CheckContactEmail.CheckContactEmailQuery)">
+            <summary>
+            Verifies the contact information associated with an email address.
+            </summary>
+            <param name="query">
+            Object that contains the email address of the contact to verify:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.CheckContactEmail.CheckContactEmailQuery.Email"/>: Email address of the contact.
+            </param>
+            <returns>
+            An object of type <see cref="T:CrmAPI.Application.Common.Dtos.ContactInfoDto"/> containing the contact information.
+            </returns>
+            <remarks>
+            This method searches the database for a contact associated with the provided email address.
+            If the contact does not exist, it returns a <see cref="T:CrmAPI.Application.Common.Dtos.ContactInfoDto"/> object with default values.
+            If the contact exists, it checks if there are open processes and if a new process can be created.
+            
+            Example request:
+            
+                GET /api/Check/Email?Email=example@example.com
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the contact information is returned.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.ContactsController.CheckContactPhone(CrmAPI.Application.Contacts.Queries.CheckContactPhone.CheckContactPhoneQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.Recover(CrmAPI.Application.Contacts.Commands.CreateContactLead.CreateContactLeadCommand)">
+            <summary>
+            Recovers a new lead contact based on the provided information.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to create a new lead contact:
+            - <see cref="T:CrmAPI.Application.Contacts.Commands.CreateContactLead.CreateContactLeadCommand"/>: Information of the lead contact to create.
+            </param>
+            <returns>
+            An integer representing the identifier of the newly created lead contact.
+            </returns>
+            <remarks>
+            This method creates a new lead contact in the database. 
+            If the course country is not found, an exception is thrown.
+            
+            Example request:
+            
+                POST /api/Leads
+                {
+                    "PhonePrefix": "1",
+                    "Phone": "5551234567",
+                    "Email": "example@example.com",
+                    "CourseCountryId": 1,
+                    "University": "TechUniversity",
+                    "CourseId": 123,
+                    "ContactId": 456,
+                    "IsFavourite": true,
+                    "Types": [ "Recommended", "OtherType" ],
+                    "StartDateCourse": "2024-01-01",
+                    "FinishDateCourse": "2024-12-31"
+                }
+            
+            </remarks>
+            <response code="201">If the lead contact was created successfully.</response>
+            <response code="400">If the provided data is invalid.</response>
+            <response code="404">If the specified course country is not found.</response>
+            <response code="500">If an internal server error occurs.</response>   
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.ContactsController.GetContactLeadsByContactAndProcess(CrmAPI.Application.Contacts.Queries.GetContactLeadsByContactAndProcess.GetContactLeadsByContactAndProcessQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactLeadsByContact(CrmAPI.Application.Contacts.Queries.GetContactLeadsByContact.GetContactLeadsByContactQuery)">
+            <summary>
+            Obtains a list of lead contacts associated with a specific contact.
+            </summary>
+            <param name="query">
+            Object that contains the parameter necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetContactLeadsByContact.GetContactLeadsByContactQuery.ContactId"/>: Identifier of the contact.
+            </param>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.ContactLeadDto"/> representing the lead contacts.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all lead contacts associated with the specified contact.
+            
+            Example request:
+            
+                GET /api/Leads/List/contactId?ContactId=123
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the lead contacts are returned.</response>
+            <response code="404">If no lead contacts are found for the specified contact.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.DeleteContactLead(System.Int32)">
+            <summary>
+            Deletes a specific lead contact.
+            </summary>
+            <param name="id">
+            Identifier of the lead contact to be deleted.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method marks the lead contact as deleted in the database.
+            If the lead contact is not found, an exception is thrown.
+            
+            Example request:
+            
+                DELETE /api/Leads/123
+            
+            </remarks>
+            <response code="204">If the lead contact was successfully deleted.</response>
+            <response code="404">If the specified lead contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactFaculties(CrmAPI.Application.Contacts.Queries.GetContactFaculties.GetContactFacultiesQuery)">
+            <summary>
+            Obtains a list of faculties associated with a specific contact.
+            </summary>
+            <param name="query">
+            Object that contains the parameter necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetContactFaculties.GetContactFacultiesQuery.ContactId"/>: Identifier of the contact.
+            </param>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.FacultyDto"/> representing the faculties associated with the contact.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all faculties associated with the specified contact.
+            
+            Example request:
+            
+                GET /api/ContactFaculties?ContactId=123
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the faculties are returned.</response>
+            <response code="404">If no faculties are found for the specified contact.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.AddFaculties(CrmAPI.Application.Contacts.Commands.AddContactFaculties.AddContactFacultiesCommand)">
+            <summary>
+            Adds faculties to a specific contact.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to add faculties to the contact:
+            - <see cref="!:AddContactFacultiesCommand.ContactId"/>: Identifier of the contact to which the faculties will be added.
+            - <see cref="!:AddContactFacultiesCommand.FacultiesId"/>: List of identifiers of the faculties to add.
+            </param>
+            <returns>
+            An integer representing the identifier of the contact to which the faculties have been added.
+            </returns>
+            <remarks>
+            This method adds the specified faculties to the contact in the database.
+            If the contact is not found, an exception is thrown.
+            
+            Example request:
+            
+                POST /api/Faculties
+                {
+                    "ContactId": 123,
+                    "FacultiesId": [1, 2, 3]
+                }
+            
+            </remarks>
+            <response code="200">If the faculties were successfully added to the contact.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.RemoveFaculty(CrmAPI.Application.Contacts.Commands.RemoveContactFaculty.RemoveContactFacultyCommand)">
+            <summary>
+            Deletes a faculty associated with a specific contact.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to delete the faculty:
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.RemoveContactFaculty.RemoveContactFacultyCommand.FacultyId"/>: Identifier of the faculty to be deleted.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.RemoveContactFaculty.RemoveContactFacultyCommand.ContactId"/>: Identifier of the contact from which the faculty will be removed.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method removes the specified faculty from the contact in the database.
+            If the contact is not found, an exception is thrown.
+            
+            Example request:
+            
+                DELETE /api/Faculty
+                {
+                    "FacultyId": 1,
+                    "ContactId": 123
+                }
+            
+            </remarks>
+            <response code="204">If the faculty was successfully removed from the contact.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactSpecialities(CrmAPI.Application.Contacts.Queries.GetContactSpecialities.GetContactSpecialitiesQuery)">
+            <summary>
+            Obtains a list of specialties associated with a specific contact.
+            </summary>
+            <param name="query">
+            Object that contains the parameter necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetContactSpecialities.GetContactSpecialitiesQuery.ContactId"/>: Identifier of the contact.
+            </param>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.SpecialityDto"/> representing the specialties associated with the contact.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all specialties associated with the specified contact.
+            
+            Example request:
+            
+                GET /api/ContactSpecialities?ContactId=123
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the specialties are returned.</response>
+            <response code="404">If no specialties are found for the specified contact.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.AddSpecialities(CrmAPI.Application.Contacts.Commands.AddContactSpecialities.AddContactSpecialitiesCommand)">
+            <summary>
+            Adds specialties to a specific contact.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to add specialties to the contact:
+            - <see cref="!:AddContactSpecialitiesCommand.ContactId"/>: Identifier of the contact to which the specialties will be added.
+            - <see cref="!:AddContactSpecialitiesCommand.SpecialitiesId"/>: List of identifiers of the specialties to add.
+            </param>
+            <returns>
+            An integer representing the identifier of the contact to which the specialties have been added.
+            </returns>
+            <remarks>
+            This method adds the specified specialties to the contact in the database.
+            If the contact is not found, an exception is thrown.
+            
+            Example request:
+            
+                POST /api/Specialities
+                {
+                    "ContactId": 123,
+                    "SpecialitiesId": [1, 2, 3]
+                }
+            
+            </remarks>
+            <response code="200">If the specialties were successfully added to the contact.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetTitleTypes">
+            <summary>
+            Deletes specialties associated with a specific contact.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to delete the specialties:
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.RemoveContactSpecialities.RemoveContactSpecialitiesCommand.ContactId"/>: Identifier of the contact from which the specialties will be removed.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.RemoveContactSpecialities.RemoveContactSpecialitiesCommand.SpecialitiesId"/>: List of identifiers of the specialties to delete.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method removes the specified specialties from the contact in the database.
+            If the contact is not found, an exception is thrown.
+            
+            Example request:
+            
+                DELETE /api/Specialities
+                {
+                    "ContactId": 123,
+                    "SpecialitiesId": [1, 2, 3]
+                }
+            
+            </remarks>
+            <response code="204">If the specialties were successfully removed from the contact.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.ContactsController.GetContactInfoForTlmk(CrmAPI.Application.Contacts.Queries.GetContactInfoForTlmk.GetContactInfoForTlmkQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.AddEmailContact(CrmAPI.Application.Contacts.Commands.AddEmailContact.AddNewContactEmailCommand)">
+            <summary>
+            Adds a new email address to a specific contact.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to add the email address:
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.AddEmailContact.AddNewContactEmailCommand.ContactId"/>: Identifier of the contact to which the email address will be added.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.AddEmailContact.AddNewContactEmailCommand.Email"/>: Email address to add.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.AddEmailContact.AddNewContactEmailCommand.EmailTypeId"/>: Identifier of the email type.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.AddEmailContact.AddNewContactEmailCommand.IsDefault"/>: Indicates whether the email address is the default one.
+            </param>
+            <returns>
+            An integer representing the identifier of the newly added email address.
+            </returns>
+            <remarks>
+            This method adds a new email address to the contact in the database.
+            If the contact is not found or if the email address already exists, an exception is thrown.
+            
+            Example request:
+            
+                POST /api/AddEmailContact
+                {
+                    "ContactId": 123,
+                    "Email": "example@example.com",
+                    "EmailTypeId": 1,
+                    "IsDefault": true
+                }
+            
+            </remarks>
+            <response code="200">If the email address was successfully added to the contact.</response>
+            <response code="404">If the specified contact cannot be found or if the email address has already been added previously.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactEmails(CrmAPI.Application.Contacts.Queries.GetContactEmails.GetContactEmailsQuery)">
+            <summary>
+            Obtains a list of email addresses associated with a specific contact.
+            </summary>
+            <param name="query">
+            Object that contains the parameter necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetContactEmails.GetContactEmailsQuery.ContactId"/>: Identifier of the contact.
+            </param>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.ContactEmailDto"/> representing the email addresses associated with the contact.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all email addresses associated with the specified contact.
+            
+            Example request:
+            
+                GET /api/ContactEmails?ContactId=123
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the email addresses are returned.</response>
+            <response code="404">If no email addresses are found for the specified contact.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactPhones(CrmAPI.Application.Contacts.Queries.GetContactPhones.GetContactPhonesQuery)">
+            <summary>
+            Obtains a list of phone numbers associated with a specific contact.
+            </summary>
+            <param name="query">
+            Object that contains the parameter necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetContactPhones.GetContactPhonesQuery.ContactId"/>: Identifier of the contact.
+            </param>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.ContactPhoneDto"/> representing the phone numbers associated with the contact.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all phone numbers associated with the specified contact.
+            
+            Example request:
+            
+                GET /api/ContactPhones?ContactId=123
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the phone numbers are returned.</response>
+            <response code="404">If no phone numbers are found for the specified contact.</response>
+            <response code="500">If an internal server error occurs.</response> 
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactById(CrmAPI.Application.Contacts.Queries.GetConctacById.GetContactByIdQuery)">
+            <summary>
+            Obtains the complete information of a specific contact by its identifier.
+            </summary>
+            <param name="query">
+            Object that contains the parameter necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetConctacById.GetContactByIdQuery.ContactId"/>: Identifier of the contact.
+            </param>
+            <returns>
+            An object of type <see cref="T:CrmAPI.Application.Common.Dtos.ContactFullDto"/> representing the complete information of the contact.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve all details of the specified contact.
+            
+            Example request:
+            
+                GET /api/GetContactById?ContactId=123
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the contact information is returned.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>   
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.UpdateCountryCode(CrmAPI.Application.Contacts.Commands.UpdateCountryCode.UpdateCountryCodeCommand)">
+            <summary>
+            Updates the country code of a specific contact.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to update the country code:
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.UpdateCountryCode.UpdateCountryCodeCommand.CountryCode"/>: New country code.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.UpdateCountryCode.UpdateCountryCodeCommand.ContactId"/>: Identifier of the contact whose country code will be updated.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method updates the country code of the contact in the database.
+            If the contact is not found, an exception is thrown.
+            
+            Example request:
+            
+                PUT /api/UpdateCountryCode
+                {
+                    "CountryCode": "US",
+                    "ContactId": 123
+                }
+            
+            </remarks>
+            <response code="204">If the country code was successfully updated.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.UpdateCurrency(CrmAPI.Application.Contacts.Commands.UpdateCurrency.UpdateCurrencyCommand)">
+            <summary>
+            Updates the currency of a specific contact.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary to update the currency:
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.UpdateCurrency.UpdateCurrencyCommand.CurrencyId"/>: Identifier of the new currency.
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.UpdateCurrency.UpdateCurrencyCommand.ContactId"/>: Identifier of the contact whose currency will be updated.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method updates the currency of the contact in the database.
+            If the contact is not found, an exception is thrown.
+            
+            Example request:
+            
+                PUT /api/UpdateCurrency
+                {
+                    "CurrencyId": 1,
+                    "ContactId": 123
+                }
+            
+            </remarks>
+            <response code="204">If the currency was successfully updated.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response> 
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.UpdateContactLead(System.Int32,CrmAPI.Application.Contacts.Commands.UpdateContactLead.UpdateContactLeadCommand)">
+            <summary>
+            Updates the information of a specific lead contact.
+            </summary>
+            <param name="contactLeadId">
+            Identifier of the lead contact to be updated.
+            </param>
+            <param name="command">
+            Object that contains the parameters necessary for the update:
+            - <see cref="!:UpdateContactLeadCommand.ContactLeadId"/>: Identifier of the lead contact.
+            - Other fields from <see cref="T:CrmAPI.Application.Common.Dtos.ContactLeadUpdateDto"/> that can be updated.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method updates the information of the lead contact in the database.
+            If the identifier of the lead contact does not match that of the command, a bad request error is returned.
+            If the lead contact is not found, an error code is returned.
+            
+            Example request:
+            
+                PUT /api/ContactLead/123
+                {
+                    "ContactLeadId": 123,
+                    "Discount": 10,
+                    "FinalPrice": 200,
+                    "EnrollmentPercentage": 50,
+                    "Fees": 5,
+                    "CourseTypeBaseCode": "CT001",
+                    "StartDateCourse": "2023-01-01",
+                    "FinishDateCourse": "2023-12-31",
+                    "ConvocationDate": "2023-12-01",
+                    "CourseCode": "C001",
+                    "Types": [1, 2, 3]
+                }
+            
+            </remarks>
+            <response code="204">If the lead contact information was successfully updated.</response>
+            <response code="400">If the identifier of the lead contact does not match that of the command.</response>
+            <response code="404">If the specified lead contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>  
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.UpdateContactLeads(CrmAPI.Application.Contacts.Commands.UpdateContactLeads.UpdateContactLeadsCommand)">
+            <summary>
+            Updates the information of multiple lead contacts.
+            </summary>
+            <param name="command">
+            Object that contains the parameters necessary for the update:
+            - <see cref="P:CrmAPI.Application.Contacts.Commands.UpdateContactLeads.UpdateContactLeadsCommand.ContactLeads"/>: List of objects representing the lead contacts to be updated.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method updates the information of the lead contacts in the database.
+            
+            Example request:
+            
+                PUT /api/ContactLeads
+                {
+                    "ContactLeads": [
+                        {
+                            "ContactLeadId": 1,
+                            "Discount": 10,
+                            "FinalPrice": 200,
+                            "EnrollmentPercentage": 50,
+                            "Fees": 5,
+                            "CourseTypeBaseCode": "CT001",
+                            "StartDateCourse": "2023-01-01",
+                            "FinishDateCourse": "2023-12-31",
+                            "ConvocationDate": "2023-12-01",
+                            "Types": [1, 2]
+                        },
+                        {
+                            "ContactLeadId": 2,
+                            "Discount": 15,
+                            "FinalPrice": 250,
+                            "EnrollmentPercentage": 60,
+                            "Fees": 10,
+                            "CourseTypeBaseCode": "CT002",
+                            "StartDateCourse": "2023-02-01",
+                            "FinishDateCourse": "2023-11-30",
+                            "ConvocationDate": "2023-11-15",
+                            "Types": [2, 3]
+                        }
+                    ]
+                }
+            
+            </remarks>
+            <response code="204">If the information of the lead contacts was successfully updated.</response>
+            <response code="400">If there is an error in the request, such as missing or incorrect data.</response>
+            <response code="404">If any of the specified lead contacts cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.UpdateContactLeadPrice(System.Int32,CrmAPI.Application.Contacts.Commands.UpdateContactLeadPrice.UpdateContactLeadPriceCommand)">
+            <summary>
+            Updates the price of a specific lead contact.
+            </summary>
+            <param name="contactLeadId">
+            Identifier of the lead contact to be updated.
+            </param>
+            <param name="command">
+            Object that contains the parameters necessary for the update:
+            - <see cref="!:UpdateContactLeadPriceCommand.ContactLeadId"/>: Identifier of the lead contact.
+            - Other fields from <see cref="T:CrmAPI.Application.Common.Dtos.ContactLeadPriceUpdateDto"/> that can be updated.
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method updates the price of the lead contact in the database.
+            If the identifier of the lead contact does not match that of the command, a bad request error is returned.
+            If the lead contact is not found, an error code is returned.
+            
+            Example request:
+            
+                PUT /api/ContactLeadPrice/123
+                {
+                    "ContactLeadId": 123,
+                    "Discount": 10,
+                    "Price": 150,
+                    "FinalPrice": 140,
+                    "EnrollmentPercentage": 50,
+                    "Fees": 5
+                }
+            
+            </remarks>
+            <response code="204">If the price of the lead contact was successfully updated.</response>
+            <response code="400">If the identifier of the lead contact does not match that of the command.</response>
+            <response code="404">If the specified lead contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactByEmailOrPhone(CrmAPI.Application.Contacts.Queries.GetContactByEmailOrPhone.GetContactByEmailOrPhoneQuery)">
+            <summary>
+            Obtains a specific contact using their email address or phone number.
+            </summary>
+            <param name="query">
+            Object that contains the parameters necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetContactByEmailOrPhone.GetContactByEmailOrPhoneQuery.Data"/>: Object that includes the email address or phone number of the contact.
+            </param>
+            <returns>
+            An object of type <see cref="T:CroupierAPI.Contracts.Events.ContactGetted"/> representing the information of the retrieved contact.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve a contact based on the provided email address or phone number.
+            
+            Example request:
+            
+                GET /api/GetContactByEmailOrPhone?Email=example@example.com
+                or
+                GET /api/GetContactByEmailOrPhone?Phone=1234567890
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the contact information is returned.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>   
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactIsClient(CrmAPI.Application.Contacts.Queries.GetIsContactClient.GetIsContactClientQuery)">
+            <summary>
+            Checks if a specific contact is a client.
+            </summary>
+            <param name="query">
+            Object that contains the parameters necessary for the query:
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetIsContactClient.GetIsContactClientQuery.ContactId"/>: Identifier of the contact.
+            - <see cref="P:CrmAPI.Application.Contacts.Queries.GetIsContactClient.GetIsContactClientQuery.OriginContactId"/>: Identifier of the origin contact (optional).
+            </param>
+            <returns>
+            A boolean value indicating whether the contact is a client.
+            </returns>
+            <remarks>
+            This method queries the database to determine if the specified contact has imported orders that are neither canceled nor pending.
+            
+            Example request:
+            
+                GET /api/GetContactIsClient?ContactId=123
+                or
+                GET /api/GetContactIsClient?OriginContactId=456
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the contact's client status is returned.</response>
+            <response code="404">If the specified contact cannot be found.</response>
+            <response code="500">If an internal server error occurs.</response>  
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.GetContactUser(System.String,System.String)">
+            <summary>
+            Obtains a list of contact users based on the email address or phone number.
+            </summary>
+            <param name="email">
+            Email address of the contact (optional).
+            </param>
+            <param name="phone">
+            Phone number of the contact (optional).
+            </param>
+            <returns>
+            A list of objects of type <see cref="!:ContactUser Dto"/> representing the found contact users.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve contact users that match the provided email address or phone number.
+            
+            Example request:
+            
+                GET /api/GetContactUser ?email=example@example.com
+                or
+                GET /api/GetContactUser ?phone=1234567890
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the contact users are returned.</response>
+            <response code="404">If no contact users matching the specified criteria are found.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ContactsController.RecoverContactActivations(CrmAPI.Application.Contacts.Commands.RecoverContactActivations.RecoverContactActivationsCommand)">
+            <summary>
+            Recupera y reactiva un proceso en el sistema, actualizando su fecha de creación
+            y las acciones asociadas al mismo.
+            </summary>
+            <param name="query">El comando que contiene el ID del proceso a recuperar.</param>
+            <returns>
+            Retorna el ID del proceso si la operación es exitosa.
+            Lanza una excepción si el ID del proceso no es válido o si ocurre un error interno.
+            </returns>
+            <response code="200">Operación exitosa. Retorna el ID del proceso actualizado.</response>
+            <response code="400">Error de validación. El ID del proceso no es válido.</response>
+            <response code="404">No se encontró un proceso con el ID proporcionado.</response>
+            <response code="500">Error interno del servidor.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.CountriesController.GetCountries">
+            <summary>
+            Obtains a list of countries.
+            </summary>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.CountryDto"/> representing the found countries.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve the list of countries.
+            
+            Example request:
+            
+                GET /api/Countries/List
+            
+            </remarks>
+            <response code="200">If the request is processed successfully and the countries are returned.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.CouponsController.CopyToCouponFp(CrmAPI.Application.Coupons.Commands.CopyToCouponFpCommand.CopyToCouponFpCommand,System.Threading.CancellationToken)">
+            <summary>
+            Copies the information of a contact to a FP coupon.
+            </summary>
+            <param name="command">
+            Command that contains the necessary parameters for the operation:
+            - <see cref="!:CopyToCouponFpCommand.ContactId"/>: Identifier of the contact.
+            - <see cref="!:CopyToCouponFpCommand.ProcessId"/>: Identifier of the process.
+            </param>
+            <param name="ct">Cancellation token for the asynchronous operation.</param>
+            <returns>
+            A boolean value indicating whether the operation was successful.
+            </returns>
+            <remarks>
+            This method sends a command to copy the contact information to a FP coupon.
+            
+            Example request:
+            
+                POST /api/CopyToCouponFp
+                {
+                    "ContactId": 123,
+                    "ProcessId": 456
+                }
+            </remarks>
+            <response code="200">If the request is processed successfully and the operation is completed.</response>
+            <response code="400">If the request is invalid or parameters are missing.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.CouponsOriginsController.GetCouponsOrigins">
+            <summary>
+            Obtains a list of coupon origins.
+            </summary>
+            <returns>
+            A list of objects of type <see cref="T:CrmAPI.Application.Common.Dtos.CouponsOriginsDto"/> representing the found coupon origins.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve the list of coupon origins that are not marked as deleted.
+            
+            Example request:
+            
+                GET /api/CouponsOrigins/List
+            </remarks>
+            <response code="200">If the request is processed successfully and the coupon origins are returned.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.CourseCountriesController.GetCourseCountriesByCountryCodeAndLanguageCode(CrmAPI.Application.CourseCountries.Queries.GetCourseCountriesByCountryCodeAndLanguageCode.GetCourseCountriesByCountryCodeAndLanguageCodeQuery)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.CoursesController.GetTopSellingByFacultiesAndCountry(CrmAPI.Application.Courses.Queries.GetTopSellingByFacultiesAndCountry.GetTopSellingByFacultiesAndCountryQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.CoursesController.PopulateMissingInterestedCoursesByTopSellers(CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand)">
+            <summary>
+            Population of missing interested courses based on the top-selling courses.
+            </summary>
+            <param name="command">
+            Command that contains the necessary parameters for the operation:
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.Area"/>: Area of interest.
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.CountryCode"/>: Country code.
+            - <see cref="P:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand.ApiKey"/>: API key.
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.MaxJobContacts"/>: Maximum contacts to process (optional).
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.ContactIds"/>: Contact identifiers (optional).
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the operation.
+            </returns>
+            <remarks>
+                Note that this is a potentially long-running request and may result in a timeout during execution
+                (nature of HTTP requests).<br />
+                Note! A timeout on the HTTP request (e.g., connection closes or timeout expires) will not stop execution.
+                A log will always be recorded.
+            </remarks>
+            <response code="200">If the request is processed successfully and the results of the operation are returned.</response>
+            <response code="400">If the request is invalid or required parameters are missing.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.CoursesController.PopulateMissingInterestedCoursesByTopSellersNoWait(CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand)">
+            <summary>
+            Population of missing interested courses based on the top-selling courses without waiting.
+            </summary>
+            <param name="command">
+            Command that contains the necessary parameters for the operation:
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.Area"/>: Area of interest.
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.CountryCode"/>: Country code.
+            - <see cref="P:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand.ApiKey"/>: API key.
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.MaxJobContacts"/>: Maximum contacts to process (optional).
+            - <see cref="!:PopulateMissingInterestedCoursesCommand.ContactIds"/>: Contact identifiers (optional).
+            </param>
+            <returns>
+            An object of type <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the operation.
+            </returns>
+            <remarks>
+            This method initiates a process to populate the missing interested courses based on the top-selling courses.
+            The operation runs asynchronously and does not wait for completion.
+            
+            Example request:
+            
+                POST /api/populate-missing-interested-courses-by-top-sellers-nowait
+            </remarks>
+            <response code="202">If the request is accepted and the process is started successfully.</response>
+            <response code="400">If the request is invalid or required parameters are missing.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.CurrenciesController.GetCurrencyByCode(CrmAPI.Application.Currencies.Queries.GetCurrencyByCode.GetCurrencyByCodeQuery)">
+            <summary>
+            Obtains the currency information based on the currency code.
+            </summary>
+            <param name="query">
+            Query that contains the necessary parameters for the operation:
+            - <see cref="P:CrmAPI.Application.Currencies.Queries.GetCurrencyByCode.GetCurrencyByCodeQuery.CurrencyCode"/>: Currency code.
+            </param>
+            <returns>
+            An object of type <see cref="T:CrmAPI.Application.Common.Dtos.CurrencyDto"/> representing the found currency information.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve the currency information that matches the provided currency code.
+            
+            Example request:
+            
+                GET /api/CurrencyByCode?CurrencyCode=USD
+            </remarks>
+            <response code="200">If the request is processed successfully and the currency information is returned.</response>
+            <response code="404">If the currency for the specified code is not found.</response>
+            <response code="500">If an internal server error occurs.</response> 
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.EmailsController.GetEmailsByContactWithPagination(CrmAPI.Application.Emails.Queries.GetEmailsByContactWithPagination.GetEmailsByContactWithPaginationQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.EmailsController.Send(CrmAPI.Application.Emails.Commands.SendEmailCommand.SendEmailCommand)">
+            <summary>
+            Sends an email with the option to attach files.
+            </summary>
+            <param name="command">
+            Command that contains the necessary parameters for the operation:
+            - <see cref="P:CrmAPI.Application.Emails.Commands.SendEmailCommand.SendEmailCommand.Attachments"/>: List of attachments (optional).
+            </param>
+            <returns>
+            An object of type <see cref="!:ActionResult&lt;int&gt;"/> representing the identifier of the sent email.
+            </returns>
+            <remarks>
+            This method allows sending an email, including the possibility of attaching files.
+            The operation runs asynchronously and returns the identifier of the sent email.
+            
+            Example request:
+            
+                POST /api/send
+            </remarks>
+            <response code="200">If the request is processed successfully and the identifier of the email is returned.</response>
+            <response code="400">If the request is invalid or required parameters are missing.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmailsController.GetDetails(System.Int32)">
+            <summary>
+            Obtains the details of an email based on its identifier.
+            </summary>
+            <param name="id">
+            Identifier of the email.
+            </param>
+            <returns>
+            An object of type <see cref="T:CrmAPI.Application.Common.Dtos.EmailFullDto"/> representing the details of the found email.
+            </returns>
+            <remarks>
+            This method queries the database to retrieve the details of the email that matches the provided identifier.
+            
+            Example request:
+            
+                GET /api/emails/{id}
+            </remarks>
+            <response code="200">If the request is processed successfully and the details of the email are returned.</response>
+            <response code="404">If the email for the specified identifier is not found.</response>
+            <response code="500">If an internal server error occurs.</response>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmailsController.GetMailBoxFree(CrmAPI.Application.Emails.Queries.GetMailBoxFree.GetMailBoxFreeQuery)">
+            <summary>
+            Checks if the mailbox is free (LOGIC MISSING).
+            </summary>
+            <param name="query">
+            Query that contains the necessary parameters for the operation (currently no parameters are required).
+            </param>
+            <returns>
+            An object of type <see cref="T:System.Boolean"/> indicating whether the mailbox is free.
+            </returns>
+            <remarks>
+            This method checks the status of the current user's mailbox to determine if it is free.
+            
+            Example request:
+            
+                GET /api/MailBoxFree
+            </remarks>
+            <response code="200">If the request is processed successfully and the status of the mailbox is returned.</response>
+            <response code="500">If an internal server error occurs.</response>     
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmailsController.GetEmailsByContactAndProcess(CrmAPI.Application.Emails.Queries.GetEmailsByContactId.GetEmailByContactIdAndProcessId)">
+            <summary>
+            Gets emails send to client with process and contact id.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmailsController.SendEmailRecords2(CrmAPI.Application.Emails.Commands.SendEmailCommercialAssignment.SendEmailCommercialAssignmentCommand)">
+            <summary>
+            Sends an email to the client using the appropriate template.
+            </summary>
+            <param name="command">
+            Object containing the parameters required to send the email:
+            - <see cref="P:CrmAPI.Application.Emails.Commands.SendEmailCommercialAssignment.SendEmailCommercialAssignmentCommand.ApiKey"/>: API key required for authentication.
+            </param>
+            <returns>
+            A string describing the operation's result, indicating the email delivery status.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmailsController.SendEmailScholarshipActivation(CrmAPI.Application.Emails.Commands.SendEmailRecords2ScholarshipActivation.SendEmailRecords2ScholarshipActivationCommand)">
+            <summary>
+            Sends a scholarship activation email (R2) to the client using the appropriate template.
+            </summary>
+            <param name="command">
+            Object containing the parameters required to send the email:
+            - <see cref="P:CrmAPI.Application.Emails.Commands.SendEmailRecords2ScholarshipActivation.SendEmailRecords2ScholarshipActivationCommand.ApiKey"/>: API key required for authentication.
+            </param>
+            <returns>
+            A string describing the operation's result, indicating the email delivery status.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmailsController.SendEmailCloseProcesses(CrmAPI.Application.Emails.Commands.SendEmailCloseProcesses.SendEmailCloseProcessesCommand)">
+            <summary>
+            Sends an email to close processes to the client using the correct template (1.2.A).
+            </summary>
+            <param name="command">
+            Object containing the parameters required to send the email:
+            - <see cref="P:CrmAPI.Application.Emails.Commands.SendEmailCloseProcesses.SendEmailCloseProcessesCommand.ApiKey"/>: API key required for authentication.
+            </param>
+            <returns>
+            A string describing the operation's result, indicating the email delivery status.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmployeeController.GetAllManagerSubordinates(CrmAPI.Application.Employees.Queries.GetAllManagerSubordinates.GetAllManagerSubordinatesQuery)">
+            <summary>
+            Retrieves all subordinates of a manager.
+            </summary>
+            <param name="query">
+            Query containing the necessary parameters for the operation (currently no parameters are required).
+            </param>
+            <returns>
+            A list of <see cref="T:CrmAPI.Application.Employees.Queries.GetAllManagerSubordinates.EmployeeSubordinateViewModel"/> objects representing the manager's subordinates.
+            </returns>
+            <remarks>
+            This method queries the API to fetch all subordinates of the current manager.
+            
+            Example request:
+            
+                GET /api/GetAllManagerSubordinates
+            </remarks>
+            <response code="200">If the request is successfully processed and the manager's subordinates are returned.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmployeeController.GetAllManagerByEmployee(CrmAPI.Application.Employees.Queries.GetManagerByEmployee.GetManagerByEmployeeQuery)">
+            <summary>
+            Retrieves the manager associated with an employee.
+            </summary>
+            <param name="query">
+            Query containing the necessary parameters for the operation (currently no parameters are required).
+            </param>
+            <returns>
+            An object of type <see cref="T:CrmAPI.Application.Common.Dtos.ManagerDto"/> representing the manager associated with the employee.
+            </returns>
+            <remarks>
+            This method queries the database to fetch the manager of the current employee based on their corporate email.
+            
+            Example request:
+            
+                GET /api/GetAllManagerByEmployee
+            </remarks>
+            <response code="200">If the request is successfully processed and the manager associated with the employee is returned.</response>
+            <response code="404">If no user is found for the specified email.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmployeeController.GetLoggedEmployee">
+            <summary>
+            Retrieves the information of the logged-in employee.
+            </summary>
+            <returns>
+            An object of type <see cref="T:CrmAPI.Application.Common.Dtos.EmployeeDto"/> representing the logged-in employee's information.
+            </returns>
+            <remarks>
+            This method queries the database to fetch the employee information associated with the currently logged-in user,
+            using their corporate email.
+            
+            Example request:
+            
+                GET /api/GetLoggedEmployee
+            </remarks>
+            <response code="200">If the request is successfully processed and the employee information is returned.</response>
+            <response code="404">If no employee is found for the specified email.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.EmployeeController.GetSignature(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the signature associated with a corporate email.
+            </summary>
+            <param name="corporateEmail">
+            The corporate email of the employee.
+            </param>
+            <param name="ct">Cancellation token for the asynchronous operation.</param>
+            <returns>
+            A string representing the employee's signature.
+            </returns>
+            <remarks>
+            This method queries the database to fetch the signature associated with the provided corporate email.
+            
+            Example request:
+            
+                GET /api/Signatures/{corporateEmail}
+            </remarks>
+            <response code="200">If the request is successfully processed and the employee's signature is returned.</response>
+            <response code="404">If no signature is found for the specified corporate email.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.FacultiesController.GetFaculties">
+            <summary>
+            Retrieves the list of faculties.
+            </summary>
+            <returns>
+            A list of <see cref="T:CrmAPI.Application.Common.Dtos.FacultyDto"/> objects representing the available faculties.
+            </returns>
+            <remarks>
+            This method retrieves all faculties that are not deleted.
+            
+            Example request:
+            
+                GET /api/List
+            </remarks>
+            <response code="200">If the request is successfully processed and the list of faculties is returned.</response>
+            <response code="500">If an internal server error occurs.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.FlowsController.GetFlows">
+            <summary>
+            Retrieves the list of flows.
+            </summary>
+            <returns>
+            A list of <see cref="T:CrmAPI.Application.Common.Dtos.FlowDto"/> objects representing the available flows.
+            </returns>
+            <remarks>
+            This method retrieves all flows based on template proposals that have a tag identifier.
+            
+            Example request:
+            
+                GET /api/GetFlows
+            </remarks>
+            <response code="200">If the request is successfully processed and the list of flows is returned.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.FlowsController.DuplicateFlow(CrmAPI.Application.Flows.Commands.DuplicateFlow.DuplicateFlowCommand)">
+            <summary>
+            Duplicates an existing flow.
+            </summary>
+            <param name="command">
+            Command containing the necessary parameters for the operation:
+            - <see cref="!:DuplicateFlowCommand.OriginProcessType"/>: Process type of the original flow.
+            - <see cref="!:DuplicateFlowCommand.OriginTagId"/>: Tag identifier of the original flow.
+            - <see cref="!:DuplicateFlowCommand.TagId"/>: Tag identifier for the new flow.
+            - <see cref="!:DuplicateFlowCommand.TagName"/>: Tag name for the new flow.
+            </param>
+            <returns>
+            An object of type <see cref="T:MediatR.Unit"/> indicating the operation completed successfully.
+            </returns>
+            <remarks>
+            This method allows duplicating an existing flow, including its template proposals and associated templates.
+            
+            Example request:
+            
+                POST /api/DuplicateFlow
+            </remarks>
+            <response code="200">If the request is successfully processed and the flow is duplicated.</response>
+            <response code="400">If the request is invalid or required parameters are missing.</response>
+            <response code="500">If an internal server error occurs.</response>        
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController.GetInvoicePaymentOptionsByContactWithPagination(CrmAPI.Application.InvoicePaymentOptions.Queries.GetInvoicePaymentOptionsByContactWithPagination.GetInvoicePaymentOptionsByContactWithPaginationQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController.Create(CrmAPI.Application.InvoicePaymentOptions.Commands.CreateInvoicePaymentOption.CreateInvoicePaymentOptionCommand)">
+            <summary>
+            Creates a new invoice payment option.
+            </summary>
+            <param name="command">
+            Command containing the necessary parameters for the operation:
+            - <see cref="!:CreateInvoicePaymentOptionCommand.Property1"/>: Description of property 1 (adjust according to InvoicePaymentOptionCreateDto properties).
+            - <see cref="!:CreateInvoicePaymentOptionCommand.Property2"/>: Description of property 2 (adjust according to InvoicePaymentOptionCreateDto properties).
+            </param>
+            <returns>
+            An <see cref="!:ActionResult&lt;int&gt;"/> representing the identifier of the created invoice payment option.
+            </returns>
+            <remarks>
+            This method allows creating a new invoice payment option in the database.
+            
+            Example request:
+            
+                POST /api/Create
+            </remarks>
+            <response code="200">If the request is successfully processed and the identifier of the created invoice payment option is returned.</response>
+            <response code="400">If the request is invalid or required parameters are missing.</response>
+            <response code="500">If an internal server error occurs.</response>            
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController.Update(System.Int32,CrmAPI.Application.InvoicePaymentOptions.Commands.UpdateInvoicePaymentOption.UpdateInvoicePaymentOptionCommand)">
+            <summary>
+            Updates an existing invoice payment option.
+            </summary>
+            <param name="id">
+            Identifier of the invoice payment option to be updated.
+            </param>
+            <param name="command">
+            Command containing the necessary parameters for the operation:
+            - <see cref="!:UpdateInvoicePaymentOptionCommand.Id"/>: Identifier of the invoice payment option.
+            - <see cref="!:UpdateInvoicePaymentOptionCommand.Property1"/>: Description of property 1 (adjust according to InvoicePaymentOptionUpdateDto properties).
+            - <see cref="!:UpdateInvoicePaymentOptionCommand.Property2"/>: Description of property 2 (adjust according to InvoicePaymentOptionUpdateDto properties).
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method allows updating an existing invoice payment option in the database.
+            
+            Example request:
+            
+                PUT /api/{id}
+            </remarks>
+            <response code="204">If the request is successfully processed and the invoice payment option is updated.</response>
+            <response code="400">If the identifier does not match the command or the request is invalid.</response>
+            <response code="404">If no invoice payment option is found for the specified identifier.</response>
+            <response code="500">If an internal server error occurs.</response>            
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.InvoicePaymentOptionsController.Delete(System.Int32)">
+            <summary>
+            Deletes an existing invoice payment option.
+            </summary>
+            <param name="id">
+            Identifier of the invoice payment option to be deleted.
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the result of the operation.
+            </returns>
+            <remarks>
+            This method allows deleting an invoice payment option from the database by marking it as deleted.
+            
+            Example request:
+            
+                DELETE /api/{id}
+            </remarks>
+            <response code="204">If the request is successfully processed and the invoice payment option is deleted.</response>
+            <response code="404">If no invoice payment option is found for the specified identifier.</response>
+            <response code="500">If an internal server error occurs.</response>            
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.LanguagesController.GetLanguages">
+            <summary>
+            Retrieves the list of available languages.
+            </summary>
+            <returns>
+            A list of <see cref="T:CrmAPI.Application.Common.Dtos.LanguageDto"/> objects representing the available languages.
+            </returns>
+            <remarks>
+            This method retrieves all registered languages.
+            
+            Example request:
+            
+                GET /api/GetLanguages
+            </remarks>
+            <response code="200">If the request is successfully processed and the list of languages is returned.</response>
+            <response code="500">If an internal server error occurs.</response> 
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.MessagesController.Send(CrmAPI.Application.Messages.Commands.SendMessageCommand.SendMessageCommand)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.OrdersImportedController.GetOrdersImportedByContact(CrmAPI.Application.OrdersImported.Queries.GetOrdersImportedByContactWithPagination.GetOrdersImportedByContactWithPaginationQuery)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.OrdersImportedController.GetOrdersImportedByContact(CrmAPI.Application.OrdersImported.Queries.GetOrdersImportedByContact.GetOrdersImportedByContactQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.OrdersImportedController.GetDetails(System.Int32)">
+             <summary>
+             Retrieves the details of a specific imported order by its ID.
+             </summary>
+             <param name="id">The ID of the imported order to retrieve.</param>
+             <returns>The details of the imported order.</returns>
+             <remarks>
+             Example request:
+            
+                 GET /api/orders-imported/{id}
+            
+             Returns the details of the imported order corresponding to the provided ID.
+             
+             <response code="200">Returns the details of the specified imported order.</response>
+             <response code="404">If no imported order is found with the specified ID.</response>
+             <response code="401">If the user is not authorized to access this endpoint.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>            
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.OrdersImportedController.SaveOrderFromTlmk(CrmAPI.Application.OrdersImported.Commands.CreateOrdersImportedFromTlmk.CreateOrdersImportedFromTlmkCommand)">
+             <summary>
+             Creates and saves a new imported order from TLMK.
+             </summary>
+             <param name="command">The command containing the information of the order to be imported from TLMK.</param>
+             <returns>The ID of the created imported order.</returns>
+             <remarks>
+             Example request:
+            
+                 POST /api/orders-imported/Tlmk
+                 {
+                     "ApiKey": "api-key",
+                     "NumPedido": "12345",
+                     "Nombre": "Juan Pérez",
+                     "Email": "juan.perez@example.com",
+                     "Titulo": "Programming Course"    
+                 }
+            
+             <response code="200">Returns the ID of the created imported order.</response>
+             <response code="400">If the order data is invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.OrdersImportedController.SetProcessByOrderNumber(CrmAPI.Application.OrdersImported.Commands.SetProcessStatusByOrderNumber.SetProcessStatusByOrderNumberCommand)">
+             <summary>
+             Updates the status of a process based on the order number.
+             </summary>
+             <param name="command">The command containing the order number, the new process status, the outcome, and the payment type.</param>
+             <returns>A string indicating the result of the operation.</returns>
+             <remarks>
+             Example request:
+            
+                 PUT /api/orders-imported/SetProcessStatusByOrderNumber
+                 {
+                     "OrderNumber": 12345,
+                     "Status": "Completed",
+                     "Outcome": "Success",
+                     "PaymentType": "CreditCard"
+                 }
+            
+             <response code="200">Returns a string indicating that the operation was successful.</response>
+             <response code="400">If the provided data is invalid.</response>
+             <response code="404">If no order or process associated with the specified order number is found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.OrdersImportedController.DeleteOrderImportedFromTlmkByEmail(CrmAPI.Application.OrdersImported.Commands.DeleteOrderImportedFromTlmkByEmail.DeleteOrderImportedFromTlmkByEmailCommand)">
+             <summary>
+             Deletes imported orders associated with a list of email addresses.
+             </summary>
+             <param name="command">The command containing the list of email addresses associated with the orders to be deleted.</param>
+             <returns>A list of IDs of the deleted orders.</returns>
+             <remarks>
+             Example request:
+            
+                 DELETE /api/orders-imported/DeleteOrderImportedFromTlmkByEmail
+                 {
+                     "Emails": ["email1@example.com", "email2@example.com"]
+                 }
+            
+             <response code="200">Returns a list of IDs of the deleted orders.</response>
+             <response code="400">If the provided data is invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetProcessesInProgressByUser(CrmAPI.Application.Processes.Queries.GetProcessesInProgressByUserWithPagination.GetProcessesInProgressByUserWithPaginationQuery)">
+            <summary>
+            Retrieves a list of processes that are "in progress" and related to the authenticated user.
+            </summary>
+            <param name="query">
+            Object containing query parameters, including pagination options and filters 
+            (such as email, phone, country code).
+            </param>
+            <returns>
+            A <see cref="T:CrmAPI.Application.Common.Models.PaginatedList`1"/> object containing the paginated list of processes in progress.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetProcessesInProgressByUser(CrmAPI.Application.Processes.Queries.GetProcessesInProgressByUserWithPagination.GetProcessesInProgressByUserWithPaginationQueryPocho)">
+            <summary>
+            Retrieves a list of processes that are "in progress" and associated with a specific user.
+            </summary>
+            <param name="query">
+            Object containing query parameters for the search, including filters and pagination options.
+            </param>
+            <returns>
+            A paginated list of in-progress processes as <see cref="T:CrmAPI.Application.Common.Models.PaginatedList`1"/>.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetProcessesNotSalesByUser(CrmAPI.Application.Processes.Queries.GetProcessesNotSalesByUserWithPagination.GetProcessesNotSalesByUserWithPaginationQuery)">
+            <summary>
+            Retrieves a paginated list of closed processes that did not result in a sale and are associated with the authenticated user.
+            </summary>
+            <param name="query">
+            Object containing the query parameters.
+            </param>
+            <returns>
+            A <see cref="T:CrmAPI.Application.Common.Models.PaginatedList`1"/> object containing the paginated list of closed processes without a sale 
+            associated with the authenticated user.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetProcessesSalesByUser(CrmAPI.Application.Processes.Queries.GetSalesByUserWithPagination.GetProcessesSalesByUserWithPaginationQuery)">
+            <summary>
+            Retrieves a list of processes managed by a specific user, filtered by an optional sales type.
+            </summary>
+            <param name="query">
+            Object containing the required parameters:
+            - <see cref="!:GetProcessesSalesByUserQuery.UserId"/>: ID of the user managing the processes.
+            - <see cref="!:GetProcessesSalesByUserQuery.SalesTypeId"/>: (Optional) ID of the sales type to filter by.
+            </param>
+            <returns>
+            A list of <see cref="!:ProcessSalesDto"/> objects representing the sales processes managed by the specified user.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetProcessesPendingByUser(CrmAPI.Application.Processes.Queries.GetProcessPendingByUserWithPagination.GetProcessPendingByUserWithPaginationQuery)">
+            <summary>
+            Retrieves a paginated list of pending processes associated with a specific user.
+            </summary>
+            <param name="query">
+            Object containing the query parameters.
+            </param>
+            <returns>
+            A <see cref="T:CrmAPI.Application.Common.Models.PaginatedList`1"/> object containing the paginated list of pending processes
+            associated with the specified user.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetTypesActiveProcesses">
+            <summary>
+            Retrieves the active process types associated with the current user.
+            </summary>
+            <returns>
+            A list of <see cref="T:CrmAPI.Application.Common.Dtos.ProcessTypeDto"/> objects representing the currently active (ongoing or pending) process types for the user.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetProcessSaleStatus(System.Int32)">
+            <summary>
+            Retrieves the sales status of a specific process.
+            </summary>
+            <param name="processId">
+            Identifier of the process for which the sales status is to be obtained.
+            </param>
+            <returns>
+            A <see cref="T:CrmAPI.Application.Common.Dtos.ProcessSaleStatusDto"/> object containing the sales status of the process.
+            - <see cref="P:CrmAPI.Application.Common.Dtos.ProcessSaleStatusDto.SaleComplete"/>: Indicates whether the sale is complete.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetProcessSaleAttempts(System.Int32)">
+            <summary>
+            Retrieves the number of sales attempts for a specific process.
+            </summary>
+            <param name="processId">
+            Identifier of the process for which the number of sales attempts is to be obtained.
+            </param>
+            <returns>
+            A <see cref="T:CrmAPI.Application.Common.Dtos.ProcessSaleAttemtpsDto"/> object containing the number of sales attempts for the process.
+            - <see cref="P:CrmAPI.Application.Common.Dtos.ProcessSaleAttemtpsDto.SaleAttemtps"/>: Number of sales attempts recorded for the process.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.CanCreateRecoverProcess">
+            <summary>
+            Checks if the current user can create a new recovery process.
+            </summary>
+            <returns>
+            A <see cref="!:ActionResult&lt;bool&gt;"/> indicating whether the user can create a recovery process.
+            - <c>true</c> if the user can create a new recovery process; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetAllDiscardReasons">
+            <summary>
+            Retrieves a list of all available discard reasons.
+            </summary>
+            <returns>
+            A list of <see cref="T:CrmAPI.Application.Common.Dtos.DiscardReasonDto"/> objects representing the discard reasons.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetOpenProcessesByContactId(System.Int32)">
+            <summary>
+            Retrieves a list of open processes associated with a specific contact.
+            </summary>
+            <param name="contactId">
+            Identifier of the contact for whom the open processes are to be retrieved.
+            </param>
+            <returns>
+            A list of <see cref="T:CrmAPI.Application.Common.Dtos.ProcessDto"/> objects representing the open processes.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.GetSuggestedNextInteractionDate(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the suggested date for the next interaction based on the process and the employee's local date.
+            </summary>
+            <param name="processId">
+            Identifier of the process for which the suggested interaction date is to be obtained.
+            </param>
+            <param name="dateLocalEmployee">
+            Employee's local date and time in string format, without a specified time zone. 
+            Expected format: 2024-09-03T09:34:56.789
+            </param>
+            <param name="ct">Cancellation token for the asynchronous operation.</param>
+            <returns>
+            A suggested date and time for the next interaction, or <c>null</c> if it cannot be determined.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.Create(CrmAPI.Application.Processes.Commands.CreateProcess.CreateProcessCommand)">
+            <summary>
+            Creates a new process.
+            </summary>
+            <param name="command">
+            Object containing the necessary data for creating the process.
+            </param>
+            <returns>
+            The unique identifier (<see cref="T:System.Int32"/>) of the newly created process.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.SaleProcessByEmailOrPhoneOrDniCommand(CrmAPI.Application.Processes.Commands.SetWebSaleProcess.SetWebSaleProcessByEmailOrPhoneOrDniCommand)">
+            <summary>
+            Sets a web sales process using the contact's email, phone, or ID.
+            </summary>
+            <param name="command">
+            Object containing the parameters required to set the sales process:
+            - <see cref="P:CrmAPI.Application.Processes.Commands.SetWebSaleProcess.SetWebSaleProcessByEmailOrPhoneOrDniCommand.Email"/>: Contact's email address.
+            - <see cref="P:CrmAPI.Application.Processes.Commands.SetWebSaleProcess.SetWebSaleProcessByEmailOrPhoneOrDniCommand.Phone"/>: Contact's phone number.
+            - <see cref="P:CrmAPI.Application.Processes.Commands.SetWebSaleProcess.SetWebSaleProcessByEmailOrPhoneOrDniCommand.Dni"/>: Contact's ID.
+            </param>
+            <returns>
+            A <see cref="T:MediatR.Unit"/> object indicating the operation was completed successfully.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.Update(System.Int32,CrmAPI.Application.Processes.Commands.UpdateProcess.UpdateProcessCommand)">
+            <summary>
+            Updates the data of an existing process.
+            </summary>
+            <param name="id">
+            The unique identifier (<see cref="T:System.Int32"/>) of the process to be updated.
+            </param>
+            <param name="command">
+            Object containing the updated data for the process. This command inherits from <see cref="T:CrmAPI.Application.Common.Dtos.ProcessUpdateDto"/>.
+            </param>
+            <returns>
+            Returns an HTTP result:
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.BadRequest"/> if the identifier provided in the parameter does not match the ID in the command.
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the update is successfully completed.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.ChangeProcessColor(CrmAPI.Application.Processes.Commands.UpdateProcessColor.UpdateProcessColorCommand)">
+            <summary>
+            Changes the color associated with a specific process.
+            </summary>
+            <param name="command">
+            Object of type <see cref="T:CrmAPI.Application.Processes.Commands.UpdateProcessColor.UpdateProcessColorCommand"/> containing:
+            - <see cref="P:CrmAPI.Application.Processes.Commands.UpdateProcessColor.UpdateProcessColorCommand.ProcessId"/>: Unique ID of the process to update.
+            - <see cref="P:CrmAPI.Application.Processes.Commands.UpdateProcessColor.UpdateProcessColorCommand.Color"/>: New color to assign to the process.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the operation is successfully completed.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.CloseProcessSaleByOrderNumberOrEmail(CrmAPI.Application.Processes.Commands.CloseProcessByOrderEmailOrPhone.CloseProcessSaleByOrderNumberOrEmailCommand)">
+            <summary>
+            Closes pending sales processes based on the associated order number or email address.
+            </summary>
+            <param name="command">
+            Object of type <see cref="T:CrmAPI.Application.Processes.Commands.CloseProcessByOrderEmailOrPhone.CloseProcessSaleByOrderNumberOrEmailCommand"/> containing a list of 
+            <see cref="T:CrmAPI.Application.Common.Dtos.OrderImportedUpdateDto"/> objects with the following information:
+            - <see cref="P:CrmAPI.Application.Common.Dtos.OrderImportedUpdateDto.OrderNumber"/>: Order number associated with the process.
+            - <see cref="P:CrmAPI.Application.Common.Dtos.OrderImportedUpdateDto.PaymentType"/>: Type of payment made.
+            - <see cref="P:CrmAPI.Application.Common.Dtos.OrderImportedUpdateDto.PaymentDate"/>: Date of the payment.
+            - <see cref="P:CrmAPI.Application.Common.Dtos.OrderImportedUpdateDto.Status"/>: Order status (e.g., "CANCELLED").
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the operation is successfully completed.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.ReassignProcess(CrmAPI.Application.Processes.Commands.ReassignProcess.ReassignProcessCommand)">
+            <summary>
+            Reassigns a process to a different user.
+            </summary>
+            <param name="command">
+            Object containing the data necessary for the reassignment:
+            - <see cref="P:CrmAPI.Application.Processes.Commands.ReassignProcess.ReassignProcessCommand.ProcessId"/>: Unique identifier of the process.
+            - <see cref="P:CrmAPI.Application.Processes.Commands.ReassignProcess.ReassignProcessCommand.UserId"/>: Identifier of the user to whom the process will be reassigned.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the operation is successfully completed.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.ReassignAllProcesses(CrmAPI.Application.Processes.Commands.ReassignAllUserProcesses.ReassignAllUserProcessesCommand)">
+            <summary>
+            Reassigns all processes from one user to another user.
+            </summary>
+            <param name="command">
+            Object containing the parameters necessary for the reassignment:
+            - <see cref="P:CrmAPI.Application.Processes.Commands.ReassignAllUserProcesses.ReassignAllUserProcessesCommand.FromUserId"/>: Identifier of the user from whom the processes will be reassigned.
+            - <see cref="P:CrmAPI.Application.Processes.Commands.ReassignAllUserProcesses.ReassignAllUserProcessesCommand.ToUserId"/>: Identifier of the user to whom the processes will be assigned.
+            - <see cref="P:CrmAPI.Application.Processes.Commands.ReassignAllUserProcesses.ReassignAllUserProcessesCommand.OnlyToDo"/>: Optional flag to reassign only processes with "To Do" status.
+            </param>
+            <returns>
+            An HTTP response:
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the operation is successful.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.ExternalSuccessfulSaleProcessCommand(CrmAPI.Application.Processes.Commands.ExternalSuccessfulSaleProcess.ExternalSuccessfulSaleProcessCommand)">
+            <summary>
+            Processes a successful external sale and updates the associated contact and process information.
+            </summary>
+            <param name="command">
+            Object containing the parameters required to process the successful external sale:
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.ProcessId"/>: Identifier of the associated process.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.IdCard"/>: Contact's ID.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.Email"/>: Contact's email address.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.Address"/>: Contact's address.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.PostalCode"/>: Postal code of the address.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.Country"/>: Country code.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.Province"/>: Province of the address.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.City"/>: City of the address.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.OrderNumber"/>: Order number.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.OrderDate"/>: Order date.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.AcademicTitle"/>: Academic title.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.InitDate"/>: Start date.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.PaymentType"/>: Payment type.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.CurrencyCountry"/>: Currency country.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.NumberDeadLines"/>: Number of installments.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.SalesCountry"/>: Sales country.
+            - <see cref="!:ExternalSuccessfulSaleProcessCommand.AmountRegistration"/>: Registration amount.
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> object indicating the operation's result.
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the operation was completed successfully.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.CloseProcessesCommand(CrmAPI.Application.Processes.Commands.CloseProcesses.CloseProcessesCommand)">
+            <summary>
+            Closes the processes specified in the list of process identifiers.
+            </summary>
+            <param name="command">
+            Object containing the parameters required to close the processes:
+            - <see cref="P:CrmAPI.Application.Processes.Commands.CloseProcesses.CloseProcessesCommand.ProcessIds"/>: List of process identifiers to close.
+            - <see cref="P:CrmAPI.Application.Processes.Commands.CloseProcesses.CloseProcessesCommand.IsAutomatic"/>: Indicates if the process closure is automatic (optional).
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> object indicating the operation's result.
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the operation was completed successfully.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.ReplaceProcessForPriorityCommercial(CrmAPI.Application.Processes.Commands.ReplaceProcessForPriorityCommercial.ReplaceProcessForPriorityCommercialCommand)">
+            <summary>
+            Replaces an existing process with a new one for a priority commercial user.
+            </summary>
+            <param name="command">
+            Object containing the parameters required to replace the process:
+            - <see cref="P:CrmAPI.Application.Processes.Commands.ReplaceProcessForPriorityCommercial.ReplaceProcessForPriorityCommercialCommand.ProcessId"/>: Identifier of the process to be replaced.
+            </param>
+            <returns>
+            An <see cref="!:ActionResult&lt;int&gt;"/> object containing the identifier of the newly created process.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.ReturnBusinnesContactsDelivery(CrmAPI.Application.Processes.Commands.ReturnBusinessContactsToDelivery.ReturnBusinessContactsToDeliveryCommands)">
+            <summary>
+            Devuelve los contactos comerciales para entrega basados en el correo electrónico corporativo proporcionado.
+            </summary>
+            <param name="command">Comando que contiene la ApiKey y el correo electrónico corporativo.</param>
+            <returns>
+            Un mensaje que indica que las fechas de reparto y el estado de los procesos se han actualizado correctamente.
+            </returns>
+            <remarks>
+            Este método realiza las siguientes operaciones:
+            1. Obtiene el ID del usuario a partir del correo electrónico corporativo.
+            2. Obtiene los IDs de contacto asociados al usuario.
+            3. Actualiza la fecha de reparto de los contactos.
+            4. Actualiza el estado de los procesos.
+            </remarks>
+            <response code="200">Las fechas de reparto y el estado de los procesos se actualizaron correctamente.</response>
+            <response code="400">Si el comando es nulo o no válido.</response>
+            <response code="500">Si ocurre un error interno en el servidor.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessesController.Delete(System.Int32)">
+            <summary>
+            Marks a process as deleted by its identifier.
+            </summary>
+            <param name="id">
+            The unique identifier of the process to delete.
+            </param>
+            <returns>
+            An HTTP response with:
+            - <see cref="T:Microsoft.AspNetCore.Http.HttpResults.NoContent"/> if the operation is successfully completed.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProcessSettingsController.GetProcessSettingsTypes(CrmAPI.Application.ProcessSettingsTypes.Queries.GetProcessSettingsTypes.GetProcessSettingsTypeQuery)">
+             <summary>
+             Retrieves a list of process configuration types.
+             </summary>
+             <returns>A list of objects representing the process types.</returns>
+             <remarks>
+             Example request:
+            
+                 GET /api/process-settings/types
+            
+             Returns a list of process configuration types that are not deleted and have an associated process type.
+             
+             <response code="200">Returns the list of process configuration types.</response>
+             <response code="401">If the user is not authorized to access this endpoint.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.ProposalsController.GetTemplateProposals(CrmAPI.Application.Proposals.Queries.GetTemplateProposals.GetTemplateProposalsQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.GetTemplateProposal(CrmAPI.Application.Proposals.Queries.GetTemplateProposal.GetTemplateProposalQuery)">
+             <summary>
+             Retrieves the details of a specific template proposal.
+             </summary>
+             <param name="query">The query object containing the ID of the template proposal to retrieve.</param>
+             <returns>The details of the specified template proposal.</returns>
+             <remarks>
+             Example request:
+            
+                 GET /api/template-proposal/TemplateProposal?TemplateProposalId=123
+            
+             Returns the details of the template proposal corresponding to the provided ID.
+             
+             <response code="200">Returns the details of the specified template proposal.</response>
+             <response code="400">If the query data is invalid.</response>
+             <response code="404">If no template proposal is found with the specified ID.</response>
+             <response code="401">If the user is not authorized to access this resource.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.Create(CrmAPI.Application.Proposals.Commands.CreateTemplateProposal.CreateTemplateProposalCommand)">
+             <summary>
+             Creates a new template proposal.
+             </summary>
+             <param name="command">The command containing the necessary data to create the template proposal.</param>
+             <returns>The ID of the created template proposal.</returns>
+             <remarks>
+             Example request:
+            
+                 POST /api/template-proposal
+                 {
+                     "Name": "Template Proposal 1",
+                     "ProcessType": "ProcessType",
+                     "Day": 5,
+                     "Attempt": 3,
+                     "Colour": "#FF5733",
+                     "CourseKnown": true,
+                     "CourseTypeId": 10,
+                     "HasToSendEmail": true,
+                     "HasToSendWhatsApp": false,
+                     "TagId": 2
+                 }
+            
+             <response code="200">Returns the ID of the successfully created template proposal.</response>
+             <response code="400">If the provided data is invalid.</response>
+             <response code="404">If a necessary resource such as Tag or CourseType is not found.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.Update(System.Int32,CrmAPI.Application.Proposals.Commands.UpdateTemplateProposal.UpdateTemplateProposalCommand)">
+             <summary>
+             Updates an existing template proposal.
+             </summary>
+             <param name="id">The ID of the template proposal to update.</param>
+             <param name="command">The command containing the updated data for the template proposal.</param>
+             <returns>An HTTP status code indicating the result of the operation.</returns>
+             <remarks>
+             Example request:
+            
+                 PUT /api/template-proposal/1
+                 {
+                     "Id": 1,
+                     "Name": "Updated Template Proposal",
+                     "ProcessType": "NewProcessType",
+                     "Day": 10,
+                     "Attempt": 2,
+                     "Colour": "#3366FF",
+                     "CourseKnown": false,
+                     "CourseTypeId": 15,
+                     "HasToSendEmail": false,
+                     "HasToSendWhatsApp": true,
+                     "TagId": 3
+                 }
+            
+             <response code="204">Indicates that the template proposal was successfully updated.</response>
+             <response code="400">If the provided ID does not match the ID in the command or if the data is invalid.</response>
+             <response code="404">If the template proposal or any associated resource such as Tag or CourseType is not found.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.Delete(System.Int32)">
+             <summary>
+             Deletes a template proposal by marking it as deleted.
+             </summary>
+             <param name="id">The ID of the template proposal to delete.</param>
+             <returns>An HTTP status code indicating the result of the operation.</returns>
+             <remarks>
+             Example request:
+            
+                 DELETE /api/template-proposal/1
+            
+             Marks the specified template proposal as deleted.
+             
+             <response code="204">Indicates that the template proposal was successfully deleted.</response>
+             <response code="404">If no template proposal is found with the specified ID.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.GetTemplateProposal(CrmAPI.Application.Proposals.Queries.GetTemplatesFromProposal.GetTemplatesFromTemplateProposal.GetTemplatesFromTemplateProposalQuery)">
+             <summary>
+             Retrieves the templates associated with a specific template proposal.
+             </summary>
+             <param name="query">The query parameters containing the ID of the template proposal.</param>
+             <returns>A list of templates associated with the specified template proposal.</returns>
+             <remarks>
+             Example request:
+            
+                 GET /api/templates-from-template-proposal?TemplateProposalId=1
+            
+             Returns the templates associated with the template proposal that have not been deleted.
+             
+             <response code="200">Returns the list of templates associated with the template proposal.</response>
+             <response code="400">If the query parameters are invalid.</response>
+             <response code="401">If the user is not authorized to access this endpoint.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.GetTemplatesFromTagId(CrmAPI.Application.Proposals.Queries.GetTemplatesFromTagId.GetTemplatesFromTagIdAndProcessTypeQuery)">
+             <summary>
+             Retrieves the templates associated with a specific tag identifier.
+             </summary>
+             <param name="query">The query parameters containing the ID of the tag.</param>
+             <returns>A list of templates associated with the specified tag.</returns>
+             <remarks>
+             Example request:
+            
+                 GET /api/templates-from-tag-id?TagId=1
+            
+             Returns the templates that match the provided tag ID and have not been deleted.
+             
+             <response code="200">Returns the list of templates associated with the tag identifier.</response>
+             <response code="400">If the query parameters are invalid.</response>
+             <response code="401">If the user is not authorized to access this endpoint.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.SetTemplateInTemplateProposal(CrmAPI.Application.Proposals.Commands.SetTemplateInTemplateProposal.SetTemplateInTemplateProposalCommand)">
+             <summary>
+             Associates a specific template with an existing template proposal.
+             </summary>
+             <param name="command">Command containing the identifiers of the template proposal and the template.</param>
+             <returns>A no-content result if the operation is successful.</returns>
+             <remarks>
+             Example request:
+            
+                 PUT /api/set-template-in-template-proposal
+                 {
+                     "TemplateProposalId": 1,
+                     "TemplateId": 2
+                 }
+            
+             Associates the template identified by `TemplateId` with the template proposal identified by `TemplateProposalId`.
+            
+             <response code="204">If the template is successfully associated with the template proposal.</response>
+             <response code="400">If the provided parameters are invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="404">If the specified template proposal or template is not found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.GetTemplatesFromTagId(CrmAPI.Application.Proposals.Queries.GetTemplateDetails.GetTemplateDetailsQuery)">
+             <summary>
+             Retrieves the details of a specific template by its identifier.
+             </summary>
+             <param name="andProcessTypeQuery">
+             Query containing the identifier of the template.
+             </param>
+             <returns>An object <see cref="T:CrmAPI.Application.Common.Dtos.TemplateDetailsDto"/> with the details of the template.</returns>
+             <remarks>
+             Example request:
+            
+                 GET /TemplateDetails?TemplateId=1
+            
+             Retrieves the details of the template identified by `TemplateId`.
+            
+             <response code="200">Returns the details of the requested template.</response>
+             <response code="400">If the provided parameters are invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="404">If the specified template is not found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.GetTemplateProposalsByTemplate(CrmAPI.Application.Proposals.Queries.GetTemplateProposalsFromTemplate.GetTemplateProposalsByTemplateQuery)">
+             <summary>
+             Retrieves a list of template proposals associated with a specific template.
+             </summary>
+             <param name="query">
+             Query containing the identifier of the template.
+             </param>
+             <returns>A list of <see cref="T:CrmAPI.Application.Common.Dtos.TemplateProposalDto"/> objects representing the associated template proposals.</returns>
+             <remarks>
+             Example request:
+            
+                 GET /TemplatesProposalByTemplate?TemplateId=1
+            
+             Retrieves all template proposals associated with the template identified by `TemplateId`.
+            
+             <response code="200">Returns a list of template proposals associated with the specified template.</response>
+             <response code="400">If the provided parameters are invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="404">If the specified template is not found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.ProposalsController.GetAllTemplates(CrmAPI.Application.Proposals.Queries.GetAllTemplates.GetAllTemplatesQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.CreateTemplate(CrmAPI.Application.Proposals.Commands.CreateTemplate.cs.CreateTemplateCommand)">
+             <summary>
+             Creates a new template in the system.
+             </summary>
+             <param name="command">
+             Command containing the necessary data to create the template.
+             </param>
+             <returns>The unique identifier of the newly created template.</returns>
+             <remarks>
+             Example request:
+            
+                 POST /CreateTemplate
+                 {
+                     "Name": "Template Name",
+                     "Description": "Template Description",
+                     "LanguageCode": "en"
+                 }
+            
+             Creates a new template with the provided data. If a valid language code (`LanguageCode`) is specified, the template will be associated with the corresponding language.
+            
+             <response code="201">The template was successfully created, and its identifier is returned.</response>
+             <response code="400">If the provided data is invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.UpdateTemplate(CrmAPI.Application.Proposals.Commands.UpdateTemplate.UpdateTemplateCommand)">
+             <summary>
+             Updates the data of an existing template.
+             </summary>
+             <param name="command">
+             Command containing the updated data of the template, including its identifier.
+             </param>
+             <returns>A no-content result if the operation is successful.</returns>
+             <remarks>
+             Example request:
+            
+                 PUT /UpdateTemplate/1
+                 {
+                     "Id": 1,
+                     "Name": "Updated Template Name",
+                     "Label": "Updated Label",
+                     "Subject": "Updated Subject",
+                     "Body": "Updated Body",
+                     "Type": "New Type",
+                     "LanguageCode": "es",
+                     "CourseNeeded": true,
+                     "Order": 5,
+                     "TagId": 10
+                 }
+            
+             Updates the template identified by `Id` with the provided values. If a valid language code (`LanguageCode`) is specified, it will be associated with the corresponding language.
+            
+             <response code="204">If the template is successfully updated.</response>
+             <response code="400">If the provided data is invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="404">If the specified template is not found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.DeleteTemplate(System.Int32)">
+             <summary>
+             Deletes (marks as deleted) an existing template in the system.
+             </summary>
+             <param name="id">
+             The unique identifier of the template to delete.
+             </param>
+             <returns>A no-content result if the operation is successful.</returns>
+             <remarks>
+             Example request:
+            
+                 DELETE /DeleteTemplate/1
+            
+             Marks the template identified by `id` as deleted (`IsDeleted = true`) without physically removing it from the database.
+            
+             <response code="204">If the template is successfully deleted.</response>
+             <response code="400">If the provided identifier is invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="404">If the specified template is not found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.ProposalsController.DeleteTemplateInTemplateProposal(CrmAPI.Application.Proposals.Commands.DeleteTemplateInTemplateProposal.DeleteTemplateInTemplateProposalCommand)">
+             <summary>
+             Deletes the relationships between a template and a template proposal.
+             </summary>
+             <param name="command">
+             Command containing the identifiers of the template and the template proposal to unlink.
+             </param>
+             <returns>A no-content result if the operation is successful.</returns>
+             <remarks>
+             Example request:
+            
+                 DELETE /DeleteTemplateInTemplateProposal
+                 {
+                     "TemplateProposalId": 1,
+                     "TemplateId": 2
+                 }
+            
+             Marks the relationships between the template identified by `TemplateId` and the template proposal identified by `TemplateProposalId` as deleted.
+            
+             <response code="204">If the relationships are successfully deleted.</response>
+             <response code="400">If the provided data is invalid.</response>
+             <response code="401">If the user is not authorized to perform this operation.</response>
+             <response code="404">If the relationship between the template and the template proposal is not found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.SpecialitiesController.GetSpecialitiesByFaculty(CrmAPI.Application.Specialities.Queries.GetSpecialitiesByFaculty.GetSpecialitiesByFacultyQuery)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.SpecialitiesController.GetSpecialitiesByFaculties(CrmAPI.Application.Specialities.Queries.GetSpecialitiesByFaculties.GetSpecialitiesByFacultiesQuery)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.TemplatesController.GetTemplates(CrmAPI.Application.Templates.Queries.GetTemplates.GetTemplatesQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.TemplatesController.GetTemplateDetails(System.Int32)">
+             <summary>
+             Retrieves the complete details of a specific template.
+             </summary>
+             <param name="templateId">The unique identifier of the template.</param>
+             <returns>
+             A `TemplateDetailsDto` object containing the details of the specified template.
+             </returns>
+             <remarks>
+             Example request:
+            
+                 GET /api/templates/123
+            
+             Retrieves the details of the template with the provided ID. Includes:
+             - Language information.
+             - Associated template proposals (that are not deleted).
+            
+             <response code="200">If the template details are successfully retrieved.</response>
+             <response code="400">If the `templateId` parameter is invalid.</response>
+             <response code="404">If no template is found with the provided ID.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.TemplatesController.GetTemplateBundleProposal(CrmAPI.Application.Templates.Queries.GetTemplateBundleProposal.GetTemplateBundleProposalQuery)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.TemplatesController.GetTemplateId(CrmAPI.Application.Templates.Queries.GetTemplateId.GetTemplateIdQuery)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.TemplatesController.GetTemplate(CrmAPI.Application.Templates.Queries.GetTemplate.GetTemplateQuery)" -->
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.TemplatesController.GetTemplateByLabel(CrmAPI.Application.Templates.Queries.GetTemplateByLabel.GetTemplateByLabelQuery)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.TemplatesController.GetArgumentByProcessId(CrmAPI.Application.Templates.Queries.GetArgumentByProcesstId.GetArgumentByProcesstIdQuery)">
+             <summary>
+             Retrieves the details of an argument based on the process ID or the specific argument ID.
+             </summary>
+             <param name="query">An object containing the necessary filters to search for the argument.</param>
+             <returns>
+             A <see cref="T:CrmAPI.Application.Common.Dtos.TemplateDetailsDto"/> object containing the details of the found argument.
+             </returns>
+             <remarks>
+             Example request:
+            
+                 GET /api/templates/GetArgumentByProcessId?ProcessId=123
+                 GET /api/templates/GetArgumentByProcessId?ArgumentId=456
+            
+             The parameters that can be sent are:
+             - `ProcessId` (optional): ID of the process to search for a related argument.
+             - `ArgumentId` (optional): Specific ID of an argument.
+            
+             If `ArgumentId` is provided, that argument will be searched directly. 
+             Otherwise, an attempt will be made to find an argument associated with the process specified by `ProcessId`.
+            
+             <response code="200">If an argument is found based on the criteria.</response>
+             <response code="400">If no valid parameters are provided.</response>
+             <response code="404">If no argument or associated process is found.</response>
+             <response code="500">If an internal server error occurs.</response>
+             </remarks>    
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrmAPI.Presentation.Controllers.TemplatesController.UpdateContentInAllTemplates(CrmAPI.Application.Proposals.Commands.UpdateContentInAllTemplates.UpdateContentInAllTemplatesCommand)" -->
+        <member name="M:CrmAPI.Presentation.Controllers.TemplatesController.UploadTemplateAuditory(CrmAPI.Application.Templates.Commands.UploadTemplateAuditory.UploadTemplateAuditoryCommand)">
+             <summary>
+             Uploads a file with the completed audit template. 
+             Subsequently, it inserts the contacts that need to be audited.
+             </summary>
+             <param name="command">
+             An object <see cref="T:CrmAPI.Application.Templates.Commands.UploadTemplateAuditory.UploadTemplateAuditoryCommand"/> that contains the file to upload and an optional date.
+             </param>
+             <returns>
+             An HTTP response with status 204 (No Content) if the operation is successful.
+             </returns>
+             <remarks>
+             Example request:
+            
+                 POST /api/audits/UploadTemplateAuditory
+                 Headers:
+                     Authorization: Bearer {token}
+                 Body (multipart/form-data):
+                     File: [File .xlsx/.csv/etc.]
+                     Date: "2025-01-15" (optional)
+            
+             This endpoint uploads a file with audit data to blob storage. 
+             If no date is provided, it defaults to using the next day's date.        
+            
+             <response code="204">If the file is uploaded successfully.</response>
+             <response code="400">If an invalid file is provided or there are errors in the request.</response>
+             <response code="403">If the user does not have the appropriate permissions.</response>
+             <response code="500">If an internal error occurs during the upload process.</response>
+             </remarks>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.TemplatesController.GetTemplateAuditory">
+             <summary>
+             Sends an empty audit template via email.
+             </summary>
+             <remarks>
+             This endpoint generates an email that includes a download link for an empty audit template. 
+             The email is sent to the authenticated user's email address.
+            
+             **Requirements:**
+             - The user must have the **Auditor** role.
+            
+             **Example request:**
+                 GET /api/audits/GetTemplateAuditory
+                 Headers:
+                     Authorization: Bearer {token}
+            
+             **Expected responses:**
+             - `204 No Content`: If the email is sent successfully.
+             - `403 Forbidden`: If the user does not have the appropriate permissions.
+             - `500 Internal Server Error`: If an internal error occurred.
+            
+             **Technical details:**
+             - Uses a publishing service to send the email with a link to the file.
+             - In case of an error, the event is logged for diagnostic purposes.
+             </remarks>
+             <response code="204">Email sent successfully.</response>
+             <response code="403">The user does not have permission to access this resource.</response>
+             <response code="500">Internal error while processing the request.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.UsersController.GetCurrentUserSellerId">
+             <summary>
+             Retrieves the ID of the seller associated with the current authenticated user.
+             </summary>
+             <remarks>
+             This endpoint obtains the seller ID (`IdVendedor`) linked to the email 
+             of the authenticated user.    
+            
+             **Example request:**
+                 GET /api/users/GetCurrentUser SellerId
+                 Headers:
+                     Authorization: Bearer {token}
+            
+             **Expected responses:**
+             - `200 OK`: Returns the associated seller ID.
+             - `401 Unauthorized`: If the user is not authenticated.
+             - `500 Internal Server Error`: If an internal error occurred.
+            
+             </remarks>
+             <response code="200">Returns the ID of the seller associated with the user.</response>
+             <response code="401">The user is not authenticated.</response>
+             <response code="500">Internal error while processing the request.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.UtcTimeZoneController.UtcTimeZone(CrmAPI.Application.UtcTimeZone.Queries.GetUtcTimeZoneQuery,System.Threading.CancellationToken)">
+            <summary>
+            Convierte una fecha y hora UTC a la zona horaria de un país específico.
+            </summary>
+            <param name="query">
+            Parámetros de la solicitud, incluyendo el código ISO del país de destino y la fecha/hora en UTC a convertir.
+            </param>
+            <param name="ct">
+            Token de cancelación para abortar la operación si es necesario.
+            </param>
+            <returns>
+            La fecha y hora convertida a la zona horaria del país especificado en formato "yyyy-MM-dd HH:mm:ss".
+            </returns>
+            <response code="200">Devuelve la fecha y hora convertida exitosamente.</response>
+            <response code="400">Si el código ISO del país no es válido o no se encuentra.</response>
+            <response code="401">Si el usuario no está autenticado o autorizado para acceder al recurso.</response>
+            <response code="500">Si ocurre un error inesperado durante la conversión.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.WebEnrollmentController.Create(CrmAPI.Application.WebEnrollments.Commands.CreateWebEnrollment.CreateWebEnrollmentCommand)">
+             <summary>
+             Creates a new web enrollment record.
+             </summary>
+             <remarks>
+             This endpoint allows the creation of a new web enrollment record, associating it with an existing process and contact.
+            
+             **Example request:**
+                 POST /api/enrollments
+                 Headers:
+                     Authorization: Bearer {token}
+                 Body:
+                 {
+                     "processId": 123,
+                     "contactId": 456,
+                     "languageCode": "EN",
+                     ...
+                 }    
+            
+             </remarks>
+             <response code="200">Enrollment created successfully.</response>
+             <response code="404">The specified process or contact does not exist.</response>
+             <response code="500">Internal error while processing the request.</response>
+        </member>
+        <member name="M:CrmAPI.Presentation.Controllers.WhatsappController.Create(CrmAPI.Application.Whatsapps.Commands.SendWhatsappCommand)">
+             <summary>
+             Sends a WhatsApp message using the provided data.
+             </summary>
+             <remarks>
+             This endpoint allows sending a WhatsApp message to a specified contact. 
+             The message data, including the content and the recipient, must be provided in the body of the request.
+            
+             **Example request:**
+                 POST /api/whatsapp
+                 Headers:
+                     Authorization: Bearer {token}
+                 Body:
+                 {
+                     "contactId": 123,
+                     "message": "Hello, this is a test message."
+                 }
+            
+             </remarks>
+             <response code="200">Message sent successfully and recorded in the database.</response>
+             <response code="403">The user does not have permission to perform this action.</response>
+             <response code="500">Internal error while processing the request.</response>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "bbeM68ja98pu1B5OQt1eOccWp2tgEO5nfh1t4EfCM9Y=",
+  "Source": "CrmAPI.Presentation",
+  "BasePath": "_content/CrmAPI.Presentation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CrmAPI.Presentation\\wwwroot",
+      "Source": "CrmAPI.Presentation",
+      "ContentRoot": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Presentation\\wwwroot\\",
+      "BasePath": "_content/CrmAPI.Presentation",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Presentation\\wwwroot\\favicon.ico",
+      "SourceId": "CrmAPI.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Presentation\\wwwroot\\",
+      "BasePath": "_content/CrmAPI.Presentation",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Presentation\\wwwroot\\swagger\\specification.json",
+      "SourceId": "CrmAPI.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repositorios\\CRM\\backend\\api-crm\\src\\Presentation\\wwwroot\\",
+      "BasePath": "_content/CrmAPI.Presentation",
+      "RelativePath": "swagger/specification.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger\\specification.json"
+    }
+  ]
+}

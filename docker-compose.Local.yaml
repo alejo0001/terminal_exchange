@@ -1,0 +1,8 @@
+services:
+  crm-api:
+    environment:
+      AZENV: Local
+    deploy:
+      resources:
+        limits:
+          memory: 250M

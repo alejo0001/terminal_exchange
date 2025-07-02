@@ -1,0 +1,48 @@
+name: intranet-crm-api
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-tech
+    hostname: rabbitmq-tech
+    ports:
+      - 15671:15671
+      - 15672:15672
+      - 15691:15691
+      - 15692:15692
+      - 25672:25672
+      - 4369:4369
+      - 5671:5671
+      - 5672:5672
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 10s
+      timeout: 2s
+      retries: 10
+    networks:
+      - intranet-compose
+  crm-api:
+    container_name: crm-api
+    expose:
+      - 5000
+      - 5001
+    ports:
+      - 5000:5000
+      - 5001:5001
+    environment:
+      ASPNETCORE_URLS: http://+:5000;https://+:5001
+      ASPNETCORE_Kestrel__Certificates__Default__Password: password
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetapp.pfx
+      RabbitMQ__HostName: rabbitmq-tech
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - intranet-compose
+    volumes:
+      - ~/.aspnet/https:/https:ro
+networks:
+  intranet-compose:
+    name: intranet-bridge
+    driver: bridge

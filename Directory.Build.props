@@ -1,0 +1,57 @@
+<Project>
+    <PropertyGroup>
+        <!-- Increment version according to the instructions in solutions's README.md. -->
+        <Version>1.4.0</Version>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Other common propertis taht will be used by all projects in this solution. -->
+        <Authors>TECHTITUTE</Authors>
+        <Company>TECHTITUTE</Company>
+        <Description>CrmAPI, CRM Backend</Description>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>1701;1702;1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageOutputPath>$(SolutionDir)packages</PackageOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Property to determine local compilations should have some special configuration or behavior.
+             Enable it via MSBuild props from commnad line or vie env.variables.-->
+        <IsLocalBuild>false</IsLocalBuild>
+    </PropertyGroup>
+
+    <Choose>
+        <When Condition=" '$(IsLocalBuild)' == true ">
+            <PropertyGroup>
+                <IncludeSeq>true</IncludeSeq>
+                <DefineConstants>$(DefineConstants);INCLUDE_SEQ</DefineConstants>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <IncludeSeq>false</IncludeSeq>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" PrivateAssets="All" Version="8.0.0"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2024.3.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="JetBrains.Annotations"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,4 @@
+services:
+  crm-api:
+    environment:
+      AZENV: Development

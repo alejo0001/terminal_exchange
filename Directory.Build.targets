@@ -1,0 +1,16 @@
+<Project>
+    <Target Name="GetPackageMetadata" Condition="$(Only) == true">
+        <PropertyGroup>
+            <Response>
+                {
+                "Version": "$(Version)",
+                "PackageId": "$(PackageId)",
+                "IsPackable": $(IsPackable),
+                "IsTestProject": "$(IsTestProject)"
+                }
+            </Response>
+        </PropertyGroup>
+
+        <Message Text="$(Response)" Importance="high"/>
+    </Target>
+</Project>

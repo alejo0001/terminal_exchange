@@ -1,0 +1,1628 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrmAPI.Application</name>
+    </assembly>
+    <members>
+        <member name="T:CrmAPI.Application.Actions.Queries.GetActionsSendEmailDayZero.CheckHasSentEmailsQuery">
+            <summary>
+                Check, whether <see cref="T:IntranetMigrator.Domain.Entities.Action" /> has it's <see cref="P:IntranetMigrator.Domain.Entities.Action.Type" />
+                one of <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailPending" />, <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailSucceeded" /> or
+                <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailFailed" />.
+            </summary>
+            <param name="ProcessId"></param>
+        </member>
+        <member name="M:CrmAPI.Application.Actions.Queries.GetActionsSendEmailDayZero.CheckHasSentEmailsQuery.#ctor(System.Int32)">
+            <summary>
+                Check, whether <see cref="T:IntranetMigrator.Domain.Entities.Action" /> has it's <see cref="P:IntranetMigrator.Domain.Entities.Action.Type" />
+                one of <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailPending" />, <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailSucceeded" /> or
+                <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailFailed" />.
+            </summary>
+            <param name="ProcessId"></param>
+        </member>
+        <member name="P:CrmAPI.Application.Actions.Queries.GetActionsSendEmailDayZero.CheckHasSentEmailsQuery.ProcessId">
+            <summary></summary>
+        </member>
+        <member name="T:CrmAPI.Application.Common.BusinessAlgorithms.ConvocationDateAlgorithms">
+            <summary>
+                Something that came down from Management. Carlos, Diego and Daniel know the topic well.
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.Common.BusinessAlgorithms.LanguageExtractionAlgorithms">
+            <summary>
+                Various common ways to get Contact Language info from in-memory data structures, based on Crm Domain Model.
+            </summary>
+        </member>
+        <member name="F:CrmAPI.Application.Common.BusinessAlgorithms.LanguageExtractionAlgorithms.DefaultLanguageIdES">
+            <summary>
+                By business rule, Spanish is default language throughout the company. It is the Id of
+                <see cref="T:IntranetMigrator.Domain.Entities.Language" /> entity.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.Common.BusinessAlgorithms.ProductPricingAlgorithms.GetScholarshipDiscountPercent(IntranetMigrator.Domain.Entities.ContactLead,System.Nullable{CrmAPI.Application.Common.Dtos.CourseImportedTlmkDto},System.Func{System.Nullable{System.Decimal},System.Decimal})">
+            <summary>
+                Obtains <b>Scholarship</b> discount data from provided sources in priority order according to argument
+                positions.
+            </summary>
+            <param name="contactLead"></param>
+            <param name="courseImportedTlmk"></param>
+            <param name="sanitizeDiscountPercentDlgt">
+                <para>
+                    Although very unlikely, it can happen that business data is bad or because of some other unforeseen
+                    circumstances, source data might not provide any discount data -- for <b>Scholarship</b> it's mandatory.
+                    Therefore, it is up too caller/business use case to decide, how to handle this (hopefully rare)
+                    condition, e.g. what the fallback percentage needs to be.
+                </para>
+                <para>
+                    As a bonus, this delegate allows to override "Discount &amp; The Rest" calculation.
+                </para>
+            </param>
+            <returns>Tuple of "Discount &amp; The Rest"</returns>
+            <remarks>Applies "Ceiling" for obtained and sanitized Discount.</remarks>
+            <code>
+            finalDiscount = sanitizeDiscountPercentDlgt(fromDisCountSources)
+            theRest = 100 - finalDiscount
+            </code>
+            <exception cref="T:System.ArgumentNullException">
+                When <paramref name="sanitizeDiscountPercentDlgt" /> is null, because it's there for business rule
+                enforcement.
+            </exception>
+        </member>
+        <member name="T:CrmAPI.Application.Common.BusinessAlgorithms.ProductPricingAlgorithms.DiscountPercent">
+            <summary>
+                Presents Discount percentage as <c>1.00%, 10.00%, 100.00%</c>
+            </summary>
+            <param name="Discount">Discount value.</param>
+        </member>
+        <member name="M:CrmAPI.Application.Common.BusinessAlgorithms.ProductPricingAlgorithms.DiscountPercent.#ctor(System.Decimal)">
+            <summary>
+                Presents Discount percentage as <c>1.00%, 10.00%, 100.00%</c>
+            </summary>
+            <param name="Discount">Discount value.</param>
+        </member>
+        <member name="P:CrmAPI.Application.Common.BusinessAlgorithms.ProductPricingAlgorithms.DiscountPercent.Discount">
+            <summary>Discount value.</summary>
+        </member>
+        <member name="P:CrmAPI.Application.Common.BusinessAlgorithms.ProductPricingAlgorithms.DiscountPercent.TheRest">
+            <summary>
+                Computed as <c>100 - Discount</c>.
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Caching.AbstractMemoryCache`3">
+            <summary>
+                .NET Memory Cache based cache. Manages key creation for each implementation type in buffered way.
+            </summary>
+            <remarks>
+                Service's behavior depends on settings dependency of <see cref="T:Microsoft.Extensions.Options.IOptionsSnapshot`1" />.
+            </remarks>
+            <typeparam name="TKey">
+                Any non-null type, because created cache keys are internally buffered and retrieval relies
+                on value equality semantics.
+            </typeparam>
+            <typeparam name="TItem">Type of items that this cache service manages internally.</typeparam>
+            <typeparam name="TOptions">
+                Type of options that must implement <see cref="T:CrmAPI.Application.Common.Interfaces.ICacheSettings" />, to configure items'
+                <see cref="T:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions" />.
+            </typeparam>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Caching.AbstractMemoryCache`3.GetKey(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Common.Caching.AbstractMemoryCache`3.Set(`0,`1,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Common.Caching.AbstractMemoryCache`3.Get(`0,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:CrmAPI.Application.Common.Dtos.CourseApiResponse`1">
+            <summary>
+                To compensate CourseApi response structure.
+            </summary>
+            <param name="Data">Wrapped data, what we actually need.</param>
+            <remarks>
+                For example, see  <see cref="M:CrmAPI.Application.Common.Interfaces.ICourseUnApiClient.GetPricesForTlmk(CrmAPI.Contracts.Dtos.IPricesForTlmkParamsDto,System.Threading.CancellationToken)" />.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Dtos.CourseApiResponse`1.#ctor(`0)">
+            <summary>
+                To compensate CourseApi response structure.
+            </summary>
+            <param name="Data">Wrapped data, what we actually need.</param>
+            <remarks>
+                For example, see  <see cref="M:CrmAPI.Application.Common.Interfaces.ICourseUnApiClient.GetPricesForTlmk(CrmAPI.Contracts.Dtos.IPricesForTlmkParamsDto,System.Threading.CancellationToken)" />.
+            </remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Common.Dtos.CourseApiResponse`1.Data">
+            <summary>Wrapped data, what we actually need.</summary>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IApplicationDbContext.SaveChangesAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)" />
+            <summary>
+                Allows to "inject" creator information as a tag to <see cref="P:IntranetMigrator.Domain.Common.BaseEntity.CreatedBy" /> to identify caller.<br />
+                <inheritdoc cref="M:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)" />
+            </summary>
+            <remarks>
+                It is up to implementation, how this information is used, combined, etc.
+                <inheritdoc cref="M:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)" /><br />
+            </remarks>
+            <param name="creatorTag"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IApplicationDbContext.ClearUnitOfWork">
+            <summary>
+                Allows to clear context/repository current tacked state. It should be worth to be used on flows, where it's
+                practical to use same underlying context instance around for prolonged operations and accumulated, but
+                <em>unuseful state</em> is held in context.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Application.Common.Interfaces.ICacheSettings.SlidingExpirationPeriod">
+            <summary>
+                For Cache Entry policy.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Application.Common.Interfaces.ICacheSettings.AbsoluteExpirationPeriod">
+            <summary>
+                For Cache Entry policy.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICommercialAssignmentService.GetEmployeeManager(IntranetMigrator.Domain.Entities.Employee)">
+            <summary>
+                This data is supposed to come from HrApi, but security don`t allow to do it. So this 1:1 copy from HrApi.
+            </summary>
+            <param name="employee"></param>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICommercialAssignmentService.FillOrganizationNodeCache(System.Threading.CancellationToken)">
+            <summary>
+                This is required to be called before any service's internal use of <see cref="T:IntranetMigrator.Domain.Entities.OrganizationNode" /> data!
+            </summary>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.IContactLeadsAnalyzerService">
+            <summary>
+                Analyze whether Contact is missing ContactLead.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IContactLeadsAnalyzerService.GetSpecificContactsStream(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Threading.CancellationToken)">
+            <summary>
+                Queries projected Contacts data as <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" />, paged by value from
+                <see cref="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ContactsQueryMaxPageSize" /> or size of
+                <see cref="P:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto.ContactIds" />, whichever is smaller.
+            </summary>
+            <remarks>No Area nor Country Code filtering will be applied.</remarks>
+            <param name="requestDto"></param>
+            <param name="ct"></param>
+            <returns>Awaitable stream.</returns>
+            <exception cref="T:System.InvalidOperationException">
+                <see cref="P:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto.ContactIds" /> is null or empty.
+            </exception>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IContactLeadsAnalyzerService.GetAnyContactsStream(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Threading.CancellationToken)">
+            <summary>
+                Queries projected Contacts data as <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" />, paged by value from
+                <see cref="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ContactsQueryMaxPageSize" /> or
+                <see cref="P:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto.MaxJobContacts" />, whichever is smaller.
+            </summary>
+            <remarks>It figures out, whether it must be short-circuited -- missing max job size.</remarks>
+            <param name="requestDto"></param>
+            <param name="ct"></param>
+            <returns>Awaitable stream.</returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.IContactsConsolidatorService">
+            <summary>
+                Consolidates 2 Contacts (student entity or sales lead): copies over sales and contact information, origin to
+                destination, origin gets soft deleted.<br />
+                <para>
+                    Systems involved:<br />
+                    1. Intranet DB<br />
+                    2. "Potenciales" DB.
+                </para>
+            </summary>
+            <remarks>
+                It is required that all work must be transactional: in case of any problem all must be rolled back.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IContactsConsolidatorService.ConsolidateContacts(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Conducts consolidation from origin contact to destination, encapsulates entity changes only.
+            </summary>
+            <remarks>
+                Saving changes must be called outside to provide some degree of flexibility, data analysis and other kind of
+                control as needed, before saving modifications to the datastores.
+            </remarks>
+            <param name="originContactId"></param>
+            <param name="destinationContactId"></param>
+            <param name="ct"></param>
+            <returns>
+                If Origin happens to be not found then returns <see cref="T:ErrorOr.Error" /> of <see cref="F:ErrorOr.ErrorType.NotFound" />
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IContactsConsolidatorService.SaveChanges(System.Threading.CancellationToken)">
+            <summary>
+                Performs transactional saving changes of consolidation work in transactional over all underlying datastores.
+            </summary>
+            <remarks>Implementations must guarantee that nothing gets saved in cas of any error.</remarks>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.ICoursesFpDbContext">
+            <summary>
+                Inheritance is used, because DB schemas are identical.
+            </summary>
+            <remarks>
+                It is hackish, but is supposed to be temporal remedy.
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.ICourseWebEnrollmentService">
+            <summary>
+                Sending new enrollment to Web.
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.ICrmMailerService">
+            <summary>
+                Encapsulates business rules in terms of source data retrieval and how Customer e-mail communication should be
+                handled. It is up to the consumer to build the instance of <see cref="T:NotificationAPI.Contracts.Commands.CreateEmail" /> to be sent.
+            </summary>
+            <remarks>
+                <para>
+                    Although not prohibited, but better off use other means to send emails of non-customer communication,
+                    because fulling first and foremost, this service is supposed to streamline business requirements (tracking,
+                    domain data relations, etc).
+                </para>
+                <para>
+                    If there's a need to have something similar for reporting or other non-customer communication, then better
+                    create separate service, to keep things clear in terms of responsibilities and even more so for business
+                    use case clarity standpoint.
+                </para>
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.GetProcessesWithRelatedData(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Gets Process with all related data required to work with this service.
+            </summary>
+            <param name="processId"></param>
+            <param name="ct"></param>
+            <returns>
+                Materialized object graph. Non-nullable return type is to simplify consuming code, and it strongly needs
+                pre-validation of provided <paramref name="processId" />, to avoid blowing things up unexpectedly.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.GetProcessesWithRelatedData(System.Int32,System.Collections.Generic.ICollection{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+                <inheritdoc cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.GetProcessesWithRelatedData(System.Int32,System.Threading.CancellationToken)" />
+            </summary>
+            <param name="processId"></param>
+            <param name="onlyContactLeadIds">
+                ContactLeads are limited by provided Ids; empty means no entities will be returned.
+            </param>
+            <param name="ct"></param>
+            <returns>
+                <inheritdoc cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.GetProcessesWithRelatedData(System.Int32,System.Threading.CancellationToken)" />
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.GetTemplateAsync(System.String,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Should use internal buffer, but eventually loads <see cref="T:IntranetMigrator.Domain.Entities.Template" /> entities with all required
+                related data.
+            </summary>
+            <param name="templateCode"></param>
+            <param name="languageId"></param>
+            <param name="ct"></param>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.String,System.Threading.CancellationToken)">
+            <summary>
+                <inheritdoc
+                    cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.String,System.Threading.CancellationToken)" />
+            </summary>
+            <param name="process"></param>
+            <param name="emailCommand"></param>
+            <param name="entityCreatorTag">Will be passed to <see cref="P:IntranetMigrator.Domain.Common.BaseEntity.CreatedBy" /> filed</param>
+            <param name="ct"></param>
+            <exception cref="T:System.InvalidOperationException">
+                <inheritdoc cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.String,System.Threading.CancellationToken)" />
+            </exception>
+            <exception cref="T:System.Exception">Other exceptions, mostly form EF Core guts...</exception>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(System.Collections.Generic.Dictionary{IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail},System.String,System.Threading.CancellationToken)">
+            <summary>
+                <inheritdoc
+                    cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.String,System.Threading.CancellationToken)" />
+            </summary>
+            <param name="processEmailCommands"></param>
+            <param name="entityCreatorTag">Will be passed to <see cref="P:IntranetMigrator.Domain.Common.BaseEntity.CreatedBy" /> filed</param>
+            <param name="ct"></param>
+            <exception cref="T:System.InvalidOperationException">
+                <inheritdoc
+                    cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.String,System.Threading.CancellationToken)" />
+            </exception>
+            <exception cref="T:System.Exception">Other exceptions, mostly form EF Core guts...</exception>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.Threading.CancellationToken)">
+            <summary>
+                <inheritdoc cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.String,System.Threading.CancellationToken)" />
+            </summary>
+            <param name="process"></param>
+            <param name="emailCommand"></param>
+            <param name="ct"></param>
+            <exception cref="T:System.InvalidOperationException">
+                <inheritdoc cref="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail,System.String,System.Threading.CancellationToken)" />
+            </exception>
+            <exception cref="T:System.Exception">Other exceptions, mostly form EF Core guts...</exception>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.StoreBusinessEmailData(System.Collections.Generic.Dictionary{IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail},System.String,System.Action{IntranetMigrator.Domain.Entities.Email,IntranetMigrator.Domain.Entities.Action},System.Threading.CancellationToken)">
+            <summary>
+                Creates <see cref="T:IntranetMigrator.Domain.Entities.Email" /> and its related <see cref="T:IntranetMigrator.Domain.Entities.Action" /> with type of
+                <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailPending" /> and adds them to DbContext.
+            </summary>
+            <param name="processEmailCommands"></param>
+            <param name="entityCreatorTag">Will be passed to <see cref="P:IntranetMigrator.Domain.Common.BaseEntity.CreatedBy" /> filed</param>
+            <param name="configureEntitiesDlgt">
+                Allows to configure created entities that where created with minimum required state. Will be executed
+                before saving them tu datastore.
+            </param>
+            <param name="ct"></param>
+            <exception cref="T:System.InvalidOperationException">
+                When <paramref name="processEmailCommands" /> doesn't have
+                <see cref="P:NotificationAPI.Contracts.Commands.CreateEmail.CorrelationId" /> set.
+            </exception>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.ICrmMailerService.SendCreateEmailCommand(NotificationAPI.Contracts.Commands.CreateEmail,System.Threading.CancellationToken)">
+            <summary>
+                <b>Sends</b> the command <see cref="T:NotificationAPI.Contracts.Commands.CreateEmail" /> to messaging broker.
+            </summary>
+            <param name="emailCommand"></param>
+            <param name="ct"></param>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.IEFCoreFunctions">
+            <summary>
+                Initially created to help to unit test the code tha uses <see cref="P:Microsoft.EntityFrameworkCore.EF.Functions" /> to provide abstraction over
+                a Stub and EF Core compatible implementations.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IEFCoreFunctions.Like(System.String,System.String)">
+            <inheritdoc cref="M:Microsoft.EntityFrameworkCore.DbFunctionsExtensions.Like(Microsoft.EntityFrameworkCore.DbFunctions,System.String,System.String)" />
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IEFCoreFunctions.LikeOr``1(System.Linq.Expressions.Expression{System.Func{``0,System.String}},System.String[])">
+            <summary>
+                Using <see cref="N:LinqKit" /> goodies to build more sophisticated expression that essential combines multiple
+                <see cref="M:Microsoft.EntityFrameworkCore.DbFunctionsExtensions.Like(Microsoft.EntityFrameworkCore.DbFunctions,System.String,System.String)" /> into
+                generated SQL.
+            </summary>
+            <param name="propertySelector"></param>
+            <param name="orPatterns"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.IEmailSendTestingFeatureFlagService">
+            <summary>
+                REMOVE ASPA, OR REMOVE Dependency from KVS as a Config Source!
+            </summary>
+            <remarks>
+                <para>
+                    It solely exists, because AZ KVS is integrated into solution, but ConnectionSettings type is not visible in
+                    Application layer. So implementation mus be in Infrastructure Layer to interact with distended setting from
+                    KVS.
+                </para>
+                <para>
+                    Register as SingletonService!
+                </para>
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.IEntityClonerService`1">
+            <summary>
+                Helps Unit Testing and should encapsulate some low-level ORM logic.
+            </summary>
+            <typeparam name="TContext"></typeparam>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IEntityClonerService`1.DeepCopyAndBaseEntityReset``1(``0)">
+            <summary>
+                Crates new instance of <see cref="!:TEntity" />, sets it property values from
+                <paramref name="existingEntity" />ts new entities
+                <see cref="T:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry`1" />'s
+                <see cref="!:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry&lt;TEntity&gt;.State" /> to
+                <see cref="F:Microsoft.EntityFrameworkCore.EntityState.Added" />.<br />
+                Also resets properties of <see cref="T:IntranetMigrator.Domain.Common.BaseEntity" /> to their default values after copy.
+            </summary>
+            <remarks>
+                Guarantees that cloned entity is added to (EF) underlying ORM/Unit Of Work, so next call saving cahnges
+                will result in new in underlying databaase.
+            </remarks>
+            <param name="existingEntity"></param>
+            <typeparam name="TEntity"></typeparam>
+            <returns>
+                New instance of <typeparamref name="TEntity" />.
+            </returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.IGenericCache`2">
+            <summary>
+                Generic Cache-based service, that uses strongly typed keys. This allows to abstract away cache
+                specific key type requirements, it is up to implementors to do any conversion of key during its generation.
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TItem"></typeparam>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IGenericCache`2.GetKey(`0)">
+            <summary>
+                Creates a key, that is suitable for underlying cache technology. Up to implementor.
+            </summary>
+            <param name="key">Key instance.</param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.IHasApiKey">
+            <summary>
+                REST API incoming request should
+                implement this interface to unify API security model.
+            </summary>
+            <remarks>
+                As of now REST APIs need this for sure, MassTransit should operate in secured realm already by default,
+                because those are calls between apis themselves.
+            </remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Common.Interfaces.IHasApiKey.ApiKey">
+            <summary>
+                Api key.
+            </summary>
+            <remarks>
+                It can be anywhere in the HTTP request, including in header if it is comfortable for command issuers.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IHrApiClient.GetWorkScheduleDaysOfWeek(System.Int32,System.DateTime,System.Threading.CancellationToken)">
+            <summary>
+            Get Work Schedule of the week
+            </summary>
+            <param name="userId"></param>
+            <param name="date"></param>
+            <param name="ct"></param>
+            <returns>An object of WorkScheduleDaysOfWeekDto or Null (async)</returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Interfaces.ITopSellerCourseService">
+            <summary>
+                Get Top <em>X</em> sold Courses, from TLMK and Intranet databases; where <em>X</em> will be
+                implementation detail of concrete service.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Interfaces.IWorkScheduleService.GetProposalNextDate(System.Int32,System.DateTime,System.Threading.CancellationToken)">
+            <summary>
+                Get date for new appointment
+            </summary>
+            <param name="userId"></param>
+            <param name="dateLocalEmployee"></param>
+            <param name="ct"></param>
+            <returns>A date or null (async)</returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.JsonConverters.DetailExceptionConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:CrmAPI.Application.Common.Security.AuthorizeAttribute">
+            <summary>
+                Specifies that the type this attribute is applied to requires authorization.
+            </summary>
+            <remarks>
+                This is mere marker with optional Roles information. Authorization procedure must be done some other component.
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Application.Common.TemplateToolkit.ContextualVariableResolver">
+            <remarks>
+                ContextualVariableResolver placeholder for future implementation
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.TemplateToolkit.TemplateParser.TemplatePlaceholderRegex">
+            <remarks>
+            Pattern explanation:<br/>
+            <code>
+            ○ Match '$'.<br/>
+            ○ 1st capture group.<br/>
+                ○ Match a word character atomically at least once.<br/>
+            ○ Match '$'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor">
+            <summary>
+                A performant tool for bulk string replacements.
+            </summary>
+            <remarks>
+                <para>
+                    Relies on <see cref="T:System.Text.StringBuilder" /> to avoid repeated string creations which reduces GC pressure.
+                </para>
+                <para>
+                    Walk-through of the template string is done only once and variable comparisons are internally done using
+                    <b>Trie</b> data structure. In terms of memory it's costly, but this structure is created only once for
+                    replacement operation.
+                </para>
+                <para>
+                    Hopefully this tool has sufficient balance between performance and overall memory consumption.
+                </para>
+            </remarks>
+            <seealso href="https://www.geeksforgeeks.org/introduction-to-trie-data-structure-and-algorithm-tutorials/" />
+        </member>
+        <member name="M:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.ReplacePlaceholders(System.String,System.Boolean,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Func{System.String}}[])">
+            <summary>
+                Cleans up replacement values from excess spaces and then replaces variables in template.
+            </summary>
+            <param name="template"></param>
+            <param name="ignoreCase">
+                Defaults to ignore variable case sensitivity to be more unforgiving to user who manages
+                templating. On the flip-side it means that variable structure must be a bit more solid, like having more
+                complex boundary markers to distinguish variable from normal text with higher level of certainty.
+            </param>
+            <param name="replacements"></param>
+            <returns></returns>
+            <remarks>
+                <para>
+                    This overload uses delegates to get replacement values. It is inherently deferred. It allows great
+                    degree of flexibility for caller, from where and when actual value will be obtained.
+                </para>
+                <para>
+                    It is guaranteed, that duplicate keys across all dictionaries will not cause an exception. Bear in mind,
+                    that in case of duplicates "last win".
+                </para>
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.ReplacePlaceholders(System.String,System.Boolean,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String}[])">
+            <summary>
+                Cleans up replacement values from excess spaces and then replaces variables in template.
+            </summary>
+            <param name="template"></param>
+            <param name="ignoreCase">
+                Defaults to ignore variable case sensitivity to be more unforgiving to user who manages
+                templating. On the flip-side it means that variable structure must be a bit more solid, like having more
+                complex boundary markers to distinguish variable from normal text with higher level of certainty.
+            </param>
+            <param name="replacements">Values are precalculated by caller.</param>
+            <returns></returns>
+            <remarks>
+                <para>
+                    It is guaranteed, that duplicate keys across all dictionaries will not cause an exception. Bear in mind,
+                    that in case of duplicates "last win".
+                </para>
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.Trie">
+            <summary>
+                This implementation in <see cref="T:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor" /> specifid, hence private.
+            </summary>
+            <remarks>
+                a) will match complete matches only;
+                b) has configurable case sensitivity for search phrase.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.Trie.Insert(System.String,System.Func{System.String})">
+            <summary>
+                Insert a key-value pair into the Trie.
+            </summary>
+            <param name="key">"Variable", placeholder.</param>
+            <param name="valueProvider">
+                Calling this delegate should provide a value for placeholder. If providers in <c>null</c> then value
+                will become to <see cref="F:System.String.Empty" />
+            </param>
+        </member>
+        <member name="M:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.Trie.Search(System.String,System.Int32)">
+            <summary>
+                Search for the longest match in the Trie starting from a given index in the template
+            </summary>
+            <param name="template"></param>
+            <param name="startIndex"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="F:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.Trie.TrieNode._children">
+            <summary>
+                Children dictionary is private, and access is controlled internally.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.Trie.TrieNode.Children">
+            <summary>
+                Expose Children as a read-only collection.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Application.Common.TemplateToolkit.TemplateProcessor.Trie.TrieNode.ValueCache">
+            <summary>
+                Already obtained value, it should be preferred over repeated value provider invocations that have a
+                potential to be costly.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.EmailContentHelper.FormatEmailSubjectRtl(System.String,System.Nullable{System.Int32})">
+            <summary>
+                TODO: Explain what it does. What does magic number 7 mean?
+            </summary>
+            <param name="subject"></param>
+            <param name="languageId"></param>
+            <returns>TODO: What is the meaning, or what is the result?</returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.EmailContentHelper.GetCourseScholarship(System.String,System.String,System.Int32)">
+            <summary>
+                TODO: Needs explanation of its business or technical purpose.
+            </summary>
+            <returns>TODO: What is it, what it returns?</returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Utils.EmailHeadersHelper">
+            <summary>
+                Common logic to get email headers data from known CRM Domain Model object graphs.
+            </summary>
+            <remarks>
+                It is up to the caller to provide sufficient object graph for each method, because it works on in-memory data.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.EmailHeadersHelper.GetFrom(IntranetMigrator.Domain.Entities.Process,System.String,System.String)">
+            <summary>
+                Get From address from object graphs or default to <paramref name="fallBackAddress" />
+            </summary>
+            <param name="process"></param>
+            <param name="fromEmail"></param>
+            <param name="fallBackAddress"></param>
+            <returns>Sanitized string or <see cref="F:System.String.Empty" /> if impossible to obtain.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.EmailHeadersHelper.SanitizeEmailAddress(System.String)">
+            <summary>
+                Uses <see cref="M:System.String.Normalize(System.Text.NormalizationForm)" /> with argument
+                <see cref="F:System.Text.NormalizationForm.FormKD" /> to try to get rid of fancy Unicode characters.
+                It will put string to lower-invariant and trim it.
+            </summary>
+            <remarks>
+                <para>
+                    This converter could be made more precise given the examples of
+                    <a href="https://en.wikipedia.org/wiki/Email_address#Examples">Valid email addresses</a>.
+                </para>
+                <para>
+                    NB! It won't get rid of all kinds of Unicode chars! Therefor might need attention in future to improve
+                    normalization process. From <a href="https://lingojam.com/FancyFontGenerator,UnicodeText">this link</a>
+                    it is possible to generate various fancy strings to test limits of this value converter.
+                </para>
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.EmailHeadersHelper.GetReceiver(IntranetMigrator.Domain.Entities.Process)">
+            <summary>
+            Function for obtain receiver in Process.Contact.ContactEmail
+            </summary>
+            <param name="process"></param>
+            <returns>Return ContactEmail by default OR other contactEmail OR NULL</returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.EmailHeadersHelper.GetFromName(IntranetMigrator.Domain.Entities.Process)">
+            <summary>
+                Creates "From" displayed from Process object graph.
+            </summary>
+            <param name="process"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.Helper.GetUntilValidTime(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Funcion to get the valid until date for the enrollment.
+            </summary>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Utils.PersistenceAuditingHelper">
+            <summary>
+                Encapsulate some peculiar logic to generate values for DB fields like "CreatedBy", "ModifiedBy".
+            </summary>
+            <remarks>
+                To be used in DbContext Interceptors, in DbContext implementations' <c>SaveChanges*(...)</c> overrides; or DbSet's
+                <c>Execute*()</c> methods.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Common.Utils.PersistenceAuditingHelper.InjectCreatorPartialAsTag(System.String,System.String)">
+            <summary>
+                Depending on provided values produces one of the following outputs:<br />
+                - if e-mail by minimum validation of having `@` char is found => <c>username+tagValue@domain.com</c>
+                (it is supported by standard).<br />
+                - if email is string w/o `@` then provided value is appended like => <c>system:tagValue</c>.<br />
+                - if <paramref name="tag" /> is empty, then value of <paramref name="emailOrName" /> is returned <em>as is</em>.
+            </summary>
+            <param name="emailOrName"></param>
+            <param name="tag"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Common.Validation.ContactExistsByEmailValidator`1">
+            <summary>
+                Check whether Intranet DB has a Contact, that has specified email and both <see cref="T:IntranetMigrator.Domain.Entities.Contact" /> and
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactEmail" /> are not deleted.
+            </summary>
+            <remarks>Reusable.</remarks>
+            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="P:CrmAPI.Application.Common.Validation.ContactExistsByEmailValidator`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Common.Validation.ContactExistsByEmailValidator`1.GetDefaultMessageTemplate(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Common.Validation.ContactExistsByEmailValidator`1.IsValidAsync(FluentValidation.ValidationContext{`0},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:CrmAPI.Application.ContactLeads.Commands.CreateMostProfitableInterestedCourses.CreateMostProfitableInterestedCoursesCommand">
+            <inheritdoc cref="T:CrmAPI.Contracts.Commands.ICreateMostProfitableInterestedCourses" />
+            <summary>
+                Creates instances of <see cref="T:IntranetMigrator.Domain.Entities.ContactLead" /> and <see cref="T:IntranetMigrator.Domain.Entities.ContactLeadProcess" />, then broadcasts
+                <see cref="T:CrmAPI.Contracts.Events.IMostProfitableInterestedCoursesCreated" /> event.
+            </summary>
+            <remarks>
+                NB! No security, only used in messaging communication; add ApiKey ASAP in case of exposing it via WebApi.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.CreateMostProfitableInterestedCourses.CreateMostProfitableInterestedCoursesCommand.#ctor(CrmAPI.Contracts.Dtos.CreateMostProfitableInterestedCoursesDto)">
+            <inheritdoc cref="T:CrmAPI.Contracts.Commands.ICreateMostProfitableInterestedCourses" />
+            <summary>
+                Creates instances of <see cref="T:IntranetMigrator.Domain.Entities.ContactLead" /> and <see cref="T:IntranetMigrator.Domain.Entities.ContactLeadProcess" />, then broadcasts
+                <see cref="T:CrmAPI.Contracts.Events.IMostProfitableInterestedCoursesCreated" /> event.
+            </summary>
+            <remarks>
+                NB! No security, only used in messaging communication; add ApiKey ASAP in case of exposing it via WebApi.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.CreateMostProfitableInterestedCourses.CreateMostProfitableInterestedCoursesCommandHandler.GetContact(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Get Contact and required related data.
+            </summary>
+            <param name="id"></param>
+            <param name="ct"></param>
+            <returns>
+                <para>
+                    Has included Faculties, that aren't excluded by
+                    <see cref="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ExcludedFaculties" />
+                </para>
+                <para>
+                    Includes existing <b>Interested Courses</b> from <see cref="P:IntranetMigrator.Domain.Entities.Contact.ContactLeads" /> by business rule:<br />
+                    Definition on "Interested Course": if Contact has ContactLead with either `CourseId` or `CourseCode`.
+                </para>
+                <para>
+                    Uses Long Running Query Execution pattern.
+                </para>
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.CreateMostProfitableInterestedCourses.CreateMostProfitableInterestedCoursesCommandHandler.CreateInterestedCoursesOverAllFaculties(IntranetMigrator.Domain.Entities.Contact,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Iterate every provided Faculty, get "best" source data among Faculty courses. At the same time, collect
+                all the rest of course data that wasn't used to try to create one <see cref="T:IntranetMigrator.Domain.Entities.ContactLead" />.
+            </summary>
+            <param name="contact"></param>
+            <param name="limit"></param>
+            <param name="ct"></param>
+            <returns>
+                Along Interested Courses created, return collected "the rest of" the data that will be analyzed next, if
+                result limit wasn't fulfilled.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.CreateMostProfitableInterestedCourses.CreateMostProfitableInterestedCoursesCommandHandler.GetQualifiedFacultyTopSellerCourses(IntranetMigrator.Domain.Entities.Contact,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Retrieves statistics/input data from <see cref="T:CrmAPI.Application.Common.Interfaces.ITopSellerCourseService" /> first, then excludes all courses
+                Contact already has in <see cref="P:IntranetMigrator.Domain.Entities.Contact.ContactLeads" />.
+            </summary>
+            <param name="contact"></param>
+            <param name="contactFacultyName"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.CreateMostProfitableInterestedCourses.CreateMostProfitableInterestedCoursesCommandHandler.CreateInterestedCoursesFromAllPotentialData(System.Collections.Generic.List{IntranetMigrator.Domain.Entities.ContactLead},System.Collections.Generic.Dictionary{CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.TopSellerCoursesStatsDto,System.ValueTuple{IntranetMigrator.Domain.Entities.Course,IntranetMigrator.Domain.Entities.Faculty}},IntranetMigrator.Domain.Entities.Contact,System.Int32)">
+            <summary>
+                Takes "the rest of" the source course data and iterates without altering the order to try to fulfill the
+                amount of <paramref name="limit" /> of Interested Courses.
+            </summary>
+            <param name="result"></param>
+            <param name="potentialData"></param>
+            <param name="contact"></param>
+            <param name="limit"></param>
+            <returns>"Pass through" list, that is modified as a result of current  method.</returns>
+        </member>
+        <member name="T:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand">
+            <inheritdoc cref="T:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto" />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand.#ctor(System.String,System.String,System.String,System.Nullable{System.Int32},System.Int32[])">
+            <inheritdoc cref="T:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto" />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesHandler.Handle(CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesHandler.ReportNotFoundSpecificContacts(CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand,CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesResult)">
+            <summary>
+                In case of <em>Specific Contacts</em> workflow, count the contacts that where found to be not processable.
+            </summary>
+            <param name="request"></param>
+            <param name="resultStatistics"></param>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesHandler.Validate(CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesCommand)">
+            <summary>
+                Validates request completely and returns all validation errors.
+            </summary>
+            <param name="request"></param>
+            <returns>Validation errors in case of any validation failure.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesHandler.SaveInterestedCourses(System.Collections.Generic.IEnumerable{CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.ContactFacultyDto},System.Collections.Generic.IDictionary{CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.TopSellerCoursesStatsDto,IntranetMigrator.Domain.Entities.Course},System.Threading.CancellationToken)">
+            <summary>
+                Creates <see cref="N:CrmAPI.Application.ContactLeads" /> entites, works through <paramref name="facultyContacts" /> chunking it
+                by <see cref="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.EntityCreationMaxChunkSize" />, each chunk is projected
+                and saved to DB in implicit transaction.
+            </summary>
+            <param name="facultyContacts"></param>
+            <param name="facultyTopSellers"></param>
+            <param name="ct"></param>
+            <remarks>
+                After saving each chunk, <see cref="T:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker" /> gets
+                cleared to avoid memory usage accumulation by entity changes data, that is not relevant anymore.
+            </remarks>
+            <returns>Count of created <see cref="N:CrmAPI.Application.ContactLeads" />.</returns>
+        </member>
+        <member name="P:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesResult.TotalCoursesSkipped">
+            <summary>
+                Reasons can be:<br />
+                1. No sold courses statistics found by provided criteria,<br />
+                2. No matching non-deleted coursed for statistics,<br />
+                3. Minimum required Course graph incomplete (CourseType &amp;&amp; Faculty &amp;&amp; Country)
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesResult.NotFoundContactsCount">
+            <summary>
+                Count only in case of <em>Specific Contacts</em> workflow. <c>null</c>/absent value means that this workflow
+                was not executed and counting is not relevant.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesResult.UpdateOnSuccess(System.String,System.String,System.Int32)">
+            <summary>
+                Update unsuccessful job step.<br />
+                <inheritdoc cref="P:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Commands.PopulateMissingInterestedCoursesResult.TotalCoursesSkipped" />
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.TopSellerCoursesStatsDto">
+            <summary>
+                Used to get statistics data from TLMK database.
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.GetSpecificContactsStream(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.CloneRequestForNextPage(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Int32[],System.Int32,System.Int32)">
+            <summary>
+                Clones request record: takes Contact IDs for next page query execution.
+            </summary>
+            <param name="requestDto">
+                Order of <see cref="P:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto.ContactIds" /> is important!
+            </param>
+            <param name="allContactIds"></param>
+            <param name="queriedSoFar"></param>
+            <param name="pageSize">
+                This will be used to remove those Contact IDs from the beginning of IDs array, for next
+                query execution.
+            </param>
+            <returns>Cloned immutable DTO.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.MaterializeSpecificStreamPage(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Threading.CancellationToken)">
+            <summary>
+                Builds query for "Specific Contacts" workflow and starts its materialization task.
+            </summary>
+            <param name="request"></param>
+            <param name="ct"></param>
+            <returns>Task to get materialized list.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.GetAnyContactsStream(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.MaterializeAnyStreamPage(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Builds query for "Any Contacts" workflow and starts its materialization task.
+            </summary>
+            <param name="request"></param>
+            <param name="pageSize"></param>
+            <param name="lastHighestContactId">
+                Query will be prepended by criterion that already processed Contacts won't be processed anymore.
+            </param>
+            <param name="ct"></param>
+            <returns>Task to get materialized list.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.BuildContactsMainQuery(CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto,System.Nullable{System.Int32})">
+            <summary>
+                Applies main contacts filtering logic. Considers workflow and applies conditionally Faculty name and
+                Country Code filtrations. Query composition don't consider any paging logic,
+                it must be done outside, when desirable.
+            </summary>
+            <remarks>Respects Soft-Deleted pattern.</remarks>
+            <returns>A complete query that has business logic and workflow filtering applied.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.ApplyIdsFilter(System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+                It will detect workflow type (Specific or Any) and sets ContactId filtering accordingly.
+            </summary>
+            <param name="ids"></param>
+            <param name="lastHighestContactId"></param>
+            <returns>
+                A tuple of query and workflow flag as skipOther: <c>true</c> is "Specific", <c>false</c> is "Any".
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.ApplyMissingInterestedCourseFilter(System.Linq.IQueryable{IntranetMigrator.Domain.Entities.Contact})">
+            <summary>
+                Add criteria to detect Contacts that don't have <em>Interested Course</em>.
+            </summary>
+            <remarks>
+                Definition on "Interested Course": if Contact has ContactLead with either `CourseId` or `CourseCode`.
+            </remarks>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.ApplyCountryFilter(System.Linq.IQueryable{IntranetMigrator.Domain.Entities.Contact},System.String,System.Boolean)">
+            <param name="query"></param>
+            <param name="countryCode">
+                If equals to <see cref="F:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto.Wildcard" />,
+                then will not filter by country code.
+            </param>
+            <param name="skip">
+                If <c>true</c> then Country Code filtering is skipped, otherwise provided Country Code value will be
+                analyzed next.
+            </param>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.ApplyFacultyFilter(System.Linq.IQueryable{IntranetMigrator.Domain.Entities.Contact},System.String,System.Boolean)">
+            <summary>Applies Faculty filtering conditionally.</summary>
+            <param name="query"></param>
+            <param name="facultyName">
+                If equals to <see cref="F:CrmAPI.Contracts.Dtos.PopulateMissingInterestedCoursesDto.Wildcard" />,
+                then will filter Contacts that have any Faculty present, otherwise by provided Faculty name.
+            </param>
+            <param name="skipFacultyCriteria">
+                If <c>true</c> then existing first Contact's faculty will be taken, otherwise provided faculty criteria will
+                be added.
+            </param>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.ApplySpecificWorkflowFacultyFiltration(System.Linq.IQueryable{IntranetMigrator.Domain.Entities.Contact},System.String)">
+            <remarks>
+                Exclusions defined in <see cref="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ExcludedFaculties" />
+                will be respected.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.ApplyAnyWorkflowFacultyFiltration(System.Linq.IQueryable{IntranetMigrator.Domain.Entities.Contact})">
+            <remarks>
+                Exclusions defined in <see cref="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ExcludedFaculties" />
+                will be respected.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.BuildFinalQuery(System.Linq.IQueryable{CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.ContactFacultyDto},System.Nullable{System.Int32})">
+            <summary>
+                Creates final query, that is sorted by <see cref="P:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.ContactFacultyDto.ContactId" /> and limited by page size.
+            </summary>
+            <param name="query"></param>
+            <param name="pageSize">
+                Optional. Be user that it is omitted only for "Specific Contacts" workflow, otherwise it can can
+                cause performance hit by querying unknown amount of results, which defeats the purpose of stream logic.
+            </param>
+            <returns>Final query ready to be materialized be EF Core.</returns>
+            <remarks>
+                NB! Skip is not desirable, because in case we are working on "stream" of contacts, and they are retrieved
+                page-x-page from DB, new Interested Courses are added. It means that every execution of this query will
+                not hit those contacts anymore. Skip on the other hand would cause to omit some of the contacts
+                by the end of single execution of this job, that are still missing Interested Courses.<br />
+                This service's internal consumer is relying on Ordering of Contact ID is
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.ExecuteQueryAsLongRunning(System.Linq.IQueryable{CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.ContactFacultyDto},System.Threading.CancellationToken)">
+            <summary>
+                Purpose is to set and restore "command timeout" just for this execution as a long-running execution.
+            </summary>
+            <returns>Materialized list.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.ContactLeadsAnalyzerService.GetNextPageSize(System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Checks whether next page is smaller than current, to detect approaching stream end.
+            </summary>
+            <param name="currentPageSize"></param>
+            <param name="targetSize"></param>
+            <param name="queriedSoFar"></param>
+            <returns>
+                If remaining items count is less than <paramref name="currentPageSize" />,
+                than remaining will return; otherwise <paramref name="currentPageSize" />.
+            </returns>
+        </member>
+        <member name="T:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.TopSellerCourseService">
+            <summary>
+                <inheritdoc cref="T:CrmAPI.Application.Common.Interfaces.ITopSellerCourseService" /><br />
+                Implementation: <em>X=10</em>.
+            </summary>
+            <remarks>
+                Implements Cache-Aside pattern to get/set cache and query database if key not found in cache.<br />
+                Race condition on cache loading from database is managed using <see cref="T:System.Threading.SemaphoreSlim" /> based
+                locking mechanism.<br />
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.TopSellerCourseService.GetKey(CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.TopSellerCourseCacheKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.TopSellerCourseService.Get(CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.TopSellerCourseCacheKey,System.Threading.CancellationToken)">
+            <summary>
+                Gets TOP10 sold courses statistics from TLMK db and gets corresponding Courses data from Intranet DB
+                and puts them together into cache.<br />
+                Cache is used in future to retrieve data from there instead of databases of TLMK and Intranet.
+            </summary>
+            <param name="key"></param>
+            <param name="ct"></param>
+            <remarks>Cache-Aside pattern.</remarks>
+            <returns>A dictionary of statistics DTO and it's corresponding course.</returns>
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.TopSellerCourseService.CalculatePeriod(CrmAPI.Application.Settings.TopSellerCourseSettings)">
+            <summary>
+                Encapsulates logic to convert settings into concrete start and end of the period, that is used in statistics
+                calculation query.
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Services.TopSellerCourseService.GetCourseInfoQuery(System.Collections.Generic.IList{CrmAPI.Application.ContactLeads.Commands.PopulateMissingInterestedCourses.Dtos.TopSellerCoursesStatsDto})">
+            <summary>
+                Get query for getting necessary information regarding Course, e.g. "includes".
+            </summary>
+            <param name="statisticsList"></param>
+        </member>
+        <member name="T:CrmAPI.Application.Contacts.Commands.ConsolidateContactsByIdCommand.ConsolidateContactsByIdCommand">
+            <summary>
+                It is used to "transfer the data" from the source contact to the destination contact by ids.
+            </summary>
+            <remarks>
+                Command`s data modification is supposed to be executed in single transaction.
+            </remarks>
+            <param name="DestinationId">Contact Id where the data will be transferred.</param>
+            <param name="OriginId">Contact Id with the data to be transferred.</param>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Commands.ConsolidateContactsByIdCommand.ConsolidateContactsByIdCommand.#ctor(System.Int32,System.Int32,System.String)">
+            <summary>
+                It is used to "transfer the data" from the source contact to the destination contact by ids.
+            </summary>
+            <remarks>
+                Command`s data modification is supposed to be executed in single transaction.
+            </remarks>
+            <param name="DestinationId">Contact Id where the data will be transferred.</param>
+            <param name="OriginId">Contact Id with the data to be transferred.</param>
+        </member>
+        <member name="P:CrmAPI.Application.Contacts.Commands.ConsolidateContactsByIdCommand.ConsolidateContactsByIdCommand.DestinationId">
+            <summary>Contact Id where the data will be transferred.</summary>
+        </member>
+        <member name="P:CrmAPI.Application.Contacts.Commands.ConsolidateContactsByIdCommand.ConsolidateContactsByIdCommand.OriginId">
+            <summary>Contact Id with the data to be transferred.</summary>
+        </member>
+        <member name="T:CrmAPI.Application.Contacts.Commands.ConsolidateContactsByIdCommand.ConsolidateContactsByIdCommandValidator">
+            <remarks>
+                If you touch "existsByEmailValidator" then make sure, that <see cref="T:CrmAPI.Application.Contacts.Commands.ConsolidateContactsByIdCommand.ConsolidateContactsByIdCommandHandler" />
+                will work, because it relies on this logic to consolidate validation here as much as possible"!
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.ConsolidateContactsCommand">
+            <summary>
+                It is used to transfer the data from the source email to the destination email.
+            </summary>
+            <remarks>
+                Command`s data modification is supposed to be executed in single transaction.
+            </remarks>
+            <param name="DestinationEmail">Email where the data will be transferred.</param>
+            <param name="OriginEmail">Email with the data to be transferred.</param>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.ConsolidateContactsCommand.#ctor(System.String,System.String)">
+            <summary>
+                It is used to transfer the data from the source email to the destination email.
+            </summary>
+            <remarks>
+                Command`s data modification is supposed to be executed in single transaction.
+            </remarks>
+            <param name="DestinationEmail">Email where the data will be transferred.</param>
+            <param name="OriginEmail">Email with the data to be transferred.</param>
+        </member>
+        <member name="P:CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.ConsolidateContactsCommand.DestinationEmail">
+            <summary>Email where the data will be transferred.</summary>
+        </member>
+        <member name="P:CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.ConsolidateContactsCommand.OriginEmail">
+            <summary>Email with the data to be transferred.</summary>
+        </member>
+        <member name="T:CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.ConsolidateContactsCommandValidator">
+            <remarks>
+                If you touch "existsByEmailValidator" then make sure, that <see cref="T:CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.ConsolidateContactsCommandHandler" /> will
+                work, because it relies on this logic to consolidate validation here as much as possible"!
+            </remarks>
+        </member>
+        <member name="T:CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.OriginContactDto">
+            <summary>
+                Used for DB projection. All properties are meant to be entity types, so they will be traced for mutation purposes.
+            </summary>
+            <remarks>
+                Idea is to interact with all the child dependencies in uniform way. Alternative would be using <c>Include()</c>,
+                but join entities still need to be queried explicitly, because it is necessary to modify their states too.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Commands.RecoverContactActivations.RecoverContactActivationsCommandHandler.UpdateProcess(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Actualiza el proceso asociado al ID del usuario
+            </summary>
+            <param name="procesId"></param>
+            <param name="ct"></param>
+            <returns></returns>    
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Commands.RecoverContactActivations.RecoverContactActivationsCommandHandler.UpdateAction(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Actualiza las acciones asociadas a un proceso específico.
+            </summary>
+            <param name="procesId"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService.ConsolidateContacts(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService.SetSoftDeleteOriginContactAndDesignatedRelatedEntities(CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.OriginContactDto)">
+            <summary>
+                Soft-deletes designated related entities of the Origin contact:
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactLead" />,
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactTitle" />,
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactEmail" />,
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactPhone" />,
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactAddress" />,
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactLanguage" />,
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactFaculty" />,
+                <see cref="T:IntranetMigrator.Domain.Entities.ContactSpeciality" />
+                and <see cref="T:IntranetMigrator.Domain.Entities.ContactLeadProcess" />.
+            </summary>
+            <param name="originContactDto">DTO with data</param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService.UpdateDesignatedRelatedEntitiesToDestinationContact(CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.OriginContactDto,System.Int32)">
+            <summary>
+                Sets `ContactId` foreign relation to the Destination Contact ID for
+                <see cref="T:IntranetMigrator.Domain.Entities.Process" />, <see cref="T:IntranetMigrator.Domain.Entities.Action" />, <see cref="T:IntranetMigrator.Domain.Entities.Annotation" />
+                and <see cref="N:CrmAPI.Application.OrdersImported" /> entities.
+            </summary>
+            <param name="originContactDto"></param>
+            <param name="destinationContactId"></param>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService.DeepCopySpecialCaseContactLeadToDestinationContact(CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.OriginContactDto,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                <see cref="P:IntranetMigrator.Domain.Entities.ContactLead.CourseId" /> cannot be duplicated in terms of existing course. Only copy when destination
+                don't have <see cref="N:IntranetMigrator" /> with same existing course.<br />
+                <i>
+                    Def. existing course: <br />
+                    * both contacts have matching course, when <see cref="N:IntranetMigrator.Domain" /> or
+                    <see cref="N:IntranetMigrator.Domain" /> are equal;<br />
+                    * if both <see cref="N:IntranetMigrator.Domain" /> or <see cref="T:IntranetMigrator.Domain.Entities.ContactLead" /> are <c>null</c>, then
+                    this is not considers as a "course lead" at all.
+                </i>
+            </summary>
+            <param name="originContactDto"></param>
+            <param name="destinationContactId"></param>
+            <param name="ct"></param>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService.GetContactLeadsToCopy(CrmAPI.Application.Contacts.Commands.ConsolidateContactsCommand.OriginContactDto,System.Collections.Generic.List{System.ValueTuple{System.Nullable{System.Int32},System.String}})">
+            <summary>
+                Avoid duplication of <see cref="!:originContactDto" />s, get only those, that Destination Contact doesn't have yet.
+            </summary>
+            <param name="originContactDto"></param>
+            <param name="matchingContactLeads"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService.GetLeadsOfOriginContact(System.Collections.Generic.List{System.String},System.Threading.CancellationToken)">
+            <summary>
+                Gets <see cref="T:CrmAPI.Domain.Leads.Entities.Lead" /> entities that are in
+                <see cref="T:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker" />.
+            </summary>
+            <remarks>
+                NB! Make sure that <paramref name="originContactEmails" /> is not empty nor contain null/empty elements,
+                because DB is queried using <c>LIKE</c> operator and empty pattern has potential to return unknown amount
+                of rows.
+            </remarks>
+            <param name="originContactEmails">Clean array, without null/emty elements.</param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Contacts.Services.ContactsConsolidatorService.SaveChanges(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Coupons.Commands.CopyToCouponFpCommand.CopyToCouponFpCommandHandler.Handle(CrmAPI.Application.Coupons.Commands.CopyToCouponFpCommand.CopyToCouponFpCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Commands.SendEmailCommercialAssignment.SendEmailCommercialAssignmentCommandHandler.Handle(CrmAPI.Application.Emails.Commands.SendEmailCommercialAssignment.SendEmailCommercialAssignmentCommand,System.Threading.CancellationToken)">
+            <summary>
+                Sends emails using a specified template for each process in the provided list.
+                The function retrieves the employee based on the current user's email and processes each item in the list.
+                For each process, it identifies the preferred contact language, fetches the corresponding contact lead,
+                and retrieves the appropriate email template.
+                The function then constructs the email content, including subject, body, and recipient information,
+                before publishing the email contract to the messaging bus.
+            </summary>
+            <returns>
+                Returns a descriptive string both on error and success scenarios.
+                TODO: use Result Pattern to give meaningfully error info.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Commands.SendEmailRecords2ScholarshipActivation.SendEmailRecords2ScholarshipActivationCommandHandler.Handle(CrmAPI.Application.Emails.Commands.SendEmailRecords2ScholarshipActivation.SendEmailRecords2ScholarshipActivationCommand,System.Threading.CancellationToken)">
+            <summary>
+                Sends emails using a specified template for each process in the provided list.
+                The function retrieves the employee based on the current user's email and processes each item in the list.
+                For each process, it identifies the preferred contact language, fetches the corresponding contact lead,
+                and retrieves the appropriate email template.
+                The function then constructs the email content, including subject, body, and recipient information,
+                before publishing the email contract to the messaging bus.
+            </summary>
+            <returns>
+                Returns a descriptive string both on error and success scenarios.
+                TODO: use Result Pattern to give meaningfully error info.
+            </returns>
+        </member>
+        <member name="T:CrmAPI.Application.Emails.Commands.SendEmailScholarshipForActivationWith2Courses.SendEmailScholarshipForActivationWith2CoursesCommand">
+            <inheritdoc cref="T:CrmAPI.Contracts.Commands.ISendEmailScholarshipForActivationWith2Courses" />
+            <remarks>
+                As this command is specific to Template and business use case, only first 2
+                <see cref="P:CrmAPI.Contracts.Dtos.SendEmailScholarshipForActivationWith2CoursesDto.ContactLeadIds" /> will be processed.<br />
+                NB! No security, only used in messaging communication; add ApiKey ASAP in case of exposing it via WebApi.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Commands.SendEmailScholarshipForActivationWith2Courses.SendEmailScholarshipForActivationWith2CoursesCommand.#ctor(CrmAPI.Contracts.Dtos.SendEmailScholarshipForActivationWith2CoursesDto)">
+            <inheritdoc cref="T:CrmAPI.Contracts.Commands.ISendEmailScholarshipForActivationWith2Courses" />
+            <remarks>
+                As this command is specific to Template and business use case, only first 2
+                <see cref="P:CrmAPI.Contracts.Dtos.SendEmailScholarshipForActivationWith2CoursesDto.ContactLeadIds" /> will be processed.<br />
+                NB! No security, only used in messaging communication; add ApiKey ASAP in case of exposing it via WebApi.
+            </remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Commands.SendEmailScholarshipForActivationWith2Courses.SendEmailScholarshipForActivationWith2CoursesCommandHandler.GetBody(IntranetMigrator.Domain.Entities.Template,IntranetMigrator.Domain.Entities.Process,System.Collections.Generic.List{System.ValueTuple{IntranetMigrator.Domain.Entities.ContactLead,System.Nullable{CrmAPI.Application.Common.Dtos.CourseImportedTlmkDto}}},System.Func{System.String},System.Func{System.Nullable{System.Decimal},System.Decimal})">
+            <summary>
+                TODO: I'mm not happy with it, because it performs scan-replace 2x!
+            </summary>
+            <param name="template"></param>
+            <param name="process"></param>
+            <param name="coursePrices"></param>
+            <param name="convocationDateDlgt"></param>
+            <param name="sanitizeDiscountPercentDlgt">
+                See <see cref="M:CrmAPI.Application.Common.BusinessAlgorithms.ProductPricingAlgorithms.GetScholarshipDiscountPercent(IntranetMigrator.Domain.Entities.ContactLead,System.Nullable{CrmAPI.Application.Common.Dtos.CourseImportedTlmkDto},System.Func{System.Nullable{System.Decimal},System.Decimal})" /> for more details.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Commands.SendEmailScholarshipForActivationWith2Courses.SendEmailScholarshipForActivationWith2CoursesCommandHandler.HandleEmailSendingFailure(System.Exception,IntranetMigrator.Domain.Entities.Action,System.Threading.CancellationToken)">
+            <summary>
+                Log exception as Critical error message. Set created <see cref="T:IntranetMigrator.Domain.Entities.Action" />`s Type to
+                <see cref="F:IntranetMigrator.Domain.Enums.ActionType.EmailFailed" />.
+            </summary>
+            <param name="ex"></param>
+            <param name="actionEntity"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Emails.Commands.SetActionTypeOnEmailSendingFailure.SetActionTypeOnEmailSendingFailureCommand">
+            <summary>
+                Sets corresponding Action's <see cref="P:IntranetMigrator.Domain.Entities.Action.Type" /> to
+                <see cref="F:CrmAPI.Application.Emails.Commands.SetActionTypeOnEmailSendingFailure.SetActionTypeOnEmailSendingFailureCommandHandler.FailureType" />, updates <c>LastModified*</c> fields
+                and logs with <see cref="F:Microsoft.Extensions.Logging.LogLevel.Trace" />.
+            </summary>
+            <remarks>Created to react to the Failure/Fault Events in NotificationApi.</remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Commands.SetActionTypeOnEmailSendingFailure.SetActionTypeOnEmailSendingFailureCommand.#ctor(System.Guid,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+                Sets corresponding Action's <see cref="P:IntranetMigrator.Domain.Entities.Action.Type" /> to
+                <see cref="F:CrmAPI.Application.Emails.Commands.SetActionTypeOnEmailSendingFailure.SetActionTypeOnEmailSendingFailureCommandHandler.FailureType" />, updates <c>LastModified*</c> fields
+                and logs with <see cref="F:Microsoft.Extensions.Logging.LogLevel.Trace" />.
+            </summary>
+            <remarks>Created to react to the Failure/Fault Events in NotificationApi.</remarks>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Services.CommercialAssignmentService.GetEmployeeManager(IntranetMigrator.Domain.Entities.Employee)">
+            <summary>
+                NB! Needs an explicit call to <see cref="M:CrmAPI.Application.Common.Interfaces.ICommercialAssignmentService.FillOrganizationNodeCache(System.Threading.CancellationToken)" />
+                to have workable data.
+            </summary>
+            <param name="employee"></param>
+            <returns>
+                Manager or <c>null</c>, if it cannot be found for any reason, starting from missing pre-cachedOrganization
+                Nodes!
+            </returns>
+        </member>
+        <member name="T:CrmAPI.Application.Emails.Services.CrmMailerService">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Services.CrmMailerService.GetProcessQueryCore(System.Int32,System.Func{System.Linq.IQueryable{IntranetMigrator.Domain.Entities.Process},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{IntranetMigrator.Domain.Entities.Process,IntranetMigrator.Domain.Entities.CourseCountry}})">
+            <summary>
+                Applies all the expected filtration and mandatory inclusions for object graph, that are required by this
+                same service later on.
+            </summary>
+            <param name="processId"></param>
+            <param name="contactLeadInclusionDlgt">
+                This is mandatory too, but allows to apply filtering on top of navigation property to select desired
+                related entities only. <br /> If filtering is not desired, then at minimum <c>Include()</c> call against
+                <see cref="P:IntranetMigrator.Domain.Entities.Process.SelectedLeads" /> must be present.
+            </param>
+            <returns>
+                Complete query, with related data hinting, but ChangeTracker control is not applied, it's up to the caller.
+                <br />
+                Also, <c>SplitQuery()</c> decision it up to the caller.
+            </returns>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Services.CrmMailerService.AddEmail(IntranetMigrator.Domain.Entities.Process,NotificationAPI.Contracts.Commands.CreateEmail)">
+            <summary>
+                Assigns almost all the properties, but most notable (relational) property is not assigned is
+                <see cref="P:IntranetMigrator.Domain.Entities.Email.ContactLeadId" />.
+            </summary>
+            <param name="process"></param>
+            <param name="rawEmail"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CrmAPI.Application.Emails.Services.CrmMailerService.TemplateCacheKey">
+            <summary>
+                For service's private use only.
+            </summary>
+            <param name="Code"></param>
+            <param name="LanguageId"></param>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Services.CrmMailerService.TemplateCacheKey.#ctor(System.String,System.Int32)">
+            <summary>
+                For service's private use only.
+            </summary>
+            <param name="Code"></param>
+            <param name="LanguageId"></param>
+        </member>
+        <member name="P:CrmAPI.Application.Emails.Services.CrmMailerService.TemplateCacheKey.Code">
+            <summary></summary>
+        </member>
+        <member name="P:CrmAPI.Application.Emails.Services.CrmMailerService.TemplateCacheKey.LanguageId">
+            <summary></summary>
+        </member>
+        <member name="M:CrmAPI.Application.Emails.Services.CrmMailerService.SerializeItems(System.Collections.Generic.List{System.String})">
+            <summary>
+                Joins elements into coma-separated string.
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Commands.ReturnBusinessContactsToDelivery.ReturnBusinessContactsToDeliveryHandler.UpdatePotencialesDatedistribution(System.Collections.Generic.List{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Actualizar la fecha de reparto de los contactos
+            </summary>
+            <param name="originContactId"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Commands.ReturnBusinessContactsToDelivery.ReturnBusinessContactsToDeliveryHandler.UpdateProcesStatus(System.Collections.Generic.List{System.Int32},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Actualizar el estado de los procesos
+            </summary>
+            <param name="procesIds"></param>
+            <param name="corporateEmail"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Commands.ReturnBusinessContactsToDelivery.ReturnBusinessContactsToDeliveryHandler.GetProcesIdsByUserIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Retorna los ids de los procesos asociados a un usuario
+            </summary>
+            <param name="userId"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="F:CrmAPI.Application.Processes.Queries.GetProcessesInProgressByUserWithPagination.GetProcessesInProgressByUserWithPaginationQueryHandler.Projection">
+            <summary>
+                This must be Expression tree, compatible with LINQ to EF, meaning that regular IF-s will explode!
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.Processes.Queries.GetSuggestedNextInteractionDate.GetSuggestedNextInteractionDateQuery">
+            <param name="DateLocalEmployee">
+                Date Local Time with unspecified type Zone (without HourZone). Expected:
+                2024-09-03T09:34:56.789
+            </param>
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Queries.GetSuggestedNextInteractionDate.GetSuggestedNextInteractionDateQuery.#ctor(System.Int32,System.String)">
+            <param name="DateLocalEmployee">
+                Date Local Time with unspecified type Zone (without HourZone). Expected:
+                2024-09-03T09:34:56.789
+            </param>
+        </member>
+        <member name="P:CrmAPI.Application.Processes.Queries.GetSuggestedNextInteractionDate.GetSuggestedNextInteractionDateQuery.DateLocalEmployee">
+            <summary>
+                Date Local Time with unspecified type Zone (without HourZone). Expected:
+                2024-09-03T09:34:56.789
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.Processes.Services.WorkScheduleService">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Services.WorkScheduleService.GetProposalNextDate(System.Int32,System.DateTime,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Services.WorkScheduleService.TryGetProposalWithinUpcomingWeek(System.Int32,System.DateTime,System.Threading.CancellationToken)">
+            <summary>
+                Try to calculate proposal date within next 7 days, but if it doesn't succeed returns <c>null</c>.
+            </summary>
+            <param name="userId"></param>
+            <param name="dateLocalEmployee"></param>
+            <param name="ct"></param>
+            <returns><c>null</c>, if fails to calculate proposal date within upcoming 7 days.</returns>
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Services.WorkScheduleService.CombineToNextDate(System.DateTime,System.TimeSpan)">
+            <summary>
+                Combines in following way: parts till day from <paramref name="dateTime" />
+                and the rest from <paramref name="timeSpan" />.
+            </summary>
+            <param name="dateTime"></param>
+            <param name="timeSpan"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrmAPI.Application.Processes.Services.WorkScheduleService.IsInBetweenInclusive(System.TimeSpan,System.TimeSpan,System.TimeSpan)">
+            <summary>
+                Compares, if <paramref name="toCompare" /> is between <paramref name="start" /> and <paramref name="end" />.
+            </summary>
+            <remarks>
+                NB! There is no check in place that start cannot be greater than end or vice verca!
+            </remarks>
+            <param name="toCompare"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ContactsQueryMaxPageSize">
+            <summary>
+                Maximum size of contacts page, that will be retrieved from DB. Careful, it is quite costly query in terms
+                of object graph upon filtering is applied, it's advisable not to se it too big.
+            </summary>
+            <remarks>
+                Its value is input to "clamping" as an upper bound.
+            </remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.EntityCreationMaxChunkSize">
+            <summary>
+                This is effectively a number of entities, that will be saved to DB with one implicit transaction.
+            </summary>
+            <remarks>
+                Contacts are retrieved by <see cref="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ContactsQueryMaxPageSize" />, and this page is chunked so that each
+                transaction will not grow too big.
+            </remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.InterestedCoursePopulatorSettings.ExcludedFaculties">
+            <summary></summary>
+            <remarks>Comparison will be case-sensitive and exact-match!</remarks>
+        </member>
+        <member name="F:CrmAPI.Application.Settings.TopSellerCourseSettings.DefaultMonthsBack">
+            <summary>
+                In case of Start period is not provided by <see cref="P:CrmAPI.Application.Settings.TopSellerCourseSettings.StatisticsPeriodStart" /> or
+                <see cref="P:CrmAPI.Application.Settings.TopSellerCourseSettings.StatisticsPeriod" />, then during Top Sellers statistics calculation,
+                this value is used to calculate start date.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.ExcludedPaymentTypes">
+            <summary>
+                Exclude Courses with these payment types form Top Sellers statistic calculation.
+            </summary>
+            <remarks>Comparison will be case-sensitive and exact-match!</remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.ExcludePaymentTypePattern">
+            <summary>
+                Exclude Courses with payment type, that match following pattern form Top Sellers statistic calculation.
+            </summary>
+            <remarks>Input for SQL <c>LIKE</c> input and currently TLMK DB is MySQL.</remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.StatisticsTakeLimit">
+            <summary>
+                Max number of Courses to included, when Top Seller Course statistics are being calculated from TLMK DB.
+            </summary>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.SlidingExpirationPeriod">
+            <inheritdoc />
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.AbsoluteExpirationPeriod">
+            <inheritdoc />
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.StatisticsPeriod">
+            <summary>
+                If present, has the second priority to period start calculation on Top Sellers statistics calculation.
+            </summary>
+            <remarks>
+                Days, hours, minutes -- <see cref="T:System.TimeSpan" /> specs :-).<br />
+                <inheritdoc cref="P:CrmAPI.Application.Settings.TopSellerCourseSettings.StatisticsPeriodStart" />
+            </remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.StatisticsPeriodStart">
+            <summary>
+                If present, has the highest property to period start calculation on Top Sellers statistics calculation.
+            </summary>
+            <remarks>As the lowest priority, <see cref="F:CrmAPI.Application.Settings.TopSellerCourseSettings.DefaultMonthsBack" /> will be used.</remarks>
+        </member>
+        <member name="P:CrmAPI.Application.Settings.TopSellerCourseSettings.StatisticsPeriodEnd">
+            <summary>
+                If not specified, "today" will be used.
+            </summary>
+        </member>
+        <member name="T:CrmAPI.Application.TemplateCodeRegistry">
+            <summary>
+                As of creation, these Codes are present within <see cref="P:IntranetMigrator.Domain.Entities.Template.Name" />, they don't tend to be complete
+                values of the properties of <see cref="T:IntranetMigrator.Domain.Entities.Template" /> entity.
+            </summary>
+            <remarks>
+                <para>
+                    Constant values use parentheses purposely, because different "markers" can have overlapping fragments and
+                    "Contains" lookup can return false-positive results, effectively wrong Templates. Hence, parentheses promote
+                    stricter pattern-like lookup, but they still can be removed easily if some wildcard-like behavior is desirable.
+                </para>
+                <para>
+                    TODO: Usage soon to be changed to work with new field "Code" in <see cref="T:IntranetMigrator.Domain.Entities.Template" /> entity.
+                </para>
+            </remarks>
+        </member>
+        <member name="F:CrmAPI.Application.TemplateCodeRegistry.ScholarshipActivation">
+            <summary>
+                Synonym(s): <i>BECA</i>.
+            </summary>
+        </member>
+        <member name="F:CrmAPI.Application.TemplateCodeRegistry.ScholarshipActivationFixedPercentages">
+            <summary>
+                Synonym(s): <i>BECA</i>.
+            </summary>
+        </member>
+        <member name="F:CrmAPI.Application.TemplateCodeRegistry.ScholarshipActivationR2">
+            <summary>
+                Synonym(s): <i>BECA</i>, "Registry 2" wave.
+            </summary>
+        </member>
+        <member name="F:CrmAPI.Application.TemplateCodeRegistry.ScholarshipForActivationWith2Courses">
+            <summary>
+                "Mail de Activación de Beca ACTIVACIONES CON PROGRAMA ELEGIDO". Synonym(s): BECA, ACTIVACIÓN.
+            </summary>
+        </member>
+        <member name="M:CrmAPI.Application.Templates.Commands.UploadTemplateAuditory.UploadTemplateAuditoryCommandHandler.Handle(CrmAPI.Application.Templates.Commands.UploadTemplateAuditory.UploadTemplateAuditoryCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the process of uploading a file to blob storage for auditory purposes.
+            It formats the provided date (or defaults to the next day if not provided),
+            generates a filename by replacing "empty" in the original file name with the formatted date,
+            and constructs a connection string for uploading the file to the blob storage.
+            If the file has content, it uploads the file using the BlobStorageService. 
+            </summary>
+            <param name="request">The command containing the file and date</param>
+            <param name="ct">CancellationToken</param>
+            <returns>Returns a Unit indicating the task has been completed.</returns>
+        </member>
+        <member name="T:CrmAPI.Application.WebEnrollments.Services.CourseWebEnrollmentService">
+            <summary>
+                <inheritdoc /><br />
+                This implementation communicates directly with respective databases (FP and University e.g. "normal").
+            </summary>
+            <remarks>
+                At the time of creation, the necessity to do so came from intense overload of respective API. <br />
+                Should be swapped out by new microservice API in near future.
+            </remarks>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the TemplatePlaceholderRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TemplatePlaceholderRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.IsWordChar(System.Char)">
+            <summary>Determines whether the character is part of the [\w] set.</summary>
+        </member>
+    </members>
+</doc>

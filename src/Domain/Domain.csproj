@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+        <AssemblyName>CrmAPI.Domain</AssemblyName>
+        <RootNamespace>CrmAPI.Domain</RootNamespace>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Entities" />
+      <Folder Include="Enums" />
+      <Folder Include="Events" />
+      <Folder Include="Exceptions" />
+      <Folder Include="ValueObjects" />
+    </ItemGroup>
+</Project>

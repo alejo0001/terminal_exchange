@@ -1,0 +1,13 @@
+C:\Repositorios\CRM\backend\api-crm\src\Domain\bin\Debug\net7.0\CrmAPI.Domain.deps.json
+C:\Repositorios\CRM\backend\api-crm\src\Domain\bin\Debug\net7.0\CrmAPI.Domain.dll
+C:\Repositorios\CRM\backend\api-crm\src\Domain\bin\Debug\net7.0\CrmAPI.Domain.xml
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\Domain.sourcelink.json
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\CrmAPI.Domain.dll
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\refint\CrmAPI.Domain.dll
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\CrmAPI.Domain.xml
+C:\Repositorios\CRM\backend\api-crm\src\Domain\obj\Debug\net7.0\ref\CrmAPI.Domain.dll
